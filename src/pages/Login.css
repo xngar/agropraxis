@@ -1,0 +1,58 @@
+body{
+    background: rgb(67,184,91);
+background: linear-gradient(346deg, rgba(67,184,91,1) 19%, rgba(230,148,37,1) 91%);
+}
+
+h1{
+    color:mediumpurple;
+}
+
+h3{
+    color: #43b85b;
+}
+.login-contenedor{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    
+    
+}
+
+.login-formulario{
+    width: 60vw;
+    height: 70vh;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.login-izquierda{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-izquierda form{
+    width: 70%;
+}
+
+.login-izquierda form input{
+    border:1px solid #43b85b;
+}
+
+.login-derecha{
+    width: 50%;
+}
+
+.login-derecha img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
