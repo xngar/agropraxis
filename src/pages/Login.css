@@ -1,14 +1,15 @@
 body{
     background: rgb(67,184,91);
-background: linear-gradient(346deg, rgba(67,184,91,1) 19%, rgba(230,148,37,1) 91%);
+background: #303C8F;
 }
 
 h1{
     color:mediumpurple;
 }
 
-h3{
-    color: #43b85b;
+h2{
+    color: #5bb55b;
+    margin-top: 20px;
 }
 .login-contenedor{
     display: flex;
@@ -44,7 +45,7 @@ h3{
 }
 
 .login-izquierda form input{
-    border:1px solid #43b85b;
+    border:1px solid #303C8F;
 }
 
 .login-derecha{
@@ -56,4 +57,35 @@ h3{
     height: 100%;
     object-fit: cover;
     border-radius: 20px;
+}
+
+@media(max-width: 600px){
+    .login-contenedor{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+        flex-direction: column;
+        
+    }
+
+    .login-formulario{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .login-formulario .login-derecha{
+        display: none;
+    }
+
+    .login-formulario .login-derecha img{
+      display: none;
+    }
+
+    .login-izquierda form{
+        width: 100%;
+    }
 }

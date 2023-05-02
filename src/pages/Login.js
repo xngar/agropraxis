@@ -7,7 +7,7 @@ const Login = () => {
       <div className="login-contenedor">
         <div className="login-formulario">
           <div className="login-izquierda">
-            <img src="logo.png" alt="logo-agropraxis" width="150px" />
+            <img src="logo.png" alt="logo-agropraxis" width="200px" />
             <h2>Bienvenidos</h2>
             
               <form>
