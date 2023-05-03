@@ -42,7 +42,8 @@ const Login = () => {
           navigate("/home",{
             state:{
               logged:true,
-              nombre:formulario.Usuario
+              nombre:formulario.Usuario,
+              token:token2
             }
           })
         }

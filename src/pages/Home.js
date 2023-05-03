@@ -6,7 +6,7 @@ const Home = () => {
    
   return (
     <>
-     {state?.logged?<div>entramos</div>:<Navigate to="/"/>}
+     {state?.logged?<div>entramos y este es el token {state.token}</div>:<Navigate to="/"/>}
    </>
   )
 }
