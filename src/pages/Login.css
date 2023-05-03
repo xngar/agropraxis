@@ -33,7 +33,7 @@ h2{
 }
 
 .login-izquierda{
-    width: 50%;
+    width: 40%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -49,7 +49,7 @@ h2{
 }
 
 .login-derecha{
-    width: 50%;
+    width: 60%;
 }
 
 .login-derecha img{
