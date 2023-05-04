@@ -1,0 +1,13 @@
+table{
+    background-color: white;
+    border-radius: 10px;
+    
+}
+
+td{
+    text-transform: lowercase;
+}
+
+tr:hover{
+    background: lightblue;
+}
