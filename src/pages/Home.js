@@ -39,6 +39,7 @@ const Home = () => {
           <NavBar/>
         </div>
         <div className="derecha">
+          <div className="derecha-contenedor"> 
           <div className="banner">
             {state?.logged ? <h1></h1> : <Navigate to="/" />}
           </div>
@@ -88,6 +89,8 @@ const Home = () => {
               })}
             </tbody>
           </table>
+          </div>
+          
         </div>
       </div>
     </>
