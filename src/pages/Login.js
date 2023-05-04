@@ -86,35 +86,35 @@ const Login = () => {
             <h2>Bienvenidos </h2>
 
             <form onSubmit={(e)=>handleEnviar(e)}>
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">
+              <div className="mb-3">
+                <label  className="form-label">
                   Usuario
                 </label>
                 <input
                  value={formulario.Usuario}
                    name="Usuario"
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                   onChange={(e)=>handleForm(e)}
                 />
               </div>
-              <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">
+              <div className="mb-3">
+                <label  className="form-label">
                   Password
                 </label>
                 <input
                   value={formulario.Password}
                   name="Password"
                   type="password"
-                  class="form-control"
+                  className="form-control"
                   id="exampleInputPassword1"
                   onChange={(e)=>handleForm(e)}
                 />
               </div>
 
-              <button type="submit" class="btn btn-primary">
+              <button type="submit" className="btn btn-primary">
                 Ingresar
               </button>
             </form>
