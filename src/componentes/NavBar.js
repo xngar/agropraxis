@@ -3,10 +3,19 @@ import { VscAccount } from "react-icons/vsc";
 import { MdMonitor } from "react-icons/md";
 import { GiGrapes } from "react-icons/gi";
 import "./NavBar.css";
+import { useNavigate } from "react-router-dom";
 
 const NavBar = ({ cliente }) => {
   const clientes = localStorage.getItem("cliente");
   const status = localStorage.getItem("status");
+  const navigator = useNavigate();
+  function cerrar(){
+    localStorage.setItem("status","");
+    localStorage.setItem("cliente","");
+    localStorage.setItem("token","");
+  navigator("/");
+    
+  }
 
   return (
     <div>
@@ -39,6 +48,10 @@ const NavBar = ({ cliente }) => {
           Acidez de Frutos
         </li>
       </ul>
+      <div className="container">
+      <button className="btn btn-danger" onClick={cerrar}>Cerrar Sesión</button>
+      </div>
+      
     </div>
   );
 };
