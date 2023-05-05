@@ -27,26 +27,35 @@ const Login = () => {
           Password: formulario.Password,
         }),
       });
-      
-      if (resultado.ok)
-       {
+      console.log(resultado);
+     
+      if (resultado.ok){
         
         const respuestaJson = await resultado.json();
+        console.log(respuestaJson);
         const token2 = respuestaJson.value; // aquí se accede al token de autenticación
         setToken(token2);
-        console.log(token2);
-        if(token2 ==="Usuario No encontrado"){
+        localStorage.setItem("token",token2);
+       
+        console.log(respuestaJson.statusCode)
+        if(respuestaJson.statusCode === 404 ){
             navigate("/");
           
-        }else{
+        }
+        else{
+          localStorage.setItem("cliente",formulario.Usuario)
+          localStorage.setItem("status",true);
           navigate("/home",{
             state:{
               logged:true,
               nombre:formulario.Usuario,
-              token:token2
+              token:token2,
+              status:respuestaJson.statusCode
             }
           })
-        }
+        
+      }
+      
         
 
 

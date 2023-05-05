@@ -1,0 +1,16 @@
+
+.perfil{
+    width: 90%;
+    padding-left: 10px;
+    margin-left: 10px;
+    height: fit-content;
+    padding-bottom: 10px;
+    background: white;
+    padding-top: 1px;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+.perfil h5,h2{
+    margin-left: 10px;
+}
