@@ -1,4 +1,5 @@
 import React from 'react'
+import {format} from 'date-fns'
 import "./Acidez.css"
 
 const Acidez = ({nuevo}) => {
@@ -35,7 +36,7 @@ const Acidez = ({nuevo}) => {
                 return (
                   <>
                     <tr>
-                      <td key={acceso.Id} scope="row">
+                      <td key="{acceso.Id}" scope="row">
                         1
                       </td>
                       <td className="lcase">{acceso.Cliente}</td>
