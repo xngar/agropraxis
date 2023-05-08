@@ -100,9 +100,10 @@ const Home = () => {
     <div className="banner">
     {/* {state?.logged ? <h1>¡Bienvenido {state.nombre}!</h1> : <Navigate to={"/"} />} */}
     </div>
-    <Acidez nuevo={acidez}/>
+    <div className="cont-datos">
+    <Acidez className="acide" nuevo={acidez}/>
     <Monitoreos nuevo={nuevo}/>
-    
+    </div>
     </div>
     
   </div>

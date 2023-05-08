@@ -6,7 +6,7 @@ const Monitoreos = ({nuevo}) => {
         <div className='monitoreo-titulo'>
         <img src="img-monitoreo.png" width="50" /><h3>Monitoreos</h3>
         </div>
-        
+        <div className='table-responsive'>
           <table className="table container">
             <thead>
               <tr>
@@ -52,6 +52,7 @@ const Monitoreos = ({nuevo}) => {
               })}
             </tbody>
           </table>
+          </div>
     </div>
   )
 }

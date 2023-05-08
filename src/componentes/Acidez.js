@@ -1,5 +1,5 @@
 import React from 'react'
-import {format} from 'date-fns'
+
 import "./Acidez.css"
 
 const Acidez = ({nuevo}) => {
@@ -9,7 +9,7 @@ const Acidez = ({nuevo}) => {
         <img src="img-acidez.png" width="50" />
         <h3>Acidez de Fruta</h3>
         </div>
-        
+        <div className='table-responsive'>
           <table className="table container">
             <thead>
               <tr>
@@ -55,15 +55,15 @@ const Acidez = ({nuevo}) => {
                       <td>{acceso.Variedad}</td>
                       <td>{acceso.Muestreador}</td>
                       <td>{acceso.Observaciones}</td>
-                      <td>{acceso.InformeAdjunto?<a href={acceso.InformeAdjunto}> Descargar Informesss</a>:<p style={{color:"red"}}>En Proceso</p>}</td>
+                      <td>{acceso.InformeAdjunto?<a href={acceso.InformeAdjunto}> Descargar Informe</a>:<p style={{color:"red"}}>En Proceso</p>}</td>
                     </tr>
                   </>
                 );
               })}
             </tbody>
           </table>
-
-
+ 
+          </div>
     </div>
 
     )
