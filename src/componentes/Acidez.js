@@ -54,9 +54,8 @@ const Acidez = ({nuevo}) => {
                       <td>{acceso.Especie}</td>
                       <td>{acceso.Variedad}</td>
                       <td>{acceso.Muestreador}</td>
-                    
                       <td>{acceso.Observaciones}</td>
-                      <td>{acceso.InformeAdjunto?<a href={acceso.InformeAdjunto}>Descargar Informe</a>:<p style={{color:"red"}}>En Proceso</p>}</td>
+                      <td>{acceso.InformeAdjunto?<a href={acceso.InformeAdjunto}> Descargar Informesss</a>:<p style={{color:"red"}}>En Proceso</p>}</td>
                     </tr>
                   </>
                 );
