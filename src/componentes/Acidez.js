@@ -24,8 +24,9 @@ const Acidez = ({nuevo}) => {
                 <th scope="col">Especie</th>
                 <th scope="col">Variedad</th>
                 <th scope="col">Muestreador</th>
-                <th scope="col">Ingresador</th>
+                
                 <th scope="col">Observaciones</th>
+                <th scope="col">Informe Adjunto</th>
               </tr>
             </thead>
 
@@ -52,8 +53,9 @@ const Acidez = ({nuevo}) => {
                       <td>{acceso.Especie}</td>
                       <td>{acceso.Variedad}</td>
                       <td>{acceso.Muestreador}</td>
-                      <td>{acceso.IngresadoPor}</td>
+                    
                       <td>{acceso.Observaciones}</td>
+                      <td>{acceso.InformeAdjunto?<a href={acceso.InformeAdjunto}>Descargar Informe</a>:<p style={{color:"red"}}>En Proceso</p>}</td>
                     </tr>
                   </>
                 );
