@@ -7,16 +7,22 @@ import Monitoreos from "../componentes/Monitoreos";
 import Acidez from "../componentes/Acidez";
 
 
+
+ 
+
 const Home = () => {
   
   const [nuevo, setDatos] = useState([]);
   const [acidez, setAcidez] = useState([]);
   const estado = useLocation().state;
+  const tokesito = useLocation().state;
+  
   const [auth, setAuth] = useState(false);
   const [cliente, setCliente] = useState([]);
 
   const {state} = useLocation();
   const statuto = localStorage.status;
+  const t = localStorage.getItem("token")
   
   let info = [{}];
 
@@ -26,7 +32,7 @@ const Home = () => {
       {
         method: "GET",
         headers: {
-          Authorization: "Bearer " + estado?.token,
+          Authorization: "Bearer " + t,
           "Content-Type": "application/json",
         },
       }
@@ -35,7 +41,7 @@ const Home = () => {
     const result = await respuesta.json();
     
     const data = await result.Entities;
-    setDatos(data);
+    setDatos(data.slice(0,1));
   };
 
   const getCliente = async ()=>{
@@ -43,7 +49,7 @@ const Home = () => {
     const respuesta = await fetch("https://localhost:7126/api/Auth/Cliente",{
       method:"GET",
       headers:{
-        Authorization: "Bearer " + estado?.token,
+        Authorization: "Bearer " + t,
         "Content-Type": "application/json"
       }
     });
@@ -61,7 +67,7 @@ const Home = () => {
       {
         method: "GET",
         headers: {
-          Authorization: "Bearer " + estado?.token,
+          Authorization: "Bearer " + t,
           "Content-Type": "application/json",
         },
       }

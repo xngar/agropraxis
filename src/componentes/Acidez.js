@@ -1,6 +1,8 @@
 import React from 'react'
 
+import {format} from "date-fns"
 import "./Acidez.css"
+import { GiDungeonGate } from 'react-icons/gi'
 
 const Acidez = ({nuevo}) => {
   return (
@@ -33,10 +35,15 @@ const Acidez = ({nuevo}) => {
 
             <tbody className="table-group-divider">
               {nuevo.map((acceso) => {
+                let fechaIngreso = format(new Date(acceso.FechaIngreso),"dd-MM-yyyy");
+                let fechaMuestreo =  format(new Date(acceso.FechaMuestreo),"dd-MM-yyyy");
+                let fechaAnalisis = format(new Date(acceso.FechaAnalisis),"dd-MM-yyyy");
+                let fechaInforme = format(new Date(acceso.FechaInforme),"dd-MM-yyyy");
+                
                 return (
                   <>
                     <tr>
-                      <td key="{acceso.Id}" scope="row">
+                      <td key={acceso.Id} scope="row">
                         1
                       </td>
                       <td className="lcase">{acceso.Cliente}</td>
@@ -47,15 +54,15 @@ const Acidez = ({nuevo}) => {
                       </td>
                       <td >{acceso.Predio}</td>
                       <td>{acceso.Localidad}</td>
-                      <td>{acceso.FechaMuestreo}</td>
-                      <td>{acceso.FechaIngreso}</td>
-                      <td>{acceso.FechaAnalisis}</td>
-                      <td>{acceso.FechaInforme}</td>
+                      <td>{fechaMuestreo}</td>
+                      <td>{fechaIngreso}</td>
+                      <td>{fechaAnalisis}</td>
+                      <td>{fechaInforme}</td>
                       <td>{acceso.Especie}</td>
                       <td>{acceso.Variedad}</td>
                       <td>{acceso.Muestreador}</td>
                       <td>{acceso.Observaciones}</td>
-                      <td>{acceso.InformeAdjunto?<a href={acceso.InformeAdjunto}> Descargar Informe</a>:<p style={{color:"red"}}>En Proceso</p>}</td>
+                      <td>{acceso.InformeAdjunto?<a target='_blank' href={process.env.REACT_APP_PATH +acceso.InformeAdjunto}> Descargar Informe</a>:<p style={{color:"red"}}>En Proceso</p>}</td>
                     </tr>
                   </>
                 );

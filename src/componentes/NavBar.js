@@ -3,7 +3,7 @@ import { VscAccount } from "react-icons/vsc";
 import { MdMonitor } from "react-icons/md";
 import { GiGrapes } from "react-icons/gi";
 import "./NavBar.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const NavBar = ({ cliente }) => {
   const clientes = localStorage.getItem("cliente");
@@ -35,18 +35,21 @@ const NavBar = ({ cliente }) => {
           })}
       </div>
       <ul>
-        <li>
+       <Link to="/home"> <li><span>
+            <MdMonitor />
+          </span>Home</li></Link>
+      <Link to="/monitoreo"> <li>
           <span>
             <MdMonitor />
           </span>
           Monitoreo
-        </li>
-        <li>
+        </li></Link>
+        <Link to="/acidez"><li>
           <span>
             <GiGrapes />
           </span>
           Acidez de Frutos
-        </li>
+        </li></Link>
       </ul>
       <div className="container">
       <button className="btn btn-danger" onClick={cerrar}>Cerrar Sesión</button>
