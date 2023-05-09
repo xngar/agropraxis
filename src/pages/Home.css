@@ -23,12 +23,16 @@ tr:hover{
     display: flex;
     width: 100vw;
     flex-direction: row;
+    height: 100vh;
+    gap:15px;
 }
 
 .contenedor .izquierda{
     width: 250px;
     display: flex;
     flex-direction: column;
+    height: 100vh;
+    background: #333952;
 
     
 }
