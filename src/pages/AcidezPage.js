@@ -6,6 +6,7 @@ import NavBar from "../componentes/NavBar";
 import Monitoreos from "../componentes/Monitoreos";
 import Acidez from "../componentes/Acidez";
 import { format } from "date-fns";
+import { URL_API_AGP } from "../utilidades/constantes";
 
 
 const AcidezPage = () => {
@@ -24,7 +25,7 @@ const AcidezPage = () => {
   let info = [{}];
 
   const getCliente = async () => {
-    const respuesta = await fetch("https://localhost:7126/api/Auth/Cliente", {
+    const respuesta = await fetch(URL_API_AGP+"/api/Auth/Cliente", {
       method: "GET",
       headers: {
         Authorization: "Bearer " + t,
@@ -33,15 +34,12 @@ const AcidezPage = () => {
     });
 
     const result = await respuesta.json();
-    console.log(result.Entities[0].RazonSocial);
     const data = result.Entities;
-    console.log(data[0].RazonSocial);
     setCliente(data);
   };
 
   const getAcidez = async () => {
-    const respuesta = await fetch(
-      "https://localhost:7126/api/Servicios/AcidezFruta",
+    const respuesta = await fetch(URL_API_AGP + "/api/Servicios/AcidezFruta",
       {
         method: "GET",
         headers: {
@@ -128,7 +126,7 @@ const AcidezPage = () => {
                             <>
                               <tr>
                                 <td key={acceso.Id} scope="row">
-                                  1
+                                  {acceso.Id}
                                 </td>
                                 <td className="lcase">{acceso.Cliente}</td>
                                 <td className="lcase">
@@ -151,7 +149,7 @@ const AcidezPage = () => {
                                     <a
                                       target="_blank"
                                       href={
-                                        process.env.REACT_APP_PATH +
+                                        process.env.REACT_APP_API_PATH +
                                         acceso.InformeAdjunto
                                       }
                                     >

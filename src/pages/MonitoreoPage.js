@@ -6,6 +6,10 @@ import NavBar from "../componentes/NavBar";
 import Monitoreos from "../componentes/Monitoreos";
 import Acidez from "../componentes/Acidez";
 import { isValid,parseISO ,format} from "date-fns";
+import { ImDownload3 } from "react-icons/im";
+import {TbReport} from 'react-icons/tb';
+import {URL_API_AGP} from '../utilidades/constantes';
+import { icons } from "react-icons";
 
 
  
@@ -26,8 +30,7 @@ const MonitoreoPage = () => {
   let info = [{}];
 
   const getMonitoreo = async () => {
-    const respuesta = await fetch(
-      "https://localhost:7126/api/Servicios/Monitoreos",
+    const respuesta = await fetch(URL_API_AGP +"/api/Servicios/Monitoreos",
       {
         method: "GET",
         headers: {
@@ -38,14 +41,13 @@ const MonitoreoPage = () => {
     );
    
     const result = await respuesta.json();
-    
     const data = await result.Entities;
     setDatos(data);
   };
 
   const getCliente = async ()=>{
 
-    const respuesta = await fetch("https://localhost:7126/api/Auth/Cliente",{
+    const respuesta = await fetch(URL_API_AGP +"/api/Auth/Cliente",{
       method:"GET",
       headers:{
         Authorization: "Bearer " + t,
@@ -54,9 +56,7 @@ const MonitoreoPage = () => {
     });
 
     const result = await respuesta.json();
-    console.log(result.Entities[0].RazonSocial);
     const data = result.Entities;
-    console.log(data[0].RazonSocial)
     setCliente(data);
   }
 
@@ -111,6 +111,7 @@ const MonitoreoPage = () => {
                 <th scope="col">Fecha Emisión</th>
                 <th scope="col">Analista</th>
                 <th scope="col">Predio</th>
+                <th scope="col">Informe <TbReport size={30}/></th>
               </tr>
             </thead>
 
@@ -134,7 +135,7 @@ if (
                   <>
                     <tr>
                       <td key={acceso.Id} scope="row">
-                        1
+                        {acceso.Id}
                       </td>
                       <td className="lcase">{acceso.Cliente}</td>
                       <td className="lcase">
@@ -150,6 +151,22 @@ if (
                       <td>{fechaEmision}</td>
                       <td>{acceso.Analista}</td>
                       <td>{acceso.Predio}</td>
+                      <td>
+                                  {acceso.InformeAdjunto ? (
+                                    <a
+                                      target="_blank"
+                                      href={
+                                        process.env.REACT_APP_API_PATH +
+                                        acceso.InformeAdjunto
+                                      }
+                                    >
+                                      {" "}
+                                      <ImDownload3 size={30}/>
+                                    </a>
+                                  ) : (
+                                    <p style={{ color: "red" }}>En Proceso</p>
+                                  )}
+                                </td>
                     </tr>
                   </>
                 );

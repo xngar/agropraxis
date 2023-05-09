@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./Login.css";
-import {useNavigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom";
+import {URL_API_AGP} from '../utilidades/constantes';
+
+
 const Login = () => {
   const user = {
     Usuario: "bayer",
@@ -17,7 +20,7 @@ const Login = () => {
   const enviarlogin = async (formulario) => {
 
     try {
-      const resultado = await fetch("https://localhost:7126/api/Auth/Login", {
+      const resultado = await fetch(URL_API_AGP+"/api/Auth/Login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
