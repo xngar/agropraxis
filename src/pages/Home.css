@@ -7,13 +7,16 @@ table{
 
 td{
     text-transform: lowercase;
+    font-weight: bold;
+    color: #303C8F;
+
 }
 
 
 .hover-tabla:hover{
-    background: #333952;
+    background: #e1dcfc;
     border-radius: 20px;
-    color: white;
+    
 }
 
 .banner{
@@ -24,10 +27,12 @@ td{
     padding: 20px;
     display: flex;
     background-image: url("/public/banner-fondo.png");
-    background-size: contain;
+    background-size: 504px;
     background-repeat: no-repeat;
-    background-position-x: 830px;
+    background-position-x: 729px;
     background-blend-mode: overlay;
+    background-position-y: -38px;
+    
     
     
    

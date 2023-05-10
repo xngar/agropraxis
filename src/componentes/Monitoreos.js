@@ -1,6 +1,7 @@
 import React from "react";
 import "./Monitoreo.css";
 import { format, isValid, parseISO } from "date-fns";
+import { TbReport } from "react-icons/tb";
 
 const Monitoreos = ({ nuevo }) => {
   return (
@@ -24,6 +25,9 @@ const Monitoreos = ({ nuevo }) => {
               <th scope="col">Fecha Emisión</th>
               <th scope="col">Analista</th>
               <th scope="col">Predio</th>
+              <th scope="col">
+                            Informe Adjunto
+                          </th>
             </tr>
           </thead>
 
@@ -62,6 +66,22 @@ const Monitoreos = ({ nuevo }) => {
                     <td>{fechaEmision}</td>
                     <td>{acceso.Analista}</td>
                     <td>{acceso.Predio}</td>
+                    <td>
+                                  {acceso.InformeAdjunto ? (
+                                    <a
+                                      target="_blank"
+                                      href={
+                                        process.env.REACT_APP_API_PATH +
+                                        acceso.InformeAdjunto
+                                      }
+                                    >
+                                      {" "}
+                                      <p style={{ color: "white", background:"green",borderRadius:"20px", padding:"3px", fontSize:"12px", textAlign:"center", textDecoration:"uppercase" }}>DESCARGAR</p>
+                                    </a>
+                                  ) : (
+                                    <p style={{ color: "white", background:"red",borderRadius:"20px", padding:"3px", fontSize:"12px", textAlign:"center" }}>En Proceso</p>
+                                  )}
+                                </td>
                   </tr>
                 </>
               );

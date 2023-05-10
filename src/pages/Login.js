@@ -16,6 +16,7 @@ const Login = () => {
     Password:""
   });
   const [token, setToken] = useState();
+  const [error, setError] = useState("");
 
   const enviarlogin = async (formulario) => {
 
@@ -42,6 +43,7 @@ const Login = () => {
        
         console.log(respuestaJson.statusCode)
         if(respuestaJson.statusCode === 404 ){
+          setError("Nombre de usuario o clave inválida");
             navigate("/");
           
         }
@@ -129,6 +131,8 @@ const Login = () => {
               <button type="submit" className="btn btn-primary">
                 Ingresar
               </button>
+              <br/>
+              <span style={{color:"red", fontSize:"14px"}}>{error}</span>
             </form>
           </div>
           <div className="login-derecha">

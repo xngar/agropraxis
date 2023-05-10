@@ -95,7 +95,7 @@ const MonitoreoPage = () => {
                           <th scope="col">Analista</th>
                           <th scope="col">Predio</th>
                           <th scope="col">
-                            Informe <TbReport size={30} />
+                           Informe Adjunto
                           </th>
                         </tr>
                       </thead>

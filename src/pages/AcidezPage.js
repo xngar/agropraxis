@@ -72,13 +72,11 @@ const AcidezPage = () => {
           </div>
           <div className="derecha">
             <div className="derecha-contenedor">
-              <div className="banner">
-                {/* {state?.logged ? <h1>¡Bienvenido {state.nombre}!</h1> : <Navigate to={"/"} />} */}
-              </div>
+            
               <div className="cont-datos">
                 <div>
                   <div className="acidez-titulo">
-                    <img src="img-acidez.png" width="50" />
+                  
                     <h3>Acidez de Fruta</h3>
                   </div>
                   <div className="table-responsive">
