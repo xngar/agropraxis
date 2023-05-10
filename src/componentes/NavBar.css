@@ -13,8 +13,13 @@
     flex-direction: column;
     
 }
-.perfil .container{
+.container{
     display: block;
+}
+.perfil-contenedor{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .perfil h5,h2{

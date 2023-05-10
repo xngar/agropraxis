@@ -23,6 +23,13 @@ td{
     border-radius: 20px;
     padding: 20px;
     display: flex;
+    background-image: url("/public/banner-fondo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: 830px;
+    background-blend-mode: overlay;
+    
+    
    
 }
 .banner div:nth-child(1){
@@ -31,6 +38,8 @@ td{
 }
 .banner-img{
     margin-top: 0px;
+    background-image: url("/public/imagen-banner.png");
+    z-index: 100;
 }
 
 .banner h1,p{

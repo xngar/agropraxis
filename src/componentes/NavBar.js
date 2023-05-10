@@ -19,6 +19,7 @@ const NavBar = ({ cliente }) => {
 
   return (
     <div>
+      <div className="perfil-contenedor">
       <div className="perfil">
         <img src="logo.png" width="100" />
         {cliente &&
@@ -34,6 +35,7 @@ const NavBar = ({ cliente }) => {
             );
           })}
       </div>
+      <div>
       <ul>
        <Link to="/home"> <li><span>
             <MdMonitor />
@@ -51,6 +53,8 @@ const NavBar = ({ cliente }) => {
           Acidez de Frutos
         </li></Link>
       </ul>
+      </div>
+      </div>
       <div className="container">
       <button className="btn btn-danger" onClick={cerrar}>Cerrar Sesión</button>
       </div>

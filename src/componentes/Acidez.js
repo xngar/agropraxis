@@ -8,8 +8,8 @@ const Acidez = ({nuevo}) => {
   return (
     <div>
         <div className='acidez-titulo'>
-        <img src="img-acidez.png" width="50" />
-        <h3>Acidez de Fruta</h3>
+        
+        <h5>Acidez de Fruta</h5>
         </div>
         <div className='table-responsive'>
           <table className="table container">
