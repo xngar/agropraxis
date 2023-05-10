@@ -17,10 +17,30 @@ td{
 }
 
 .banner{
-    height: 50px;
-    background-color: white;
-    margin-bottom: 20px;
+    height: 150px;
+    background-color: #333952;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+   
 }
+.banner div:nth-child(1){
+    
+    flex:1;
+}
+.banner-img{
+    margin-top: 0px;
+}
+
+.banner h1,p{
+    color:white;
+}
+.banner p{
+    font-size: 18px;
+}
+
+
 
 .contenedor{
     display: flex;

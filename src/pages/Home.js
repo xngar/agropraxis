@@ -1,69 +1,62 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { Navigate,Redirect} from "react-router-dom";
+import { Navigate, Redirect } from "react-router-dom";
 import "./Home.css";
 import NavBar from "../componentes/NavBar";
 import Monitoreos from "../componentes/Monitoreos";
 import Acidez from "../componentes/Acidez";
-import {URL_API_AGP} from '../utilidades/constantes';
-
-
-
- 
+import { URL_API_AGP } from "../utilidades/constantes";
 
 const Home = () => {
-  
   const [nuevo, setDatos] = useState([]);
   const [acidez, setAcidez] = useState([]);
   const estado = useLocation().state;
   const tokesito = useLocation().state;
-  
+
   const [auth, setAuth] = useState(false);
   const [cliente, setCliente] = useState([]);
 
-  const {state} = useLocation();
+  const { state } = useLocation();
   const statuto = localStorage.status;
-  const t = localStorage.getItem("token")
-  
+  const t = localStorage.getItem("token");
+  const nombreCliente = localStorage.getItem("cliente");
+
   let info = [{}];
 
   const getMonitoreo = async () => {
-    const respuesta = await fetch(URL_API_AGP+"/api/Servicios/Monitoreos",
-      {
-        method: "GET",
-        headers: {
-          Authorization: "Bearer " + t,
-          "Content-Type": "application/json",
-        },
-      }
-    );
-   
-    const result = await respuesta.json();
-    
-    const data = await result.Entities;
-    setDatos(data.slice(0,1));
-  };
-
-  const getCliente = async ()=>{
-
-    const respuesta = await fetch(URL_API_AGP +"/api/Auth/Cliente",{
-      method:"GET",
-      headers:{
+    const respuesta = await fetch(URL_API_AGP + "/api/Servicios/Monitoreos", {
+      method: "GET",
+      headers: {
         Authorization: "Bearer " + t,
-        "Content-Type": "application/json"
-      }
+        "Content-Type": "application/json",
+      },
     });
 
     const result = await respuesta.json();
-  
+
+    const data = await result.Entities;
+    setDatos(data.slice(0, 1));
+  };
+
+  const getCliente = async () => {
+    const respuesta = await fetch(URL_API_AGP + "/api/Auth/Cliente", {
+      method: "GET",
+      headers: {
+        Authorization: "Bearer " + t,
+        "Content-Type": "application/json",
+      },
+    });
+
+    const result = await respuesta.json();
+
     const data = result.Entities;
-  
+
     setCliente(data);
-  }
+  };
 
   const getAcidez = async () => {
     const respuesta = await fetch(
-      process.env.REACT_APP_API_URI +"/api/Servicios/AcidezFruta",
+      process.env.REACT_APP_API_URI + "/api/Servicios/AcidezFruta",
       {
         method: "GET",
         headers: {
@@ -79,43 +72,46 @@ const Home = () => {
   };
 
   useEffect(() => {
-    if(statuto){
+    if (statuto) {
       setAuth(true);
     }
-    
+
     getMonitoreo();
     getAcidez();
     getCliente();
-    
-    
   }, []);
 
-   
-   
- 
   return (
     <>
-    {statuto?<div className="contenedor">
-  
-
-  <div className="izquierda">
-    <NavBar cliente={cliente}/>
-  </div>
-  <div className="derecha">
-    <div className="derecha-contenedor"> 
-    <div className="banner">
-    {/* {state?.logged ? <h1>¡Bienvenido {state.nombre}!</h1> : <Navigate to={"/"} />} */}
-    </div>
-    <div className="cont-datos">
-    <Acidez className="acide" nuevo={acidez}/>
-    <Monitoreos nuevo={nuevo}/>
-    </div>
-    </div>
-    
-  </div>
-</div>:<Navigate to="/"/>}
-  
-      
+      {statuto ? (
+        <div className="contenedor">
+          <div className="izquierda">
+            <NavBar cliente={cliente} />
+          </div>
+          <div className="derecha">
+            <div className="derecha-contenedor">
+              <div className="banner">
+                <div className="izq">
+                <h1>¡Bienvenido {nombreCliente}!</h1>
+                <p>
+                  Abajo veras los últimos ingresos en Monitoreo y Acidez de
+                  Frutas
+                </p>
+                </div>
+                <div className="banner-img">
+                  <img src="imagen-banner.png" height={120} />
+                </div>
+              </div>
+              <div className="cont-datos">
+                <Acidez className="acide" nuevo={acidez} />
+                <Monitoreos nuevo={nuevo} />
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <Navigate to="/" />
+      )}
     </>
   );
 };
