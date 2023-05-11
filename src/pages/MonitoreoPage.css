@@ -1,0 +1,10 @@
+.monitoreo-titulo h3{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    background: #4A5378;
+    width: fit-content;
+    border-radius: 20px;
+    padding: 5px 14px;
+    color: white;
+}

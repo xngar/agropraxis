@@ -2,6 +2,7 @@ import React from "react";
 import { VscAccount } from "react-icons/vsc";
 import { MdMonitor } from "react-icons/md";
 import { GiGrapes } from "react-icons/gi";
+import {AiOutlineHome,AiFillCloseCircle} from "react-icons/ai"
 import "./NavBar.css";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -38,17 +39,17 @@ const NavBar = ({ cliente }) => {
       <div>
       <ul>
        <Link to="/home"> <li><span>
-            <MdMonitor />
+            <AiOutlineHome  style={{fontSize:23}}/>
           </span>Home</li></Link>
       <Link to="/monitoreo"> <li>
           <span>
-            <MdMonitor />
+            <MdMonitor style={{fontSize:23}}/>
           </span>
           Monitoreo
         </li></Link>
         <Link to="/acidez"><li>
           <span>
-            <GiGrapes />
+            <GiGrapes style={{fontSize:23}} />
           </span>
           Acidez de Frutos
         </li></Link>
@@ -56,7 +57,7 @@ const NavBar = ({ cliente }) => {
       </div>
       </div>
       <div className="container">
-      <button className="btn btn-danger" onClick={cerrar}>Cerrar Sesión</button>
+      <button className="btn btn-danger" onClick={cerrar}><AiFillCloseCircle/> Cerrar Sesión</button>
       </div>
       
     </div>
