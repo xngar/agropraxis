@@ -127,21 +127,21 @@ const MonitoreoPage = () => {
                                 <td key={acceso.Id} scope="row">
                                   {acceso.Id}
                                 </td>
-                                <td className="lcase">{acceso.Cliente}</td>
-                                <td className="lcase">
+                                <td className="lcase" style={{ textTransform: 'uppercase'}}>{acceso.Cliente}</td>
+                                <td className="lcase" style={{ textTransform: 'uppercase'}}>
                                   {acceso.Productor
                                     ? acceso.Productor
                                     : "Sin información"}
                                 </td>
-                                <td className="lcase">{acceso.Carosos}</td>
-                                <td>{acceso.TipoAnalisis}</td>
-                                <td>{acceso.Variedad}</td>
-                                <td>{acceso.Especie}</td>
-                                <td>{fecha}</td>
-                                <td>{fechaEmision}</td>
-                                <td>{acceso.Analista}</td>
-                                <td>{acceso.Predio}</td>
-                                <td>
+                                <td className="lcase" style={{ textTransform: 'uppercase'}}>{acceso.Carosos}</td>
+                                <td style={{ textTransform: 'uppercase'}}>{acceso.TipoAnalisis.toUpperCase()}</td>
+                                <td style={{ textTransform: 'uppercase'}}>{acceso.Variedad}</td>
+                                <td style={{ textTransform: 'uppercase'}}>{acceso.Especie}</td>
+                                <td style={{ textTransform: 'uppercase'}}>{fecha}</td>
+                                <td style={{ textTransform: 'uppercase'}}>{fechaEmision}</td>
+                                <td style={{ textTransform: 'uppercase'}}>{acceso.Analista}</td>
+                                <td style={{ textTransform: 'uppercase'}}>{acceso.Predio}</td>
+                                <td style={{ textTransform: 'uppercase'}}>
                                   {acceso.InformeAdjunto ? (
                                     <a
                                       target="_blank"

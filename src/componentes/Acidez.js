@@ -44,25 +44,25 @@ const Acidez = ({nuevo}) => {
                   <>
                     <tr>
                       <td key={acceso.Id} scope="row">
-                        1
+                      {acceso.Id}
                       </td>
-                      <td className="lcase">{acceso.Cliente}</td>
-                      <td className="lcase">
+                      <td className="lcase" style={{ textTransform: 'uppercase'}}>{acceso.Cliente}</td>
+                      <td className="lcase" style={{ textTransform: 'uppercase'}}>
                         {acceso.Productor
                           ? acceso.Productor
                           : "Sin información"}
                       </td>
-                      <td >{acceso.Predio}</td>
-                      <td>{acceso.Localidad}</td>
-                      <td>{fechaMuestreo}</td>
-                      <td>{fechaIngreso}</td>
-                      <td>{fechaAnalisis}</td>
-                      <td>{fechaInforme}</td>
-                      <td>{acceso.Especie}</td>
-                      <td>{acceso.Variedad}</td>
-                      <td>{acceso.Muestreador}</td>
-                      <td>{acceso.Observaciones}</td>
-                      <td>{acceso.InformeAdjunto?<a target='_blank' href={process.env.REACT_APP_PATH +acceso.InformeAdjunto}> Descargar Informe</a>:<p style={{color:"red"}}>En Proceso</p>}</td>
+                      <td style={{ textTransform: 'uppercase'}}>{acceso.Predio}</td>
+                      <td style={{ textTransform: 'uppercase'}}>{acceso.Localidad}</td>
+                      <td style={{ textTransform: 'uppercase'}}>{fechaMuestreo}</td>
+                      <td style={{ textTransform: 'uppercase'}}>{fechaIngreso}</td>
+                      <td style={{ textTransform: 'uppercase'}}>{fechaAnalisis}</td>
+                      <td style={{ textTransform: 'uppercase'}}>{fechaInforme}</td>
+                      <td style={{ textTransform: 'uppercase'}}>{acceso.Especie}</td>
+                      <td style={{ textTransform: 'uppercase'}}>{acceso.Variedad}</td>
+                      <td style={{ textTransform: 'uppercase'}}>{acceso.Muestreador}</td>
+                      <td style={{ textTransform: 'uppercase'}}>{acceso.Observaciones}</td>
+                      <td style={{ textTransform: 'uppercase'}}>{acceso.InformeAdjunto?<a target='_blank' href={process.env.REACT_APP_PATH +acceso.InformeAdjunto}> Descargar Informe</a>:<p style={{color:"red"}}>En Proceso</p>}</td>
                     </tr>
                   </>
                 );

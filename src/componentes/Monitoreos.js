@@ -52,21 +52,21 @@ const Monitoreos = ({ nuevo }) => {
                 <>
                   <tr className="hover-tabla">
                     <td key={acceso.Id} scope="row">
-                      1
+                    {acceso.Id}
                     </td>
-                    <td className="lcase">{acceso.Cliente}</td>
-                    <td className="lcase">
-                      {acceso.Productor ? acceso.Productor : "Sin información"}
+                    <td className="lcase" style={{ textTransform: 'uppercase'}}>{acceso.Cliente.toUpperCase()}</td>
+                    <td className="lcase" style={{ textTransform: 'uppercase'}}>
+                      {acceso.Productor.toUpperCase() ? acceso.Productor.toUpperCase() : "Sin información"}
                     </td>
-                    <td className="lcase">{acceso.Carosos}</td>
-                    <td>{acceso.TipoAnalisis}</td>
-                    <td>{acceso.Variedad}</td>
-                    <td>{acceso.Especie}</td>
-                    <td>{fecha}</td>
-                    <td>{fechaEmision}</td>
-                    <td>{acceso.Analista}</td>
-                    <td>{acceso.Predio}</td>
-                    <td>
+                    <td className="lcase" style={{ textTransform: 'uppercase'}}>{acceso.Carosos.toUpperCase()}</td>
+                    <td style={{ textTransform: 'uppercase'}}>{acceso.TipoAnalisis.toUpperCase()}</td>
+                    <td style={{ textTransform: 'uppercase'}}>{acceso.Variedad.toUpperCase()}</td>
+                    <td style={{ textTransform: 'uppercase'}}>{acceso.Especie.toUpperCase()}</td>
+                    <td style={{ textTransform: 'uppercase'}}>{fecha}</td>
+                    <td style={{ textTransform: 'uppercase'}}>{fechaEmision}</td>
+                    <td style={{ textTransform: 'uppercase'}}>{acceso.Analista.toUpperCase()}</td>
+                    <td style={{ textTransform: 'uppercase'}}>{acceso.Predio.toUpperCase()}</td>
+                    <td style={{ textTransform: 'uppercase'}}>
                                   {acceso.InformeAdjunto ? (
                                     <a
                                       target="_blank"
