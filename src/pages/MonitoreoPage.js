@@ -89,7 +89,6 @@ const MonitoreoPage = () => {
                           <th scope="col">Productor</th>
                           <th scope="col">Carozos</th>
                           <th scope="col">Tipo Análisis</th>
-                          <th scope="col">Variedad</th>
                           <th scope="col">Especie</th>
                           <th scope="col">Fecha</th>
                           <th scope="col">Fecha Emisión</th>
@@ -134,8 +133,7 @@ const MonitoreoPage = () => {
                                     : "Sin información"}
                                 </td>
                                 <td className="lcase" style={{ textTransform: 'uppercase'}}>{acceso.Carosos}</td>
-                                <td style={{ textTransform: 'uppercase'}}>{acceso.TipoAnalisis.toUpperCase()}</td>
-                                <td style={{ textTransform: 'uppercase'}}>{acceso.Variedad}</td>
+                                <td style={{ textTransform: 'uppercase'}}>{acceso.TipoAnalisis}</td>
                                 <td style={{ textTransform: 'uppercase'}}>{acceso.Especie}</td>
                                 <td style={{ textTransform: 'uppercase'}}>{fecha}</td>
                                 <td style={{ textTransform: 'uppercase'}}>{fechaEmision}</td>

@@ -18,16 +18,13 @@ const Monitoreos = ({ nuevo }) => {
               <th scope="col">Cliente</th>
               <th scope="col">Productor</th>
               <th scope="col">Carozos</th>
-              <th scope="col">Tipo Análisis</th>
-              <th scope="col">Variedad</th>
+              <th scope="col">Tipo Análisis</th>              
               <th scope="col">Especie</th>
               <th scope="col">Fecha</th>
               <th scope="col">Fecha Emisión</th>
               <th scope="col">Analista</th>
               <th scope="col">Predio</th>
-              <th scope="col">
-                            Informe Adjunto
-                          </th>
+              <th scope="col">Informe Adjunto</th>
             </tr>
           </thead>
 
@@ -54,18 +51,17 @@ const Monitoreos = ({ nuevo }) => {
                     <td key={acceso.Id} scope="row">
                     {acceso.Id}
                     </td>
-                    <td className="lcase" style={{ textTransform: 'uppercase'}}>{acceso.Cliente.toUpperCase()}</td>
+                    <td className="lcase" style={{ textTransform: 'uppercase'}}>{acceso.Cliente}</td>
                     <td className="lcase" style={{ textTransform: 'uppercase'}}>
                       {acceso.Productor.toUpperCase() ? acceso.Productor.toUpperCase() : "Sin información"}
                     </td>
-                    <td className="lcase" style={{ textTransform: 'uppercase'}}>{acceso.Carosos.toUpperCase()}</td>
-                    <td style={{ textTransform: 'uppercase'}}>{acceso.TipoAnalisis.toUpperCase()}</td>
-                    <td style={{ textTransform: 'uppercase'}}>{acceso.Variedad.toUpperCase()}</td>
-                    <td style={{ textTransform: 'uppercase'}}>{acceso.Especie.toUpperCase()}</td>
+                    <td className="lcase" style={{ textTransform: 'uppercase'}}>{acceso.Carosos}</td>
+                    <td style={{ textTransform: 'uppercase'}}>{acceso.TipoAnalisis}</td>                    
+                    <td style={{ textTransform: 'uppercase'}}>{acceso.Especie}</td>
                     <td style={{ textTransform: 'uppercase'}}>{fecha}</td>
                     <td style={{ textTransform: 'uppercase'}}>{fechaEmision}</td>
-                    <td style={{ textTransform: 'uppercase'}}>{acceso.Analista.toUpperCase()}</td>
-                    <td style={{ textTransform: 'uppercase'}}>{acceso.Predio.toUpperCase()}</td>
+                    <td style={{ textTransform: 'uppercase'}}>{acceso.Analista}</td>
+                    <td style={{ textTransform: 'uppercase'}}>{acceso.Predio}</td>
                     <td style={{ textTransform: 'uppercase'}}>
                                   {acceso.InformeAdjunto ? (
                                     <a

@@ -26,8 +26,7 @@ const Acidez = ({nuevo}) => {
                 <th scope="col">Fecha Informe</th>
                 <th scope="col">Especie</th>
                 <th scope="col">Variedad</th>
-                <th scope="col">Muestreador</th>
-                
+                <th scope="col">Muestreador</th>                
                 <th scope="col">Observaciones</th>
                 <th scope="col">Informe Adjunto</th>
               </tr>
