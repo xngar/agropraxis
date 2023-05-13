@@ -94,9 +94,7 @@ const MonitoreoPage = () => {
                           <th scope="col">Fecha Emisión</th>
                           <th scope="col">Analista</th>
                           <th scope="col">Predio</th>
-                          <th scope="col">
-                           Informe Adjunto
-                          </th>
+                          <th scope="col">Informe</th>
                         </tr>
                       </thead>
 
@@ -122,8 +120,8 @@ const MonitoreoPage = () => {
 
                           return (
                             <>
-                              <tr className="hover-tabla">
-                                <td key={acceso.Id} scope="row">
+                              <tr className="hover-tabla" key={acceso.Id}>
+                                <td scope="row">
                                   {acceso.Id}
                                 </td>
                                 <td className="lcase" style={{ textTransform: 'uppercase'}}>{acceso.Cliente}</td>

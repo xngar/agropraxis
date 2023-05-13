@@ -26,7 +26,7 @@ const NavBar = ({ cliente }) => {
         {cliente &&
           cliente.map((mapeo) => {
             return (
-              <div>
+              <div key={mapeo.Id}>
                 <h2>Perfil</h2>
                 <h5><span>Cliente:</span> {mapeo.RazonSocial}</h5>
                 <h5><span>Rut:</span> {mapeo.Rut}</h5>

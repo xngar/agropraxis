@@ -98,7 +98,7 @@ const AcidezPage = () => {
                           <th scope="col">Muestreador</th>
 
                           <th scope="col">Observaciones</th>
-                          <th scope="col">Informe Adjunto</th>
+                          <th scope="col">Informe</th>
                         </tr>
                       </thead>
 
@@ -123,8 +123,8 @@ const AcidezPage = () => {
 
                           return (
                             <>
-                              <tr>
-                                <td key={acceso.Id} scope="row">
+                              <tr key={acceso.Id}>
+                                <td scope="row">
                                   {acceso.Id}
                                 </td>
                                 <td className="lcase" style={{ textTransform: 'uppercase'}}>{acceso.Cliente}</td>

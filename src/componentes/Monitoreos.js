@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import "./Monitoreo.css";
 import { format, isValid, parseISO } from "date-fns";
 import { TbReport } from "react-icons/tb";
@@ -24,7 +24,7 @@ const Monitoreos = ({ nuevo }) => {
               <th scope="col">Fecha Emisión</th>
               <th scope="col">Analista</th>
               <th scope="col">Predio</th>
-              <th scope="col">Informe Adjunto</th>
+              <th scope="col">Informe</th>
             </tr>
           </thead>
 
@@ -48,7 +48,7 @@ const Monitoreos = ({ nuevo }) => {
               return (
                 <>
                   <tr className="hover-tabla">
-                    <td key={acceso.Id} scope="row">
+                    <td scope="row" key={acceso.Id}>
                     {acceso.Id}
                     </td>
                     <td className="lcase" style={{ textTransform: 'uppercase'}}>{acceso.Cliente}</td>
