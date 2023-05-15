@@ -11,6 +11,8 @@ import { ImDownload3 } from "react-icons/im";
 import { TbReport } from "react-icons/tb";
 import { URL_API_AGP } from "../utilidades/constantes";
 import { icons } from "react-icons";
+import {AiOutlineEye} from "react-icons/ai"
+import Modal from "../componentes/Modal";
 
 const MonitoreoPage = () => {
   const [nuevo, setDatos] = useState([]);
@@ -94,6 +96,7 @@ const MonitoreoPage = () => {
                           <th scope="col">Fecha Emisión</th>
                           <th scope="col">Analista</th>
                           <th scope="col">Predio</th>
+                          <th scope="col">Análisis de Monitoreo</th>
                           <th scope="col">Informe</th>
                         </tr>
                       </thead>
@@ -120,6 +123,7 @@ const MonitoreoPage = () => {
 
                           return (
                             <>
+                            <Modal info={acceso} />
                               <tr className="hover-tabla" key={acceso.Id}>
                                 <td scope="row">
                                   {acceso.Id}
@@ -137,6 +141,10 @@ const MonitoreoPage = () => {
                                 <td style={{ textTransform: 'uppercase'}}>{fechaEmision}</td>
                                 <td style={{ textTransform: 'uppercase'}}>{acceso.Analista}</td>
                                 <td style={{ textTransform: 'uppercase'}}>{acceso.Predio}</td>
+                                <td style={{ textTransform: 'uppercase'}}><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <AiOutlineEye style={{fontSize:24}}/>
+</button>
+</td>
                                 <td style={{ textTransform: 'uppercase'}}>
                                   {acceso.InformeAdjunto ? (
                                     <a
