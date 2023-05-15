@@ -50,7 +50,7 @@ const Monitoreos = ({ nuevo }) => {
 
               return (
                 <>
-                <Modal info={acceso}/>
+                <Modal info={acceso} />
                   <tr className="hover-tabla">
                     <td scope="row" key={acceso.Id}>
                     {acceso.Id}
