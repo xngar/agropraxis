@@ -7,6 +7,7 @@ import Monitoreos from "../componentes/Monitoreos";
 import Acidez from "../componentes/Acidez";
 import { URL_API_AGP } from "../utilidades/constantes";
 
+
 const Home = () => {
   const [nuevo, setDatos] = useState([]);
   const [acidez, setAcidez] = useState([]);
@@ -85,6 +86,8 @@ const Home = () => {
     <>
       {statuto ? (
         <div className="contenedor">
+          
+          
           <div className="izquierda">
             <NavBar cliente={cliente} />
           </div>

@@ -2,6 +2,8 @@ import React, { Fragment } from "react";
 import "./Monitoreo.css";
 import { format, isValid, parseISO } from "date-fns";
 import { TbReport } from "react-icons/tb";
+import {AiOutlineEye} from "react-icons/ai"
+import Modal from "../componentes/Modal";
 
 const Monitoreos = ({ nuevo }) => {
   return (
@@ -24,6 +26,7 @@ const Monitoreos = ({ nuevo }) => {
               <th scope="col">Fecha Emisión</th>
               <th scope="col">Analista</th>
               <th scope="col">Predio</th>
+              <th scope="col">Análisis de Monitoreo</th>
               <th scope="col">Informe</th>
             </tr>
           </thead>
@@ -47,6 +50,7 @@ const Monitoreos = ({ nuevo }) => {
 
               return (
                 <>
+                <Modal info={acceso}/>
                   <tr className="hover-tabla">
                     <td scope="row" key={acceso.Id}>
                     {acceso.Id}
@@ -62,6 +66,10 @@ const Monitoreos = ({ nuevo }) => {
                     <td style={{ textTransform: 'uppercase'}}>{fechaEmision}</td>
                     <td style={{ textTransform: 'uppercase'}}>{acceso.Analista}</td>
                     <td style={{ textTransform: 'uppercase'}}>{acceso.Predio}</td>
+                    <td style={{ textTransform: 'uppercase'}}><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <AiOutlineEye style={{fontSize:24}}/>
+</button>
+</td>
                     <td style={{ textTransform: 'uppercase'}}>
                                   {acceso.InformeAdjunto ? (
                                     <a
