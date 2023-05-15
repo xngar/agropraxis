@@ -28,10 +28,10 @@ const NavBar = ({ cliente }) => {
             return (
               <div key={mapeo.Id}>
                 <h2>Perfil</h2>
-                <h5><span>Cliente:</span> {mapeo.RazonSocial}</h5>
-                <h5><span>Rut:</span> {mapeo.Rut}</h5>
-                <h5><span>Provincia:</span>{mapeo.NombreProvincia}</h5>
-                <h5><span>Comuna</span>{mapeo.NombreComuna}</h5>
+                <h5><span>Cliente:</span> {mapeo.RazonSocial?mapeo.RazonSocial:" --"}</h5>
+                <h5><span>Rut:</span> {mapeo.Rut?mapeo.Rut:" --"}</h5>
+                <h5><span>Provincia:</span>{mapeo.NombreProvincia?mapeo.NombreProvincia:" --"}</h5>
+                <h5><span>Comuna:</span>{mapeo.NombreComuna?mapeo.NombreComuna:" --"}</h5>
               </div>
             );
           })}

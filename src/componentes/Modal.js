@@ -2,7 +2,7 @@ import React from "react";
 import "./Modal.css"
 
 const Modal = ({ info }) => {
-    console.log(info.AnalisisMonitoreo[0].Plagas);
+   
   return (
     <div
       class="modal fade"

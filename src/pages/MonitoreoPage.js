@@ -155,7 +155,7 @@ const MonitoreoPage = () => {
                                       }
                                     >
                                       {" "}
-                                      <p style={{ color: "white", background:"green",borderRadius:"20px", padding:"3px", fontSize:"12px", textAlign:"center", textDecoration:"uppercase" }}>DESCARGAR</p>
+                                      <p style={{ color: "white", background:"green",borderRadius:"20px", padding:"8px", fontSize:"14px", textAlign:"center", textTransform:"capitalize", letterSpacing:1 }}>Descargar</p>
                                     </a>
                                   ) : (
                                     <p style={{ color: "white", background:"red",borderRadius:"20px", padding:"3px", fontSize:"12px", textAlign:"center" }}>En Proceso</p>

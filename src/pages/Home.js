@@ -98,7 +98,7 @@ const Home = () => {
                 <h1>¡Bienvenido {nombreCliente}!</h1>
                 <p>
                   Abajo veras los últimos ingresos en Monitoreo y Acidez de
-                  Frutas - NOVEDADES
+                  Frutas
                 </p>
                 </div>
                 <div className="banner-img">
