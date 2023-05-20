@@ -34,9 +34,8 @@ const Home = () => {
     });
 
     const result = await respuesta.json();
-
     const data = await result.Entities;
-    setDatos(data.slice(0, 1));
+    setDatos(data);
   };
 
   const getCliente = async () => {
@@ -79,7 +78,7 @@ const Home = () => {
 
     getMonitoreo();
     getAcidez();
-    getCliente();
+   getCliente();
   }, []);
 
   return (

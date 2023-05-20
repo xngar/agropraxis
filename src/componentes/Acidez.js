@@ -15,7 +15,7 @@ const Acidez = ({nuevo}) => {
           <table className="table container">
             <thead>
               <tr>
-                <th scope="col">#</th>
+                <th scope="col">Nº Informe</th>
                 <th scope="col">Cliente</th>
                 <th scope="col">Productor</th>
                 <th scope="col">Predio</th>

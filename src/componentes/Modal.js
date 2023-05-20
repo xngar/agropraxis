@@ -61,7 +61,7 @@ const Modal = ({ info }) => {
                             <td>{mapeo.AdultosVivos}</td>
                             <td>{mapeo.AdultosMuertos}</td>
                             <td>{mapeo.Item}</td>
-                            <td>{mapeo.Observaciones?mapeo.Observaciones:<span style={{color:"red"}}>sin información</span>}</td>
+                            <td>{mapeo.Observaciones?mapeo.Observaciones:<span style={{color:"red"}}></span>}</td>
                             
                           </tr>
 
