@@ -117,7 +117,7 @@ const Home = () => {
                 </div>
               </div>
               <div className="cont-datos">
-                <Acidez className="acide" nuevo={acidez} />
+              <Acidez className="acide" nuevo={acidez} />
                 <Monitoreos nuevo={nuevo} />
               </div>
             </div>
