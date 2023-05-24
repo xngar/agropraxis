@@ -1,34 +1,34 @@
 import React from "react";
 import "./Modal.css"
 
-const Modal = ({ info }) => {
-   console.log('Recibi en esta petición: ', info);
+const ModalMonitoreoPage = ({ info, id }) => {
+
   return (
     <div
       class="modal fade"
-      id="exampleModal"
+      id={"exampleModal"+id}
       tabindex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
       
     >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">
+      <div className="modal-dialog">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h1 className="modal-title fs-5" id={"exampleModalLabel"+id}>
               Análisis Monitoreo
             </h1>
             <button
               type="button"
-              class="btn-close"
+              className="btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body">
+          <div className="modal-body">
             
                 <div>
-                  <table class="table table-responsive">
+                  <table className="table table-responsive">
                     <thead>
                       <tr>
                         
@@ -46,7 +46,7 @@ const Modal = ({ info }) => {
                     </thead>
                     <tbody>
                   
-                   {info.AnalisisMonitoreo.map(mapeo=>{
+                   {info?.map(mapeo=>{
                          
                    
                         return(
@@ -76,10 +76,10 @@ const Modal = ({ info }) => {
                 </div>
              
           </div>
-          <div class="modal-footer">
+          <div className="modal-footer">
             <button
               type="button"
-              class="btn btn-secondary"
+              className="btn btn-secondary"
               data-bs-dismiss="modal"
             >
               Cerrar
@@ -92,4 +92,4 @@ const Modal = ({ info }) => {
   );
 };
 
-export default Modal;
+export default ModalMonitoreoPage;

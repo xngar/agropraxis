@@ -8,14 +8,7 @@ import Acidez from "../componentes/Acidez";
 
 import { URL_API_AGP } from "../utilidades/constantes";
 
-
-
-
-
-
 const Home = () => {
-  
- 
   const [nuevo, setDatos] = useState([]);
   const [acidez, setAcidez] = useState([]);
   const estado = useLocation().state;
@@ -56,9 +49,7 @@ const Home = () => {
     });
 
     const result = await respuesta.json();
-
     const data = result.Entities;
-
     setCliente(data);
   };
 
@@ -75,7 +66,6 @@ const Home = () => {
 
     const result = await respuesta.json();
     const data = await result.Entities;
-    console.log('Datos recibidos: ', data)
     setAcidez(data);
   };
 
@@ -91,13 +81,8 @@ const Home = () => {
 
   return (
     <>
-    
-     
-      
-      {statuto ? (
+    {statuto ? (
         <div className="contenedor">
-          
-       
           <div className="izquierda">
             <NavBar cliente={cliente} />
            

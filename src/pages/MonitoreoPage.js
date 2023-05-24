@@ -12,7 +12,7 @@ import { TbReport } from "react-icons/tb";
 import { URL_API_AGP } from "../utilidades/constantes";
 import { icons } from "react-icons";
 import {AiOutlineEye} from "react-icons/ai"
-import Modal from "../componentes/Modal";
+import ModalMonitoreoPage from "../componentes/ModalMonitoreoPage";
 
 const MonitoreoPage = () => {
   const [nuevo, setDatos] = useState([]);
@@ -87,7 +87,6 @@ const MonitoreoPage = () => {
                       <thead>
                         <tr>
                           <th scope="col">Nº Informe</th>
-                          <th scope="col">Cliente</th>
                           <th scope="col">Productor</th>
                           <th scope="col">Carozos</th>
                           <th scope="col">Tipo Análisis</th>
@@ -103,32 +102,13 @@ const MonitoreoPage = () => {
 
                       <tbody className="table-group-divider">
                         {nuevo.map((acceso) => {
-                          let fecha = "";
-                          let fechaEmision = "";
-                          if (acceso.Fecha && isValid(parseISO(acceso.Fecha))) {
-                            fecha = format(
-                              parseISO(acceso.Fecha),
-                              "dd/MM/yyyy"
-                            );
-                          }
-                          if (
-                            acceso.FechaEmision &&
-                            isValid(parseISO(acceso.FechaEmision))
-                          ) {
-                            fechaEmision = format(
-                              parseISO(acceso.FechaEmision),
-                              "dd/MM/yyyy"
-                            );
-                          }
-
-                          return (
-                            <>
-                            <Modal info={acceso} />
+                          
+                    return (<>
+                            <ModalMonitoreoPage info={acceso.AnalisisMonitoreo} id={acceso.Id} />
                               <tr className="hover-tabla" key={acceso.Id}>
                                 <td scope="row">
                                   {acceso.NumAPG}
                                 </td>
-                                <td className="lcase" style={{ textTransform: 'uppercase'}}>{acceso.Cliente}</td>
                                 <td className="lcase" style={{ textTransform: 'uppercase'}}>
                                   {acceso.Productor
                                     ? acceso.Productor
@@ -137,14 +117,15 @@ const MonitoreoPage = () => {
                                 <td className="lcase" style={{ textTransform: 'uppercase'}}>{acceso.Carosos}</td>
                                 <td style={{ textTransform: 'uppercase'}}>{acceso.TipoAnalisis}</td>
                                 <td style={{ textTransform: 'uppercase'}}>{acceso.Especie}</td>
-                                <td style={{ textTransform: 'uppercase'}}>{fecha}</td>
-                                <td style={{ textTransform: 'uppercase'}}>{fechaEmision}</td>
+                                <td style={{ textTransform: 'uppercase'}}>{format(parseISO(acceso.Fecha),"dd/MM/yyyy")}</td>
+                                <td style={{ textTransform: 'uppercase'}}>{format(parseISO(acceso.FechaEmision), "dd/MM/yyyy")}</td>
                                 <td style={{ textTransform: 'uppercase'}}>{acceso.Analista}</td>
                                 <td style={{ textTransform: 'uppercase'}}>{acceso.Predio}</td>
-                                <td style={{ textTransform: 'uppercase'}}><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <AiOutlineEye style={{fontSize:24}}/>
-</button>
-</td>
+                                <td style={{ textTransform: 'uppercase'}}>
+                                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target={"#exampleModal"+acceso.Id}>
+                                     <AiOutlineEye style={{fontSize:24}}/>
+                                </button>
+                                </td>
                                 <td style={{ textTransform: 'uppercase'}}>
                                   {acceso.InformeAdjunto ? (
                                     <a

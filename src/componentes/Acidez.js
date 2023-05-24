@@ -12,14 +12,13 @@ const Acidez = ({nuevo}) => {
   return (
     <div>
       <div className="monitoreo-titulo">
-        <h5>Monitoreos</h5>
+        <h5>Acidez Fruta</h5>
       </div>
       <div className="table-responsive">
         <table className="table container">
           <thead>
             <tr>
               <th scope="col">Nº Informe</th>
-              <th scope="col">Cliente</th>
               <th scope="col">Productor</th>
               <th scope="col">Predio</th>
               <th scope="col">Localidad</th>
@@ -32,6 +31,7 @@ const Acidez = ({nuevo}) => {
               <th scope="col">Muestreador</th>
               <th scope="col">Observaciones</th>
               <th scope="col">Informe</th>
+              <th scope="col">Resultados Acidez</th>
             </tr>
           </thead>
 
@@ -40,7 +40,6 @@ const Acidez = ({nuevo}) => {
                  
     <tr className="hover-tabla">
               <td scope="row">{servicio.NumApg}</td>
-              <td className="lcase" style={{ textTransform: 'uppercase' }}>{servicio.Cliente}</td>
               <td className="lcase" style={{ textTransform: 'uppercase' }}>
                 {servicio.Productor.toUpperCase() ? servicio.Productor.toUpperCase() : "Sin información"}
               </td>
@@ -54,11 +53,7 @@ const Acidez = ({nuevo}) => {
               <td style={{ textTransform: 'uppercase' }}>{servicio.Variedad}</td>
               <td style={{ textTransform: 'uppercase' }}>{servicio.Muestreador}</td>
               <td style={{ textTransform: 'uppercase' }}>{servicio.Observaciones}</td>
-              <td style={{ textTransform: 'uppercase' }}>
-                <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalAcidez">
-                  <AiOutlineEye style={{ fontSize: 24 }} />
-                </button>
-              </td>
+              
               <td style={{ textTransform: 'uppercase' }}>
                 {servicio.InformeAdjunto ? (
                   <a
@@ -70,6 +65,11 @@ const Acidez = ({nuevo}) => {
                 ) : (
                   <p style={{ color: "white", background: "red", borderRadius: "20px", padding: "3px", fontSize: "12px", textAlign: "center" }}>En Proceso</p>
                 )}
+              </td>
+              <td style={{ textTransform: 'uppercase' }}>
+                <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalAcidez">
+                  <AiOutlineEye style={{ fontSize: 24 }} />
+                </button>
               </td>
       {/* Resto de las columnas */}
       <ModalAcidez info={servicio} /> 

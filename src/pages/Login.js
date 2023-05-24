@@ -3,17 +3,13 @@ import "./Login.css";
 import {useNavigate} from "react-router-dom";
 import {URL_API_AGP} from '../utilidades/constantes';
 
-
-
 const Login = () => {
   const user = {
     Usuario: "bayer",
     Password: "123456",
   };
 
-
-
-  const navigate = useNavigate();
+const navigate = useNavigate();
   const[formulario, setFormulario] = useState({
     Usuario:"",
     Password:""
@@ -40,12 +36,11 @@ const Login = () => {
       if (resultado.ok){
         
         const respuestaJson = await resultado.json();
-        console.log(respuestaJson);
         const token2 = respuestaJson.value; // aquí se accede al token de autenticación
         setToken(token2);
         localStorage.setItem("token",token2);
        
-        console.log(respuestaJson.statusCode)
+        
         if(respuestaJson.statusCode === 404 ){
           setError("Nombre de usuario o clave inválida");
             navigate("/");
@@ -62,11 +57,7 @@ const Login = () => {
               status:respuestaJson.statusCode
             }
           })
-        
-      }
-      
-        
-
+        }
 
       } else {
         navigate("/");
@@ -80,13 +71,11 @@ const Login = () => {
     setFormulario({
       ...formulario,
       [e.target.name]: e.target.value
-    })
-    console.log(formulario);
+    });
   }
 
   function handleEnviar(e){
       e.preventDefault();
-      console.log("enviando");
       enviarlogin(formulario);
   }
 

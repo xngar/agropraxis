@@ -8,7 +8,7 @@ import Modal from "../componentes/Modal";
 const Monitoreos = ({ nuevo }) => {
 
   const servicio = nuevo[nuevo.length - 1];
-
+     
   return (
     <div>
       <div className="monitoreo-titulo">
@@ -19,7 +19,6 @@ const Monitoreos = ({ nuevo }) => {
           <thead>
             <tr>
               <th scope="col">Nº Informe</th>
-              <th scope="col">Cliente</th>
               <th scope="col">Productor</th>
               <th scope="col">Carozos</th>
               <th scope="col">Tipo Análisis</th>
@@ -38,7 +37,6 @@ const Monitoreos = ({ nuevo }) => {
                  
     <tr className="hover-tabla">
               <td scope="row">{servicio.NumAPG}</td>
-              <td className="lcase" style={{ textTransform: 'uppercase' }}>{servicio.Cliente}</td>
               <td className="lcase" style={{ textTransform: 'uppercase' }}>
                 {servicio.Productor.toUpperCase() ? servicio.Productor.toUpperCase() : "Sin información"}
               </td>
@@ -66,7 +64,7 @@ const Monitoreos = ({ nuevo }) => {
                   <p style={{ color: "white", background: "red", borderRadius: "20px", padding: "3px", fontSize: "12px", textAlign: "center" }}>En Proceso</p>
                 )}
               </td>
-      {/* Resto de las columnas */}
+      
       <Modal info={servicio} /> 
     </tr>
   )}

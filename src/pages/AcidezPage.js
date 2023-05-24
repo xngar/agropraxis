@@ -8,6 +8,9 @@ import Monitoreos from "../componentes/Monitoreos";
 import Acidez from "../componentes/Acidez";
 import { format } from "date-fns";
 import { URL_API_AGP } from "../utilidades/constantes";
+import {AiOutlineEye} from "react-icons/ai"
+import ModalMonitoreoPage from "../componentes/ModalMonitoreoPage";
+import ModalAcidez from "../componentes/ModalAcidez";
 
 
 const AcidezPage = () => {
@@ -85,7 +88,6 @@ const AcidezPage = () => {
                       <thead>
                         <tr>
                           <th scope="col">Nº Informe</th>
-                          <th scope="col">Cliente</th>
                           <th scope="col">Productor</th>
                           <th scope="col">Predio</th>
                           <th scope="col">Localidad</th>
@@ -96,38 +98,23 @@ const AcidezPage = () => {
                           <th scope="col">Especie</th>
                           <th scope="col">Variedad</th>
                           <th scope="col">Muestreador</th>
-
                           <th scope="col">Observaciones</th>
                           <th scope="col">Informe</th>
+                          <th scope="col">Resultados Acidez</th>
                         </tr>
                       </thead>
 
                       <tbody className="table-group-divider">
                         {acidez.map((acceso) => {
-                          let fechaIngreso = format(
-                            new Date(acceso.FechaIngreso),
-                            "dd-MM-yyyy"
-                          );
-                          let fechaMuestreo = format(
-                            new Date(acceso.FechaMuestreo),
-                            "dd-MM-yyyy"
-                          );
-                          let fechaAnalisis = format(
-                            new Date(acceso.FechaAnalisis),
-                            "dd-MM-yyyy"
-                          );
-                          let fechaInforme = format(
-                            new Date(acceso.FechaInforme),
-                            "dd-MM-yyyy"
-                          );
+                          
 
                           return (
                             <>
+                            <ModalAcidez info={acceso} /> 
                               <tr key={acceso.Id}>
                                 <td scope="row">
                                   {acceso.NumApg}
                                 </td>
-                                <td className="lcase" style={{ textTransform: 'uppercase'}}>{acceso.Cliente}</td>
                                 <td className="lcase" style={{ textTransform: 'uppercase'}}>
                                   {acceso.Productor
                                     ? acceso.Productor
@@ -135,14 +122,15 @@ const AcidezPage = () => {
                                 </td>
                                 <td style={{ textTransform: 'uppercase'}}>{acceso.Predio}</td>
                                 <td style={{ textTransform: 'uppercase'}}>{acceso.Localidad}</td>
-                                <td style={{ textTransform: 'uppercase'}}>{fechaMuestreo}</td>
-                                <td style={{ textTransform: 'uppercase'}}>{fechaIngreso}</td>
-                                <td style={{ textTransform: 'uppercase'}}>{fechaAnalisis}</td>
-                                <td style={{ textTransform: 'uppercase'}}>{fechaInforme}</td>
+                                <td style={{ textTransform: 'uppercase'}}>{format(new Date(acceso.FechaMuestreo), "dd-MM-yyyy")}</td>
+                                <td style={{ textTransform: 'uppercase'}}>{format(new Date(acceso.FechaIngreso),"dd-MM-yyyy")}</td>
+                                <td style={{ textTransform: 'uppercase'}}>{format(new Date(acceso.FechaAnalisis),"dd-MM-yyyy")}</td>
+                                <td style={{ textTransform: 'uppercase'}}>{format(new Date(acceso.FechaInforme),"dd-MM-yyyy")}</td>
                                 <td style={{ textTransform: 'uppercase'}}>{acceso.Especie}</td>
                                 <td style={{ textTransform: 'uppercase'}}>{acceso.Variedad}</td>
                                 <td style={{ textTransform: 'uppercase'}}>{acceso.Muestreador}</td>
                                 <td style={{ textTransform: 'uppercase'}}>{acceso.Observaciones}</td>
+                               
                                 <td style={{ textTransform: 'uppercase'}}>
                                   {acceso.InformeAdjunto ? (
                                     <a
@@ -159,6 +147,11 @@ const AcidezPage = () => {
                                     <p style={{ color: "red" }}>En Proceso</p>
                                   )}
                                 </td>
+                                <td style={{ textTransform: 'uppercase' }}>
+                                <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalAcidez">
+                                  <AiOutlineEye style={{ fontSize: 24 }} />
+                                </button>
+                              </td>
                               </tr>
                             </>
                           );
