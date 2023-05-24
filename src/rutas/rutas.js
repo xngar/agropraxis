@@ -23,6 +23,10 @@ export const router = createBrowserRouter([
     {
         path:"/acidez",
         element:<AcidezPage/>
+    },
+    {
+        path:"*",
+        element:<Login/>
     }
 
    

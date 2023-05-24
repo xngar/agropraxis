@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
 import "./Login.css";
 import {useNavigate} from "react-router-dom";
 import {URL_API_AGP} from '../utilidades/constantes';
+
 
 
 const Login = () => {
@@ -10,6 +11,8 @@ const Login = () => {
     Password: "123456",
   };
 
+
+
   const navigate = useNavigate();
   const[formulario, setFormulario] = useState({
     Usuario:"",
@@ -17,6 +20,7 @@ const Login = () => {
   });
   const [token, setToken] = useState();
   const [error, setError] = useState("");
+  
 
   const enviarlogin = async (formulario) => {
 
@@ -94,6 +98,7 @@ const Login = () => {
   return (
     <div>
       <div className="login-contenedor">
+        
         <div className="login-formulario">
           <div className="login-izquierda">
             <img src="logo.png" alt="logo-agropraxis" width="200px" />

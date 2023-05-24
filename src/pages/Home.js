@@ -1,14 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useLocation } from "react-router-dom";
 import { Navigate, Redirect } from "react-router-dom";
 import "./Home.css";
 import NavBar from "../componentes/NavBar";
 import Monitoreos from "../componentes/Monitoreos";
 import Acidez from "../componentes/Acidez";
+
 import { URL_API_AGP } from "../utilidades/constantes";
 
 
+
+
+
+
 const Home = () => {
+  
+ 
   const [nuevo, setDatos] = useState([]);
   const [acidez, setAcidez] = useState([]);
   const estado = useLocation().state;
@@ -21,6 +28,7 @@ const Home = () => {
   const statuto = localStorage.status;
   const t = localStorage.getItem("token");
   const nombreCliente = localStorage.getItem("cliente");
+
 
   let info = [{}];
 
@@ -84,12 +92,16 @@ const Home = () => {
 
   return (
     <>
+    
+     
+      
       {statuto ? (
         <div className="contenedor">
           
-          
+       
           <div className="izquierda">
             <NavBar cliente={cliente} />
+           
           </div>
           <div className="derecha">
             <div className="derecha-contenedor">
@@ -115,6 +127,7 @@ const Home = () => {
       ) : (
         <Navigate to="/" />
       )}
+      
     </>
   );
 };
