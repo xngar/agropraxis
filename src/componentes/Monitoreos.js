@@ -9,8 +9,6 @@ const Monitoreos = ({ nuevo }) => {
 
   const servicio = nuevo[nuevo.length - 1];
 
-  console.log('Objeto:', servicio);
-
   return (
     <div>
       <div className="monitoreo-titulo">
@@ -36,14 +34,11 @@ const Monitoreos = ({ nuevo }) => {
           </thead>
 
           <tbody className="table-group-divider">
-
-         
-
-              {servicio && (
+         {servicio && (
                  
     <tr className="hover-tabla">
-      <td scope="row">{servicio.NumAPG}</td>
-      <td className="lcase" style={{ textTransform: 'uppercase' }}>{servicio.Cliente}</td>
+              <td scope="row">{servicio.NumAPG}</td>
+              <td className="lcase" style={{ textTransform: 'uppercase' }}>{servicio.Cliente}</td>
               <td className="lcase" style={{ textTransform: 'uppercase' }}>
                 {servicio.Productor.toUpperCase() ? servicio.Productor.toUpperCase() : "Sin información"}
               </td>
@@ -75,38 +70,6 @@ const Monitoreos = ({ nuevo }) => {
       <Modal info={servicio} /> 
     </tr>
   )}
-            {/* <tr className="hover-tabla">
-              
-              <td scope="row">{servicio.NumAPG}</td>
-              <td className="lcase" style={{ textTransform: 'uppercase' }}>{servicio.Cliente}</td>
-              <td className="lcase" style={{ textTransform: 'uppercase' }}>
-                {servicio.Productor.toUpperCase() ? servicio.Productor.toUpperCase() : "Sin información"}
-              </td>
-              <td className="lcase" style={{ textTransform: 'uppercase' }}>{servicio.Carosos}</td>
-              <td style={{ textTransform: 'uppercase' }}>{servicio.TipoAnalisis}</td>
-              <td style={{ textTransform: 'uppercase' }}>{servicio.Especie}</td>
-              <td style={{ textTransform: 'uppercase' }}>{format(parseISO(servicio.Fecha), "dd/MM/yyyy")}</td>
-              <td style={{ textTransform: 'uppercase' }}>{format(parseISO(servicio.FechaEmision), "dd/MM/yyyy")}</td>
-              <td style={{ textTransform: 'uppercase' }}>{servicio.Analista}</td>
-              <td style={{ textTransform: 'uppercase' }}>{servicio.Predio}</td>
-              <td style={{ textTransform: 'uppercase' }}>
-                <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                  <AiOutlineEye style={{ fontSize: 24 }} />
-                </button>
-              </td>
-              <td style={{ textTransform: 'uppercase' }}>
-                {servicio.InformeAdjunto ? (
-                  <a
-                    target="_blank"
-                    href={process.env.REACT_APP_API_PATH + servicio.InformeAdjunto}
-                  >
-                    <p style={{ color: "white", background: "green", borderRadius: "20px", padding: "8px", fontSize: "14px", textAlign: "center", textTransform: "capitalize", letterSpacing: 1 }}>Descargar</p>
-                  </a>
-                ) : (
-                  <p style={{ color: "white", background: "red", borderRadius: "20px", padding: "3px", fontSize: "12px", textAlign: "center" }}>En Proceso</p>
-                )}
-              </td>
-            </tr> */}
           </tbody>
         </table>
       </div>

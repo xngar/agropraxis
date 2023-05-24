@@ -84,7 +84,7 @@ const AcidezPage = () => {
                     <table className="table container">
                       <thead>
                         <tr>
-                          <th scope="col">#</th>
+                          <th scope="col">Nº Informe</th>
                           <th scope="col">Cliente</th>
                           <th scope="col">Productor</th>
                           <th scope="col">Predio</th>
@@ -125,7 +125,7 @@ const AcidezPage = () => {
                             <>
                               <tr key={acceso.Id}>
                                 <td scope="row">
-                                  {acceso.Id}
+                                  {acceso.NumApg}
                                 </td>
                                 <td className="lcase" style={{ textTransform: 'uppercase'}}>{acceso.Cliente}</td>
                                 <td className="lcase" style={{ textTransform: 'uppercase'}}>

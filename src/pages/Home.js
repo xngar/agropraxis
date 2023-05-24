@@ -55,8 +55,7 @@ const Home = () => {
   };
 
   const getAcidez = async () => {
-    const respuesta = await fetch(
-      process.env.REACT_APP_API_URI + "/api/Servicios/AcidezFruta",
+    const respuesta = await fetch(URL_API_AGP + "/api/Servicios/AcidezFruta",
       {
         method: "GET",
         headers: {
@@ -68,6 +67,7 @@ const Home = () => {
 
     const result = await respuesta.json();
     const data = await result.Entities;
+    console.log('Datos recibidos: ', data)
     setAcidez(data);
   };
 
