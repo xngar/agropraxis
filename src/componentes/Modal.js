@@ -47,7 +47,7 @@ const Modal = ({ info }) => {
                     <tbody>
                   
                    {info.AnalisisMonitoreo.sort((a,b) => a.NumeroLaboratorio > b.NumeroLaboratorio ? 1 : -1).map(mapeo=>{
-
+                         
                    
                         return(
                             <tr>
@@ -60,8 +60,8 @@ const Modal = ({ info }) => {
                             <td>{mapeo.NinfasMuertos}</td>
                             <td>{mapeo.AdultosVivos}</td>
                             <td>{mapeo.AdultosMuertos}</td>
-                            <td>{mapeo.Item}</td>
-                            <td>{mapeo.Observaciones?mapeo.Observaciones:<span style={{color:"red"}}>sin información</span>}</td>
+                            <td>{mapeo.Item?.trim()}</td>  
+                            <td>{mapeo.Observaciones?mapeo.Observaciones:<span style={{color:"red"}}></span>}</td>
                             
                           </tr>
 

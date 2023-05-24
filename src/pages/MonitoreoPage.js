@@ -86,7 +86,7 @@ const MonitoreoPage = () => {
                     <table className="table container">
                       <thead>
                         <tr>
-                          <th scope="col">#</th>
+                          <th scope="col">Nº Informe</th>
                           <th scope="col">Cliente</th>
                           <th scope="col">Productor</th>
                           <th scope="col">Carozos</th>
@@ -126,7 +126,7 @@ const MonitoreoPage = () => {
                             <Modal info={acceso} />
                               <tr className="hover-tabla" key={acceso.Id}>
                                 <td scope="row">
-                                  {acceso.Id}
+                                  {acceso.NumAPG}
                                 </td>
                                 <td className="lcase" style={{ textTransform: 'uppercase'}}>{acceso.Cliente}</td>
                                 <td className="lcase" style={{ textTransform: 'uppercase'}}>
