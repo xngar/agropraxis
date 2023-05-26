@@ -48,7 +48,7 @@ const Monitoreos = ({ nuevo }) => {
               <td style={{ textTransform: 'uppercase' }}>{servicio.Analista}</td>
               <td style={{ textTransform: 'uppercase' }}>{servicio.Predio}</td>
               <td style={{ textTransform: 'uppercase' }}>
-                <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target={"#exampleModal"+servicio.Id}>
                   <AiOutlineEye style={{ fontSize: 24 }} />
                 </button>
               </td>
@@ -65,7 +65,7 @@ const Monitoreos = ({ nuevo }) => {
                 )}
               </td>
       
-      <Modal info={servicio} /> 
+      <Modal info={servicio} id={servicio.Id} /> 
     </tr>
   )}
           </tbody>

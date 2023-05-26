@@ -1,12 +1,12 @@
 import React from "react";
 import "./Modal.css"
 
-const ModalAcidez = ({ info }) => {
+const ModalAcidez = ({ info, id }) => {
    
   return (
     <div
     className="modal fade"
-      id="exampleModalAcidez"
+      id={"exampleModalAcidez"+id}
       tabindex="-1"
       aria-labelledby="exampleModalLabelAcidez"
       aria-hidden="true"
@@ -15,7 +15,7 @@ const ModalAcidez = ({ info }) => {
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header">
-            <h1 className="modal-title fs-5" id="exampleModalLabel">
+            <h1 className="modal-title fs-5" id={"exampleModalLabel"+id}>
               Resultados Acidez
             </h1>
             <button

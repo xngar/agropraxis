@@ -1,12 +1,12 @@
 import React from "react";
 import "./Modal.css"
 
-const Modal = ({ info }) => {
-   console.log('Recibi en esta petición: ', info);
+const Modal = ({ info, id }) => {
+  
   return (
     <div
       class="modal fade"
-      id="exampleModal"
+      id={"exampleModal"+id}
       tabindex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
@@ -15,7 +15,7 @@ const Modal = ({ info }) => {
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">
+            <h1 class="modal-title fs-5" id={"exampleModalLabel"+id}>
               Análisis Monitoreo
             </h1>
             <button
@@ -46,7 +46,7 @@ const Modal = ({ info }) => {
                     </thead>
                     <tbody>
                   
-                   {info.AnalisisMonitoreo.map(mapeo=>{
+                   {info.AnalisisMonitoreo.sort((a,b)=> a.NumeroLaboratorio-b.NumeroLaboratorio).map(mapeo=>{
                          
                    
                         return(

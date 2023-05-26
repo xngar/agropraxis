@@ -27,7 +27,6 @@ const Acidez = ({nuevo}) => {
               <th scope="col">Fecha Análisis</th>
               <th scope="col">Fecha Informe</th>
               <th scope="col">Especie</th>
-              <th scope="col">Variedad</th>
               <th scope="col">Muestreador</th>
               <th scope="col">Observaciones</th>
               <th scope="col">Informe</th>
@@ -50,7 +49,6 @@ const Acidez = ({nuevo}) => {
               <td style={{ textTransform: 'uppercase' }}>{format(parseISO(servicio.FechaAnalisis), "dd/MM/yyyy")}</td>
               <td style={{ textTransform: 'uppercase' }}>{format(parseISO(servicio.FechaInforme), "dd/MM/yyyy")}</td>
               <td style={{ textTransform: 'uppercase' }}>{servicio.Especie}</td>
-              <td style={{ textTransform: 'uppercase' }}>{servicio.Variedad}</td>
               <td style={{ textTransform: 'uppercase' }}>{servicio.Muestreador}</td>
               <td style={{ textTransform: 'uppercase' }}>{servicio.Observaciones}</td>
               
@@ -67,12 +65,12 @@ const Acidez = ({nuevo}) => {
                 )}
               </td>
               <td style={{ textTransform: 'uppercase' }}>
-                <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalAcidez">
+                <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target={"#exampleModalAcidez"+ servicio.Id}>
                   <AiOutlineEye style={{ fontSize: 24 }} />
                 </button>
               </td>
       {/* Resto de las columnas */}
-      <ModalAcidez info={servicio} /> 
+      <ModalAcidez info={servicio} id={servicio.Id} /> 
     </tr>
   )}
           </tbody>

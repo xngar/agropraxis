@@ -9,7 +9,7 @@ import Acidez from "../componentes/Acidez";
 import { format } from "date-fns";
 import { URL_API_AGP } from "../utilidades/constantes";
 import {AiOutlineEye} from "react-icons/ai"
-import ModalMonitoreoPage from "../componentes/ModalMonitoreoPage";
+
 import ModalAcidez from "../componentes/ModalAcidez";
 
 
@@ -96,7 +96,6 @@ const AcidezPage = () => {
                           <th scope="col">Fecha Análisis</th>
                           <th scope="col">Fecha Informe</th>
                           <th scope="col">Especie</th>
-                          <th scope="col">Variedad</th>
                           <th scope="col">Muestreador</th>
                           <th scope="col">Observaciones</th>
                           <th scope="col">Informe</th>
@@ -105,12 +104,12 @@ const AcidezPage = () => {
                       </thead>
 
                       <tbody className="table-group-divider">
-                        {acidez.map((acceso) => {
+                        {acidez.sort((a,b)=> a.NumApg-b.NumApg).map((acceso) => {
                           
 
                           return (
                             <>
-                            <ModalAcidez info={acceso} /> 
+                            <ModalAcidez info={acceso} id={acceso.Id}/> 
                               <tr key={acceso.Id}>
                                 <td scope="row">
                                   {acceso.NumApg}
@@ -127,7 +126,6 @@ const AcidezPage = () => {
                                 <td style={{ textTransform: 'uppercase'}}>{format(new Date(acceso.FechaAnalisis),"dd-MM-yyyy")}</td>
                                 <td style={{ textTransform: 'uppercase'}}>{format(new Date(acceso.FechaInforme),"dd-MM-yyyy")}</td>
                                 <td style={{ textTransform: 'uppercase'}}>{acceso.Especie}</td>
-                                <td style={{ textTransform: 'uppercase'}}>{acceso.Variedad}</td>
                                 <td style={{ textTransform: 'uppercase'}}>{acceso.Muestreador}</td>
                                 <td style={{ textTransform: 'uppercase'}}>{acceso.Observaciones}</td>
                                
@@ -148,7 +146,7 @@ const AcidezPage = () => {
                                   )}
                                 </td>
                                 <td style={{ textTransform: 'uppercase' }}>
-                                <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalAcidez">
+                                <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target={"#exampleModalAcidez"+acceso.Id}>
                                   <AiOutlineEye style={{ fontSize: 24 }} />
                                 </button>
                               </td>

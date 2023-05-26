@@ -12,7 +12,7 @@ import { TbReport } from "react-icons/tb";
 import { URL_API_AGP } from "../utilidades/constantes";
 import { icons } from "react-icons";
 import {AiOutlineEye} from "react-icons/ai"
-import ModalMonitoreoPage from "../componentes/ModalMonitoreoPage";
+import Modal from "../componentes/Modal";
 
 const MonitoreoPage = () => {
   const [nuevo, setDatos] = useState([]);
@@ -104,7 +104,7 @@ const MonitoreoPage = () => {
                         {nuevo.map((acceso) => {
                           
                     return (<>
-                            <ModalMonitoreoPage info={acceso.AnalisisMonitoreo} id={acceso.Id} />
+                            <Modal info={acceso} id={acceso.Id} />
                               <tr className="hover-tabla" key={acceso.Id}>
                                 <td scope="row">
                                   {acceso.NumAPG}
