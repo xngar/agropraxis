@@ -109,7 +109,7 @@ const AcidezPage = () => {
 
                           return (
                             <>
-                            <ModalAcidez info={acceso} id={acceso.Id}/> 
+                            <ModalAcidez info={acceso} id={acidez.Id}/> 
                               <tr key={acceso.Id}>
                                 <td scope="row">
                                   {acceso.NumApg}
@@ -146,7 +146,7 @@ const AcidezPage = () => {
                                   )}
                                 </td>
                                 <td style={{ textTransform: 'uppercase' }}>
-                                <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target={"#exampleModalAcidez"+acceso.Id}>
+                                <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target={"#exampleModalAcidez"+acidez.Id}>
                                   <AiOutlineEye style={{ fontSize: 24 }} />
                                 </button>
                               </td>
