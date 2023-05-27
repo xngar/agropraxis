@@ -1,9 +1,7 @@
-import React, { useEffect, useState,useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./Login.css";
-import {useNavigate} from "react-router-dom";
-import {URL_API_AGP} from '../utilidades/constantes';
-
-
+import { useNavigate } from "react-router-dom";
+import { URL_API_AGP } from "../utilidades/constantes";
 
 const Login = () => {
   const user = {
@@ -11,22 +9,18 @@ const Login = () => {
     Password: "123456",
   };
 
-
-
   const navigate = useNavigate();
-  const[formulario, setFormulario] = useState({
-    Usuario:"",
-    Password:""
+  const [formulario, setFormulario] = useState({
+    Usuario: "",
+    Password: "",
   });
   const [token, setToken] = useState();
   const [error, setError] = useState("");
   const [cargando, setCargando] = useState("");
-  
 
   const enviarlogin = async (formulario) => {
-
     try {
-      const resultado = await fetch(URL_API_AGP+"/api/Auth/Login", {
+      const resultado = await fetch(URL_API_AGP + "/api/Auth/Login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -37,56 +31,31 @@ const Login = () => {
         }),
       });
       console.log(resultado);
-     
-      if (resultado.ok){
 
-        setCargando("Cargando...")
+      if (resultado.ok) {
+        setCargando("Cargando...");
         const respuestaJson = await resultado.json();
-        console.log(respuestaJson);
-        const token2 = respuestaJson.value; // aquí se accede al token de autenticación
-        setToken(token2);
-        localStorage.setItem("token",token2);
-       
-        console.log(respuestaJson.statusCode)
-       
+        setTimeout(() => {
+          const token2 = respuestaJson.value; // aquí se accede al token de autenticación
+          setToken(token2);
+          localStorage.setItem("token", token2);
 
-       
-        if(respuestaJson.statusCode === 404 ){
-          setError("Nombre de usuario o clave inválida");
+          if (respuestaJson.statusCode === 404) {
+            setError("Nombre de usuario o clave inválida");
             navigate("/");
-          
-        }
-        else{
-
-          
-        
-
-          localStorage.setItem("cliente",formulario.Usuario)
-          localStorage.setItem("status",true);
-          navigate("/home",{
-            state:{
-              logged:true,
-              nombre:formulario.Usuario,
-              token:token2,
-              status:respuestaJson.statusCode
-            }
-          })
-            
-          
-      
-
-           
-          
-        
-      }
-          
-       ;
-        
-        
-      
-        
-
-
+          } else {
+            localStorage.setItem("cliente", formulario.Usuario);
+            localStorage.setItem("status", true);
+            navigate("/home", {
+              state: {
+                logged: true,
+                nombre: formulario.Usuario,
+                token: token2,
+                status: respuestaJson.statusCode,
+              },
+            });
+          }
+        }, 2000);
       } else {
         navigate("/");
       }
@@ -95,69 +64,71 @@ const Login = () => {
     }
   };
 
-  function handleForm(e){
+  function handleForm(e) {
     setFormulario({
       ...formulario,
-      [e.target.name]: e.target.value
-    })
-    console.log(formulario);
+      [e.target.name]: e.target.value,
+    });
   }
 
-  function handleEnviar(e){
-      e.preventDefault();
-      console.log("enviando");
-      enviarlogin(formulario);
+  function handleEnviar(e) {
+    e.preventDefault();
+    enviarlogin(formulario);
   }
 
-  useEffect(() => {
-    
-   
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <div>
       <div className="login-contenedor">
-        
         <div className="login-formulario">
           <div className="login-izquierda">
             <img src="logo.png" alt="logo-agropraxis" width="200px" />
             <h2>Bienvenidos </h2>
 
-            <form onSubmit={(e)=>handleEnviar(e)}>
+            <form onSubmit={(e) => handleEnviar(e)}>
               <div className="mb-3">
-                <label  className="form-label">
-                  Usuario
-                </label>
+                <label className="form-label">Usuario</label>
                 <input
-                 value={formulario.Usuario}
-                   name="Usuario"
+                  value={formulario.Usuario}
+                  name="Usuario"
                   type="text"
                   className="form-control"
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
-                  onChange={(e)=>handleForm(e)}
+                  onChange={(e) => handleForm(e)}
                 />
               </div>
               <div className="mb-3">
-                <label  className="form-label">
-                  Password
-                </label>
+                <label className="form-label">Password</label>
                 <input
                   value={formulario.Password}
                   name="Password"
                   type="password"
                   className="form-control"
                   id="exampleInputPassword1"
-                  onChange={(e)=>handleForm(e)}
+                  onChange={(e) => handleForm(e)}
                 />
               </div>
 
               <button type="submit" className="btn btn-primary">
                 Ingresar
               </button>
-              <div>{cargando}</div>
-              <br/>
-              <span style={{color:"red", fontSize:"14px"}}>{error}</span>
+              <div>
+                <br />
+              </div>
+
+              <div>
+                {cargando ? (
+                  <div class="spinner-border text-primary" role="status">
+                    <span class="sr-only"></span>
+                  </div>
+                ) : (
+                  <></>
+                )}
+              </div>
+              <br />
+              <span style={{ color: "red", fontSize: "14px" }}>{error}</span>
             </form>
           </div>
           <div className="login-derecha">
