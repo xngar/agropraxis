@@ -16,7 +16,7 @@ const Login = () => {
   });
   const [token, setToken] = useState();
   const [error, setError] = useState("");
-  const [cargando, setCargando] = useState("");
+  const [cargando, setCargando] = useState(null);
 
   const enviarlogin = async (formulario) => {
     try {
@@ -41,6 +41,7 @@ const Login = () => {
           localStorage.setItem("token", token2);
 
           if (respuestaJson.statusCode === 404) {
+            setCargando(null);
             setError("Nombre de usuario o clave inválida");
             navigate("/");
           } else {
