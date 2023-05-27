@@ -5,6 +5,8 @@ import "./Home.css";
 import NavBar from "../componentes/NavBar";
 import Monitoreos from "../componentes/Monitoreos";
 import Acidez from "../componentes/Acidez";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { URL_API_AGP } from "../utilidades/constantes";
 
@@ -40,6 +42,16 @@ const Home = () => {
   };
 
   const getCliente = async () => {
+    toast.success("Conectado correctamente!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      });
     const respuesta = await fetch(URL_API_AGP + "/api/Auth/Cliente", {
       method: "GET",
       headers: {
@@ -72,8 +84,9 @@ const Home = () => {
   useEffect(() => {
     if (statuto) {
       setAuth(true);
+      
     }
-
+    
     getMonitoreo();
     getAcidez();
    getCliente();
@@ -84,6 +97,7 @@ const Home = () => {
     {statuto ? (
         <div className="contenedor">
           <div className="izquierda">
+          <ToastContainer  />
             <NavBar cliente={cliente} />
            
           </div>
