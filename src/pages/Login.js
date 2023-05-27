@@ -20,6 +20,7 @@ const Login = () => {
   });
   const [token, setToken] = useState();
   const [error, setError] = useState("");
+  const [cargando, setCargando] = useState("");
   
 
   const enviarlogin = async (formulario) => {
@@ -38,7 +39,8 @@ const Login = () => {
       console.log(resultado);
      
       if (resultado.ok){
-        
+
+        setCargando("Cargando...")
         const respuestaJson = await resultado.json();
         console.log(respuestaJson);
         const token2 = respuestaJson.value; // aquí se accede al token de autenticación
@@ -46,12 +48,19 @@ const Login = () => {
         localStorage.setItem("token",token2);
        
         console.log(respuestaJson.statusCode)
+       
+
+       
         if(respuestaJson.statusCode === 404 ){
           setError("Nombre de usuario o clave inválida");
             navigate("/");
           
         }
         else{
+
+          
+        
+
           localStorage.setItem("cliente",formulario.Usuario)
           localStorage.setItem("status",true);
           navigate("/home",{
@@ -62,8 +71,18 @@ const Login = () => {
               status:respuestaJson.statusCode
             }
           })
+            
+          
+      
+
+           
+          
         
       }
+          
+       ;
+        
+        
       
         
 
@@ -136,6 +155,7 @@ const Login = () => {
               <button type="submit" className="btn btn-primary">
                 Ingresar
               </button>
+              <div>{cargando}</div>
               <br/>
               <span style={{color:"red", fontSize:"14px"}}>{error}</span>
             </form>

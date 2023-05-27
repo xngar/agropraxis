@@ -11,9 +11,9 @@ const NavBar = ({ cliente }) => {
   const status = localStorage.getItem("status");
   const navigator = useNavigate();
   function cerrar(){
-    localStorage.setItem("status","");
-    localStorage.setItem("cliente","");
-    localStorage.setItem("token","");
+    localStorage.removeItem("status");
+    localStorage.removeItem("cliente");
+    localStorage.removeItem("token");
   navigator("/");
     
   }
