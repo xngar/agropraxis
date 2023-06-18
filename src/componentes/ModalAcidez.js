@@ -31,7 +31,6 @@ const ModalAcidez = ({ info, id }) => {
                   <table className="table table-responsive">
                     <thead>
                       <tr>
-                        
                         <th scope="col">N° Laboratorio</th>
                         <th scope="col">Cuartel</th>
                         <th scope="col">Nº Frutos</th>
@@ -66,9 +65,6 @@ const ModalAcidez = ({ info, id }) => {
                         )
                     
                    })}
-                       
-                     
-                   
                     </tbody>
                   </table>
                 </div>

@@ -38,7 +38,7 @@ const Monitoreos = ({ nuevo }) => {
     <tr className="hover-tabla">
               <td scope="row">{servicio.NumAPG}</td>
               <td className="lcase" style={{ textTransform: 'uppercase' }}>
-                {servicio.Productor.toUpperCase() ? servicio.Productor.toUpperCase() : "Sin información"}
+                {servicio.Productor ? servicio.Productor : "Sin información"}
               </td>
               <td className="lcase" style={{ textTransform: 'uppercase' }}>{servicio.Carosos}</td>
               <td style={{ textTransform: 'uppercase' }}>{servicio.TipoAnalisis}</td>
