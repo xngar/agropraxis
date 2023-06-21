@@ -66,6 +66,7 @@ const Monitoreos = ({ nuevo }) => {
               </td>
       
       <Modal info={servicio} id={servicio.Id} /> 
+      
     </tr>
   )}
           </tbody>

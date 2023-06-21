@@ -39,6 +39,7 @@ const ModalAcidez = ({ info, id }) => {
                         <th scope="col">Sólidos Solubles (%)</th>
                         <th scope="col">Acidez (%)</th>
                         <th scope="col">Relacion SS/Acidez (%)</th>
+                        <th scope="col">Estado</th>
                         <th scope="col">Observaciones</th>
                       </tr>
                     </thead>
@@ -58,6 +59,7 @@ const ModalAcidez = ({ info, id }) => {
                             <td>{mapeo.SolidosSolubles}</td>
                             <td>{mapeo.Acidez}</td>
                             <td>{mapeo.Relacion}</td>
+                            <td>{mapeo.Acidez > 0.8 && mapeo.Acidez < 1.0 ? <span style={{color: "#ff0000"}}>Cumple Bajo</span>: mapeo.Acidez > 1.0 && mapeo.Acidez < 1.4 ? <span style={{color: "#009500"}}>Cumple óptimo</span>: mapeo.Acidez > 1.4 && mapeo.Acidez < 1.6? <span style={{color: "#001eff"}}>Cumple Alto</span> :mapeo.Acidez < 0.8 ?<span style={{color: "#ff0000"}}>No cumple por baja acidez</span> :mapeo.Acidez > 1.6 ? <span style={{color: "#ff0000"}}>No cumple por alta acidez</span>:"" }</td>
                             <td>{mapeo.Observaciones?mapeo.Observaciones:<span style={{color:"red"}}></span>}</td>
                             
                           </tr>

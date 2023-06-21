@@ -151,7 +151,30 @@ h1{
     }
     
 }
+.contenedorCardDash{
+    display: flex;
+    gap:15px;
+    
+}
 
+.cardDash{
+    width: 50%;
+    border-radius: 10px;
+    padding: 20px;
+    background-color:#008A36;
+    color:white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.5) 0px 8px 16px -8px;
+}
+
+.cardDash > span{
+   
+    display: flex;
+    justify-content: end;
+    color:white;
+    font-size: 22px;
+    font-weight:bold;
+    align-items: center;
+}
 
 @media(max-width:992px){
     .contenedor{
