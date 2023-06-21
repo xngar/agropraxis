@@ -10,7 +10,12 @@ import "react-toastify/dist/ReactToastify.css";
 import { MdMonitor } from "react-icons/md";
 import { GiGrapes, GiLemon } from "react-icons/gi";
 import { FiArrowRight } from "react-icons/fi";
-import { getMonitoreo, getCliente, getAcidez, getRecepcion } from "../utilidades/Servicios";
+import {
+  getMonitoreo,
+  getCliente,
+  getAcidez,
+  getRecepcion,
+} from "../utilidades/Servicios";
 
 import { URL_API_AGP } from "../utilidades/constantes";
 import { TbLemon } from "react-icons/tb";
@@ -34,15 +39,19 @@ const Home = () => {
 
   let info = [{}];
 
-  const getMonitoreos = async () => {
-   
+  const cargarDatos = async () => {
+    //cargando datos monitoreo
     const moni = await getMonitoreo(TOKEN);
-   
     setDatos(moni);
-  };
+    //cargando datos acidez
+    var acidez = await getAcidez(TOKEN);
+    setAcidez(acidez);
+    //cargando datos recepcion
+    const recep = await getRecepcion(TOKEN);
+    setRecep(recep);
 
-  const getClientes = async () => {
-var client = await getCliente(TOKEN);
+    //Clientes
+    var client = await getCliente(TOKEN);
 
     toast.success("Conectado correctamente!", {
       position: "top-right",
@@ -54,31 +63,17 @@ var client = await getCliente(TOKEN);
       progress: undefined,
       theme: "colored",
     });
-   
-    
+
     setCliente(client);
-  };
-
-  const getAcideces = async () => {
-    var acidez = await getAcidez(TOKEN);
-     setAcidez(acidez);
-  };
-
-  const getRecepciones = async () => {
-    const recep = await getRecepcion(TOKEN);
-   
-    setRecep(recep);
   };
 
   useEffect(() => {
     if (statuto) {
       setAuth(true);
     }
-    getRecepciones();
-    getMonitoreos();
-    getAcideces();
-    getClientes();
-    
+
+  
+    cargarDatos();
   }, []);
 
   return (
@@ -135,7 +130,9 @@ var client = await getCliente(TOKEN);
                       <FiArrowRight /> {recep.TotalCount} ( Activos )
                     </span>
                     <span>
-                      <FiArrowRight /> {(acidez.TotalCount + nuevo.TotalCount) - recep.TotalCount} ( Pendientes )
+                      <FiArrowRight />{" "}
+                      {acidez.TotalCount + nuevo.TotalCount - recep.TotalCount}{" "}
+                      ( Pendientes )
                     </span>
                   </div>
                 </div>
