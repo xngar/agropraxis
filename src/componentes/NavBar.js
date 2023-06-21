@@ -38,16 +38,16 @@ const NavBar = ({ cliente }) => {
       </div>
       <div>
       <ul>
-       <Link to="/home"> <li><span>
+       <Link to="/Home"> <li><span>
             <AiOutlineHome  style={{fontSize:23}}/>
           </span>Home</li></Link>
-      <Link to="/monitoreo"> <li>
+      <Link to="/Monitoreo"> <li>
           <span>
             <MdMonitor style={{fontSize:23}}/>
           </span>
           Monitoreo
         </li></Link>
-        <Link to="/acidez"><li>
+        <Link to="/Acidez"><li>
           <span>
             <GiGrapes style={{fontSize:23}} />
           </span>
