@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { MdMonitor } from "react-icons/md";
 import { GiGrapes } from "react-icons/gi";
 import { FiArrowRight } from "react-icons/fi";
+import { getMonitoreo, getCliente, getAcidez, getRecepcion } from "../utilidades/Servicios";
 
 import { URL_API_AGP } from "../utilidades/constantes";
 
@@ -26,26 +27,21 @@ const Home = () => {
 
   const { state } = useLocation();
   const statuto = localStorage.status;
-  const t = localStorage.getItem("token");
+  const TOKEN = localStorage.getItem("token");
   const nombreCliente = localStorage.getItem("cliente");
 
   let info = [{}];
 
-  const getMonitoreo = async () => {
-    const respuesta = await fetch(URL_API_AGP + "/api/Servicios/Monitoreos", {
-      method: "GET",
-      headers: {
-        Authorization: "Bearer " + t,
-        "Content-Type": "application/json",
-      },
-    });
-
-    const result = await respuesta.json();
-    const data = await result.TotalCount;
-    setDatos(data);
+  const getMonitoreos = async () => {
+   
+    const moni = await getMonitoreo(TOKEN);
+   
+    setDatos(moni);
   };
 
-  const getCliente = async () => {
+  const getClientes = async () => {
+var client = await getCliente(TOKEN);
+
     toast.success("Conectado correctamente!", {
       position: "top-right",
       autoClose: 5000,
@@ -56,56 +52,30 @@ const Home = () => {
       progress: undefined,
       theme: "colored",
     });
-    const respuesta = await fetch(URL_API_AGP + "/api/Auth/Cliente", {
-      method: "GET",
-      headers: {
-        Authorization: "Bearer " + t,
-        "Content-Type": "application/json",
-      },
-    });
-
-    const result = await respuesta.json();
-    const data = result.Entities;
-    setCliente(data);
+   
+    
+    setCliente(client);
   };
 
-  const getAcidez = async () => {
-    const respuesta = await fetch(URL_API_AGP + "/api/Servicios/AcidezFruta", {
-      method: "GET",
-      headers: {
-        Authorization: "Bearer " + t,
-        "Content-Type": "application/json",
-      },
-    });
-
-    const result = await respuesta.json();
-    const data = await result.TotalCount;
-    setAcidez(data);
+  const getAcideces = async () => {
+    var acidez = await getAcidez(TOKEN);
+     setAcidez(acidez);
   };
 
-  const getRecepcion = async () => {
-    const respuesta = await fetch("https://service.agropraxisgroup.cl/api/Servicios/Recepciones", {
-      method: "GET",
-      headers: {
-        Authorization: "Bearer " + t,
-        "Content-Type": "application/json",
-      },
-    });
-
-    const result = await respuesta.json();
-    const data = await result.TotalCount;
-    console.log(data);
-    setRecep(data);
+  const getRecepciones = async () => {
+    const recep = await getRecepcion(TOKEN);
+   
+    setRecep(recep);
   };
 
   useEffect(() => {
     if (statuto) {
       setAuth(true);
     }
-    getRecepcion();
-    getMonitoreo();
-    getAcidez();
-    getCliente();
+    getRecepciones();
+    getMonitoreos();
+    getAcideces();
+    getClientes();
     
   }, []);
 
@@ -142,7 +112,7 @@ const Home = () => {
                       Total Acidez
                     </h3>
                     <span>
-                      <FiArrowRight /> {acidez} ( Activos )
+                      <FiArrowRight /> {acidez.TotalCount} ( Activos )
                     </span>
                   </div>
 
@@ -151,7 +121,7 @@ const Home = () => {
                       <MdMonitor style={{ fontSize: 23 }} /> Total Monitoreo
                     </h3>
                     <span>
-                      <FiArrowRight /> {nuevo} ( Activos )
+                      <FiArrowRight /> {nuevo.TotalCount} ( Activos )
                     </span>
                   </div>
 
@@ -160,10 +130,10 @@ const Home = () => {
                       <MdMonitor style={{ fontSize: 23 }} /> Recepciones
                     </h3>
                     <span>
-                      <FiArrowRight /> {recep} ( Activos )
+                      <FiArrowRight /> {recep.TotalCount} ( Activos )
                     </span>
                     <span>
-                      <FiArrowRight /> {(acidez + nuevo) - recep} ( Pendientes )
+                      <FiArrowRight /> {(acidez.TotalCount + nuevo.TotalCount) - recep.TotalCount} ( Pendientes )
                     </span>
                   </div>
                 </div>

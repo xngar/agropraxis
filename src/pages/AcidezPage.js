@@ -11,6 +11,7 @@ import { URL_API_AGP } from "../utilidades/constantes";
 import {AiOutlineEye} from "react-icons/ai"
 
 import ModalAcidez from "../componentes/ModalAcidez";
+import { getAcidez, getCliente } from "../utilidades/Servicios";
 
 
 const AcidezPage = () => {
@@ -28,34 +29,14 @@ const AcidezPage = () => {
 
   let info = [{}];
 
-  const getCliente = async () => {
-    const respuesta = await fetch(URL_API_AGP+"/api/Auth/Cliente", {
-      method: "GET",
-      headers: {
-        Authorization: "Bearer " + t,
-        "Content-Type": "application/json",
-      },
-    });
-
-    const result = await respuesta.json();
-    const data = result.Entities;
-    setCliente(data);
+  const getClientes = async () => {
+    const respuesta = await getCliente(t);
+    setCliente(respuesta);
   };
 
-  const getAcidez = async () => {
-    const respuesta = await fetch(URL_API_AGP + "/api/Servicios/AcidezFruta",
-      {
-        method: "GET",
-        headers: {
-          Authorization: "Bearer " + t,
-          "Content-Type": "application/json",
-        },
-      }
-    );
-
-    const result = await respuesta.json();
-    const data = await result.Entities;
-    setAcidez(data);
+  const getAcideces = async () => {
+    const respuesta = await getAcidez(t);
+    setAcidez(respuesta.Entities);
   };
 
   useEffect(() => {
@@ -63,8 +44,8 @@ const AcidezPage = () => {
       setAuth(true);
     }
 
-    getAcidez();
-    getCliente();
+    getAcideces();
+    getClientes();
   }, []);
 
   return (

@@ -13,6 +13,7 @@ import { URL_API_AGP } from "../utilidades/constantes";
 import { icons } from "react-icons";
 import {AiOutlineEye} from "react-icons/ai"
 import Modal from "../componentes/Modal";
+import { getCliente, getMonitoreo } from "../utilidades/Servicios";
 
 const MonitoreoPage = () => {
   const [nuevo, setDatos] = useState([]);
@@ -28,32 +29,14 @@ const MonitoreoPage = () => {
 
   let info = [{}];
 
-  const getMonitoreo = async () => {
-    const respuesta = await fetch(URL_API_AGP + "/api/Servicios/Monitoreos", {
-      method: "GET",
-      headers: {
-        Authorization: "Bearer " + t,
-        "Content-Type": "application/json",
-      },
-    });
-
-    const result = await respuesta.json();
-    const data = await result.Entities;
-    setDatos(data);
+  const getMonitoreos = async () => {
+    const respuesta = await getMonitoreo(t);
+    setDatos(respuesta.Entities);
   };
 
-  const getCliente = async () => {
-    const respuesta = await fetch(URL_API_AGP + "/api/Auth/Cliente", {
-      method: "GET",
-      headers: {
-        Authorization: "Bearer " + t,
-        "Content-Type": "application/json",
-      },
-    });
-
-    const result = await respuesta.json();
-    const data = result.Entities;
-    setCliente(data);
+  const getClientes = async () => {
+    const respuesta = await getCliente(t);
+    setCliente(respuesta);
   };
 
   useEffect(() => {
@@ -61,9 +44,9 @@ const MonitoreoPage = () => {
       setAuth(true);
     }
 
-    getMonitoreo();
+    getMonitoreos();
 
-    getCliente();
+    getClientes();
   }, []);
 
   return (

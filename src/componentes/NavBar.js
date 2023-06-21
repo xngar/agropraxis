@@ -23,8 +23,8 @@ const NavBar = ({ cliente }) => {
       <div className="perfil-contenedor">
       <div className="perfil">
         <img src="logo.png" width="100" />
-        {cliente &&
-          cliente.map((mapeo) => {
+        {cliente.Entities &&
+          cliente.Entities.map((mapeo) => {
             return (
               <div key={mapeo.Id}>
                 <h2>Perfil</h2>
