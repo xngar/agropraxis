@@ -8,11 +8,13 @@ import Acidez from "../componentes/Acidez";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { MdMonitor } from "react-icons/md";
-import { GiGrapes } from "react-icons/gi";
+import { GiGrapes, GiLemon } from "react-icons/gi";
 import { FiArrowRight } from "react-icons/fi";
 import { getMonitoreo, getCliente, getAcidez, getRecepcion } from "../utilidades/Servicios";
 
 import { URL_API_AGP } from "../utilidades/constantes";
+import { TbLemon } from "react-icons/tb";
+import { ImList } from "react-icons/im";
 
 const Home = () => {
   const [nuevo, setDatos] = useState(0);
@@ -108,7 +110,7 @@ var client = await getCliente(TOKEN);
                 <div className="contenedorCardDash">
                   <div className="cardDash">
                     <h3>
-                      <GiGrapes style={{ fontSize: 23 }} />
+                      <TbLemon style={{ fontSize: 23 }} />
                       Total Acidez
                     </h3>
                     <span>
@@ -127,7 +129,7 @@ var client = await getCliente(TOKEN);
 
                   <div className="cardDash">
                     <h3>
-                      <MdMonitor style={{ fontSize: 23 }} /> Recepciones
+                      <ImList style={{ fontSize: 23 }} /> Recepciones
                     </h3>
                     <span>
                       <FiArrowRight /> {recep.TotalCount} ( Activos )

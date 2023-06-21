@@ -18,7 +18,7 @@ export const getMonitoreo = async (token) => {
    return data;
   };
 // Servicio que retorna el cliente logueado
-  export const getCliente = async (token) => {
+export const getCliente = async (token) => {
    
     const respuesta = await fetch(URL_API_AGP + "/api/Auth/Cliente", {
       method: "GET",
@@ -33,8 +33,8 @@ export const getMonitoreo = async (token) => {
     return data;
   };
 
-  // Servicio que retorna la lista de Acidez de Frutas del cliente logueado
-  export const getAcidez = async (token) => {
+// Servicio que retorna la lista de Acidez de Frutas del cliente logueado
+export const getAcidez = async (token) => {
     const respuesta = await fetch(URL_API_AGP + "/api/Servicios/AcidezFruta", {
       method: "GET",
       headers: {
@@ -48,8 +48,8 @@ export const getMonitoreo = async (token) => {
     return data;
   };
 
-  // Servicio que retorna la lista de Recepciones del cliente logueado
-  export const getRecepcion = async (token) => {
+// Servicio que retorna la lista de Recepciones del cliente logueado
+export const getRecepcion = async (token) => {
     const respuesta = await fetch("https://service.agropraxisgroup.cl/api/Servicios/Recepciones", {
       method: "GET",
       headers: {

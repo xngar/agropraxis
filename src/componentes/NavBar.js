@@ -1,10 +1,12 @@
 import React from "react";
 import { VscAccount } from "react-icons/vsc";
 import { MdMonitor } from "react-icons/md";
-import { GiGrapes } from "react-icons/gi";
+import { GiGrapes, GiLemon } from "react-icons/gi";
 import {AiOutlineHome,AiFillCloseCircle} from "react-icons/ai"
 import "./NavBar.css";
 import { Link, useNavigate } from "react-router-dom";
+import { ImList } from "react-icons/im";
+import { TbLemon } from "react-icons/tb";
 
 const NavBar = ({ cliente }) => {
   const clientes = localStorage.getItem("cliente");
@@ -41,6 +43,12 @@ const NavBar = ({ cliente }) => {
        <Link to="/Home"> <li><span>
             <AiOutlineHome  style={{fontSize:23}}/>
           </span>Home</li></Link>
+          <Link to="/Recepciones"><li>
+          <span>
+            <ImList style={{fontSize:23}} />
+          </span>
+          Recepción de Muestras
+        </li></Link>
       <Link to="/Monitoreo"> <li>
           <span>
             <MdMonitor style={{fontSize:23}}/>
@@ -49,7 +57,7 @@ const NavBar = ({ cliente }) => {
         </li></Link>
         <Link to="/Acidez"><li>
           <span>
-            <GiGrapes style={{fontSize:23}} />
+            <TbLemon style={{fontSize:23}} />
           </span>
           Acidez de Frutos
         </li></Link>
