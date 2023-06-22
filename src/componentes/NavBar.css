@@ -33,9 +33,29 @@
     color:#333952;
 }
 
+.botonera2{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
 
 @media (max-width:1200px){
     .perfil{
         width: 93%;
+    }
+}
+
+@media (max-width:600px){
+    .perfil{
+        display: none;
+    }
+
+    .contenedor .izquierda {
+        width: 85vw;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        border-radius: 20px;
+        padding-bottom: 32px;
     }
 }

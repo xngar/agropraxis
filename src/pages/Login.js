@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import { URL_API_AGP } from "../utilidades/constantes";
+import {BsArrowRightCircleFill} from "react-icons/bs"
 
 const Login = () => {
   const user = {
@@ -88,9 +89,10 @@ const Login = () => {
             <h2>Bienvenidos </h2>
 
             <form onSubmit={(e) => handleEnviar(e)}>
-              <div className="mb-3">
-                <label className="form-label">Usuario</label>
+              <div className="mb-3 texto-login">
+              <label className="form-label"><span><BsArrowRightCircleFill style={{fontSize:20, color:'#00AF41'}}/> Usuario</span></label>
                 <input
+                
                   value={formulario.Usuario}
                   name="Usuario"
                   type="text"
@@ -100,8 +102,8 @@ const Login = () => {
                   onChange={(e) => handleForm(e)}
                 />
               </div>
-              <div className="mb-3">
-                <label className="form-label">Password</label>
+              <div className="mb-3 texto-login">
+                <label className="form-label"><span><BsArrowRightCircleFill style={{fontSize:20, color:'#00AF41'}}/> Password</span></label>
                 <input
                   value={formulario.Password}
                   name="Password"
@@ -112,7 +114,7 @@ const Login = () => {
                 />
               </div>
 
-              <button type="submit" className="btn btn-primary">
+              <button type="submit" className="btn btn-primary boton-ingreso">
                 Ingresar
               </button>
               <div>
