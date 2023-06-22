@@ -88,12 +88,13 @@ const NavBar = ({ cliente }) => {
 
          
         </div>
-      </div>
-      <div className="container">
+        <div className="container">
         <button className="btn btn-danger" onClick={cerrar}>
           <AiFillCloseCircle /> Cerrar Sesión
         </button>
       </div>
+      </div>
+      
     </div>
   );
 };
