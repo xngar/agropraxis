@@ -131,7 +131,7 @@ const Home = () => {
                     </span>
                     <span>
                       <FiArrowRight />{" "}
-                      {acidez.TotalCount + nuevo.TotalCount - recep.TotalCount}{" "}
+                      {recep.TotalCount -(acidez.TotalCount + nuevo.TotalCount )}{" "}
                       ( Pendientes )
                     </span>
                   </div>
