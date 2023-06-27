@@ -75,7 +75,7 @@ const Home = () => {
   
     cargarDatos();
   }, []);
-
+  const date = new Date()
   return (
     <>
       {statuto ? (
@@ -139,7 +139,7 @@ const Home = () => {
               </div>
             </div>
             <div className="footer">
-              <p>Copyright (c) 2023 </p>
+              <p>Copyright (c) {date.getFullYear()} </p>
               <p>UP Code E.I.R.L v2023.06.26</p>
               </div>
           </div>
