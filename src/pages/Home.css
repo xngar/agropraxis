@@ -210,8 +210,25 @@ h1{
        
         
     }
+
+  
     
     
+    
+}
+
+@media (max-width:1280px){
+    .footer{
+        color: white;
+        display: flex;
+        align-items: flex-end;
+        width: 100%;
+        height: 42.5vh;
+        justify-content: space-between;
+        flex-direction: row;
+        
+    
+    }
     
 }
 
