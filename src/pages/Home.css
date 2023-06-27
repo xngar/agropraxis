@@ -74,7 +74,18 @@ td{
     height: 46vh;
     justify-content: space-between;
     flex-direction: row;
+    
 
+}
+
+.footer div{
+    display: flex;
+    background-color: #303C8F;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    margin: 0;
+    z-index: 1000;
 }
 
 .contenedor .izquierda{
