@@ -138,7 +138,12 @@ const Home = () => {
                 </div>
               </div>
             </div>
+            <div className="footer">
+              <p>Copyright (c) 2023 </p>
+              <p>UP Code E.I.R.L v2023.06.26</p>
+              </div>
           </div>
+          
         </div>
       ) : (
         <Navigate to="/" />
