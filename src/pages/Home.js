@@ -17,7 +17,7 @@ import {
   getRecepcion,
 } from "../utilidades/Servicios";
 
-
+import { URL_API_AGP } from "../utilidades/constantes";
 import { TbLemon } from "react-icons/tb";
 import { ImList } from "react-icons/im";
 
@@ -72,9 +72,10 @@ const Home = () => {
       setAuth(true);
     }
 
+  
     cargarDatos();
   }, []);
-  const date = new Date();
+  const date = new Date()
   return (
     <>
       {statuto ? (
@@ -85,8 +86,6 @@ const Home = () => {
           </div>
           <div className="derecha">
             <div className="derecha-contenedor">
-              {/*Menu superior mensaje de bienvenida */}
-
               <div className="banner">
                 <div className="izq">
                   <h1>¡Bienvenido {nombreCliente}!</h1>
@@ -99,9 +98,6 @@ const Home = () => {
                   <img src="imagen-banner.png" height={120} />
                 </div>
               </div>
-
-              {/* Datos del Dashboard */}
-
               <div className="cont-datos">
                 {/* <Acidez className="acide" nuevo={acidez} /> */}
                 {/* <Monitoreos nuevo={nuevo} /> */}
@@ -135,8 +131,7 @@ const Home = () => {
                     </span>
                     <span>
                       <FiArrowRight />{" "}
-                      {recep.TotalCount -
-                        (acidez.TotalCount + nuevo.TotalCount)}{" "}
+                      {recep.TotalCount -(acidez.TotalCount + nuevo.TotalCount )}{" "}
                       ( Pendientes )
                     </span>
                   </div>
@@ -145,11 +140,12 @@ const Home = () => {
             </div>
             <div className="footer">
               <div>
-                <p>Copyright (c) {date.getFullYear()} </p>
-                <p>UP Code E.I.R.L v2023.06.26</p>
+              <p>Copyright (c) {date.getFullYear()} </p>
+              <p>UP Code E.I.R.L v2023.06.26</p>
               </div>
-            </div>
+              </div>
           </div>
+          
         </div>
       ) : (
         <Navigate to="/" />
