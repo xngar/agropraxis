@@ -1,0 +1,282 @@
+table{
+    background-color: white;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    
+}
+
+td{
+    text-transform: lowercase;
+    font-weight: bold;
+    color: #303C8F;
+
+}
+
+
+.hover-tabla:hover{
+    background: #e1dcfc;
+    border-radius: 20px;
+    
+}
+
+.banner{
+    height: 150px;
+    background-color: #333952;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    background-image: url("/public/banner-fondo.png");
+    background-size: 504px;
+    background-repeat: no-repeat;
+    background-position-x: 729px;
+    background-blend-mode: overlay;
+    background-position-y: -38px;
+    
+    
+    
+   
+}
+.banner div:nth-child(1){
+    
+    flex:1;
+}
+.banner-img{
+    margin-top: 0px;
+    background-image: url("/public/imagen-banner.png");
+    z-index: 100;
+}
+
+.banner h1,p{
+    color:white;
+}
+.banner p{
+    font-size: 18px;
+}
+
+
+
+.contenedor{
+    display: flex;
+    width: 100vw;
+    flex-direction: row;
+    height: 100vh;
+    /* gap:15px; */
+    background-color: #4a5378;
+    overflow-x: hidden;
+}
+
+.footer{
+    color: white;
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    height: 46.5vh;
+    justify-content: space-between;
+    flex-direction: row;
+    
+
+}
+
+.footer div{
+    display: flex;
+    background-color: #333952;
+    justify-content: space-between;
+    width: 110%;
+    padding: 10px;
+    margin: 0;
+    z-index: 1000;
+    margin-right: -3px;
+    height: 43px;
+}
+
+.contenedor .izquierda{
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: #333952; 
+}
+
+ul{
+    list-style: none;
+    margin-top: 10px;
+    margin-left: -20px;
+    
+    
+}
+
+a{
+    text-decoration: none;
+}
+
+ul span{
+    margin-right: 8px;
+    margin-left: 8px;
+    
+}
+
+li{
+    background: transparent;
+    border-radius: 10px;
+    padding: 5px;
+    width:94%;
+    margin-bottom: 10px;
+    color: white;
+    
+}
+
+li:hover{
+    background-color: #4A5378;
+}
+
+
+
+.derecha-contenedor{
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    margin-right: 10px;
+    margin-top:20px;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    margin-left: 20px;
+}
+
+
+.cont-datos{
+    width: 78vw;
+}
+
+h1{
+    color:#303C8F;
+}
+
+@media(max-width:1200px){
+    .contenedor{
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+        padding: 20px;
+       
+        
+    }
+    .cont-datos{
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .contenedor .izquierda{
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+    
+        
+    }
+    
+}
+.contenedorCardDash{
+    display: flex;
+    gap:15px;
+    flex-direction: row;
+    
+}
+
+.cardDash{
+    width: 50%;
+    border-radius: 10px;
+    padding: 20px;
+    background-color:#008A36;
+    color:white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.5) 0px 8px 16px -8px;
+}
+
+.cardDash > span{
+   
+    display: flex;
+    justify-content: end;
+    color:white;
+    font-size: 22px;
+    font-weight:bold;
+    align-items: center;
+}
+
+@media(max-width:992px){
+    .contenedor{
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+        padding: 20px;
+       
+        
+    }
+
+  
+    
+    
+    
+}
+
+@media (min-width:1280px){
+    .footer{
+        color: white;
+        display: flex;
+        align-items: flex-end;
+        width: 100%;
+        height: 42.5vh;
+        justify-content: space-between;
+        flex-direction: row;
+        
+    
+    }
+    
+}
+
+@media (max-width:1280px){
+    .footer{
+        color: white;
+        display: flex;
+        align-items: flex-end;
+        width: 100%;
+        height: 42.5vh;
+        justify-content: space-between;
+        flex-direction: row;
+        
+    
+    }
+    
+}
+
+
+
+@media(max-width:600px){
+    .contenedor{
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+        padding: 20px;
+       
+        
+    }
+
+    .contenedorCardDash{
+        display: flex;
+        gap:15px;
+        flex-direction: column;
+        
+    }
+
+    .cardDash{
+        width: 100%;
+        border-radius: 10px;
+        padding: 20px;
+        background-color:#008A36;
+        color:white;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.5) 0px 8px 16px -8px;
+    }
+    
+   
+    
+    
+    
+}
