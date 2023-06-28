@@ -66,12 +66,18 @@ td{
     overflow-x: hidden;
 }
 
+.derecha{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
 .footer{
     color: white;
     display: flex;
     align-items: flex-end;
     width: 100%;
-    height: 46.5vh;
+    height: 47vh;
     justify-content: space-between;
     flex-direction: row;
     
@@ -217,35 +223,9 @@ h1{
     
 }
 
-@media (min-width:1280px){
-    .footer{
-        color: white;
-        display: flex;
-        align-items: flex-end;
-        width: 100%;
-        height: 42.5vh;
-        justify-content: space-between;
-        flex-direction: row;
-        
-    
-    }
-    
-}
 
-@media (max-width:1280px){
-    .footer{
-        color: white;
-        display: flex;
-        align-items: flex-end;
-        width: 100%;
-        height: 42.5vh;
-        justify-content: space-between;
-        flex-direction: row;
-        
-    
-    }
-    
-}
+
+
 
 
 
