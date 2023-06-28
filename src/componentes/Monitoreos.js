@@ -12,7 +12,7 @@ const Monitoreos = ({ nuevo }) => {
   return (
     <div>
       <div className="monitoreo-titulo">
-        <h5>Monitoreos --</h5>
+        <h5>Monitoreos</h5>
       </div>
       <div className="table-responsive">
         <table className="table container">
