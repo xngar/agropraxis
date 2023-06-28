@@ -72,13 +72,13 @@ const AcidezPage = () => {
                           <th scope="col">Productor</th>
                           <th scope="col">Predio</th>
                           <th scope="col">Localidad</th>
-                          <th scope="col">Fecha Muestreo</th>
+                        
                           <th scope="col">Fecha Ingreso</th>
-                          <th scope="col">Fecha Análisis</th>
+                        
                           <th scope="col">Fecha Informe</th>
                           <th scope="col">Especie</th>
                           <th scope="col">Muestreador</th>
-                          <th scope="col">Observaciones</th>
+                         
                           <th scope="col">Informe</th>
                           <th scope="col">Resultados Acidez</th>
                         </tr>
@@ -102,13 +102,13 @@ const AcidezPage = () => {
                                 </td>
                                 <td style={{ textTransform: 'uppercase'}}>{acceso.Predio}</td>
                                 <td style={{ textTransform: 'uppercase'}}>{acceso.Localidad}</td>
-                                <td style={{ textTransform: 'uppercase'}}>{acceso.FechaMuestreo != null ? format(parseISO(acceso.FechaMuestreo), "dd/MM/yyyy") : ''}</td>
+                                
                                 <td style={{ textTransform: 'uppercase'}}>{acceso.FechaIngreso != null ? format(parseISO(acceso?.FechaIngreso), "dd/MM/yyyy") : ''}</td>
-                                <td style={{ textTransform: 'uppercase'}}>{format(parseISO(acceso?.FechaAnalisis), "dd/MM/yyyy")}</td>
+                                
                                 <td style={{ textTransform: 'uppercase'}}>{format(parseISO(acceso?.FechaInforme), "dd/MM/yyyy")}</td>
                                 <td style={{ textTransform: 'uppercase'}}>{acceso.Especie}</td>
                                 <td style={{ textTransform: 'uppercase'}}>{acceso.Muestreador}</td>
-                                <td style={{ textTransform: 'uppercase'}}>{acceso.Observaciones}</td>
+                              
                                
                                 <td style={{ textTransform: 'uppercase'}}>
                                   {acceso.InformeAdjunto ? (
