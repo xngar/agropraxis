@@ -80,12 +80,23 @@ const Home = () => {
     <>
       {statuto ? (
         <div className="contenedor">
+          
+          
+          {/* contenido sector izquierdo */}
           <div className="izquierda">
             <ToastContainer />
             <NavBar cliente={cliente} />
           </div>
+
+          {/* contenido sector derecho */}
+          {/* ********************************* */}
+          {/* ********************************** */}
+
           <div className="derecha">
             <div className="derecha-contenedor">
+              
+              
+              {/* titulo bienvenida  */}
               <div className="banner">
                 <div className="izq">
                   <h1>¡Bienvenido {nombreCliente}!</h1>
@@ -98,10 +109,11 @@ const Home = () => {
                   <img src="imagen-banner.png" height={120} />
                 </div>
               </div>
-              <div className="cont-datos">
-                {/* <Acidez className="acide" nuevo={acidez} /> */}
-                {/* <Monitoreos nuevo={nuevo} /> */}
 
+
+              {/* visualizacion de datos */}
+              <div className="cont-datos">
+                
                 <div className="contenedorCardDash">
                   <div className="cardDash">
                     <h3>
@@ -140,10 +152,10 @@ const Home = () => {
             </div>
             <div className="footer">
               <div>
-              <p>Copyright (c) {date.getFullYear()} </p>
-              <p>UP Code E.I.R.L v2023.06.26</p>
+                <p>Copyright (c) {date.getFullYear()} </p>
+                <p>UP Code E.I.R.L v2023.06.26</p>
               </div>
-              </div>
+            </div>
           </div>
           
         </div>

@@ -130,6 +130,11 @@ li:hover{
     background-color: #4A5378;
 }
 
+.derecha{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
 
 .derecha-contenedor{
