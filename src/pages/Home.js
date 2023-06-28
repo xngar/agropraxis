@@ -17,7 +17,7 @@ import {
   getRecepcion,
 } from "../utilidades/Servicios";
 
-import { URL_API_AGP } from "../utilidades/constantes";
+
 import { TbLemon } from "react-icons/tb";
 import { ImList } from "react-icons/im";
 
