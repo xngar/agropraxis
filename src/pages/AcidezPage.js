@@ -15,6 +15,10 @@ import { getAcidez, getCliente } from "../utilidades/Servicios";
 
 
 const AcidezPage = () => {
+
+
+  const [busqueda, setBusqueda] = useState("");
+
   const [nuevo, setDatos] = useState([]);
   const [acidez, setAcidez] = useState([]);
   const estado = useLocation().state;
@@ -38,6 +42,13 @@ const AcidezPage = () => {
     const respuesta = await getAcidez(t);
     setAcidez(respuesta.Entities);
   };
+
+  const fnBusqueda = (e)=>{
+     setBusqueda(e.target.value);
+     
+  }
+
+  const resultados = !busqueda ? acidez : acidez.filter((datos)=> datos.Productor.toLowerCase().includes(busqueda.toLowerCase()) || datos.Localidad.toLowerCase().includes(busqueda.toLowerCase()));
 
   useEffect(() => {
     if (statuto) {
@@ -63,6 +74,8 @@ const AcidezPage = () => {
                   <div className="acidez-titulo">
                   
                     <h3>Acidez de Fruta</h3>
+                    <input type="text" onChange={fnBusqueda} value={busqueda} placeholder="Ingresar Busqueda" className="form-control"/>
+                    <br/>
                   </div>
                   <div className="table-responsive">
                     <table className="table container">
@@ -85,7 +98,7 @@ const AcidezPage = () => {
                       </thead>
 
                       <tbody className="table-group-divider">
-                        {acidez?.sort((a,b)=> a.NumApg-b.NumApg).map((acceso) => {
+                        {resultados?.sort((a,b)=> a.NumApg-b.NumApg).map((acceso) => {
                          
 
                           return (
