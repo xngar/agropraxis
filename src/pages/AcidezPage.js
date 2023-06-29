@@ -6,7 +6,7 @@ import "./AcidezPage.css";
 import NavBar from "../componentes/NavBar";
 import Monitoreos from "../componentes/Monitoreos";
 import Acidez from "../componentes/Acidez";
-import { format, parseISO } from "date-fns";
+import { format, parseISO,isSameDay,parse } from "date-fns";
 import { URL_API_AGP } from "../utilidades/constantes";
 import {AiOutlineEye} from "react-icons/ai"
 
@@ -48,7 +48,10 @@ const AcidezPage = () => {
      
   }
 
-  const resultados = !busqueda ? acidez : acidez.filter((datos)=> datos.Productor.toLowerCase().includes(busqueda.toLowerCase()) || datos.Localidad.toLowerCase().includes(busqueda.toLowerCase()));
+  const resultados = !busqueda ? acidez : acidez.filter((datos)=> datos.Productor.toLowerCase().includes(busqueda.toLowerCase()) || datos.Localidad.toLowerCase().includes(busqueda.toLowerCase()) || datos.FechaInforme.includes(busqueda));
+  
+ 
+ 
 
   useEffect(() => {
     if (statuto) {
