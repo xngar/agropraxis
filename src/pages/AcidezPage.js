@@ -12,6 +12,8 @@ import {AiOutlineEye} from "react-icons/ai"
 
 import ModalAcidez from "../componentes/ModalAcidez";
 import { getAcidez, getCliente } from "../utilidades/Servicios";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 
 const AcidezPage = () => {
@@ -47,11 +49,38 @@ const AcidezPage = () => {
      setBusqueda(e.target.value);
      
   }
+  const [startDate, setStartDate] = useState(new Date());
+  const [fechSel , setFechaSel] = useState();
+  
+  // startDate.split('-').reverse().join('-')
+  
+  let fechaFormateado ="";
+  let nuevoFechaFormateado ="";
+   function diaSeleccionado(date){
+    fechaFormateado = obtenerFechaFormateada(date)
+   
+    setStartDate(date);
+    // nuevoFechaFormateado= fechaFormateado.split('-').reverse().join('-');
+    setFechaSel(fechaFormateado.split('-').reverse().join('-'));
+    
+   }
 
-  const resultados = !busqueda ? acidez : acidez.filter((datos)=> datos.Productor.toLowerCase().includes(busqueda.toLowerCase()) || datos.Localidad.toLowerCase().includes(busqueda.toLowerCase()) || datos.FechaInforme.includes(busqueda));
+
+ 
+
+   const obtenerFechaFormateada = (date) => {
+    const dia = format(date, "dd");
+    const mes = format(date, "MM");
+    const año = format(date, "yyyy");
+    return `${dia}-${mes}-${año}`;
+  };
+
+ 
+
+  const resultados = !busqueda ? acidez : acidez.filter((datos)=> datos.Productor.toLowerCase().includes(busqueda.toLowerCase()) || datos.Localidad.toLowerCase().includes(busqueda.toLowerCase()) || datos.FechaInforme.includes(fechSel));
   
  
- 
+  
 
   useEffect(() => {
     if (statuto) {
@@ -78,6 +107,7 @@ const AcidezPage = () => {
                   
                     <h3>Acidez de Fruta</h3>
                     <input type="text" onChange={fnBusqueda} value={busqueda} placeholder="Ingresar Busqueda" className="form-control"/>
+                    <DatePicker className="form-control" showYearDropdown  selected={startDate} onChange={(date) => diaSeleccionado(date)} dateFormat="dd-MM-yyyy"/>
                     <br/>
                   </div>
                   <div className="table-responsive">
