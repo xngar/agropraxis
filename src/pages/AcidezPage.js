@@ -50,7 +50,7 @@ const AcidezPage = () => {
      
   }
   const [startDate, setStartDate] = useState(new Date());
-  const [fechSel , setFechaSel] = useState();
+  const [fechSel , setFechaSel] = useState("");
   
   // startDate.split('-').reverse().join('-')
   
@@ -61,7 +61,8 @@ const AcidezPage = () => {
    
     setStartDate(date);
     // nuevoFechaFormateado= fechaFormateado.split('-').reverse().join('-');
-    setFechaSel(fechaFormateado.split('-').reverse().join('-'));
+    // setFechaSel(fechaFormateado.split('-').reverse().join('-'));
+     setBusqueda(fechaFormateado.split('-').reverse().join('-'));
     
    }
 
@@ -77,7 +78,7 @@ const AcidezPage = () => {
 
  
 
-  const resultados = !busqueda ? acidez : acidez.filter((datos)=> datos.Productor.toLowerCase().includes(busqueda.toLowerCase()) || datos.Localidad.toLowerCase().includes(busqueda.toLowerCase()) || datos.FechaInforme.includes(fechSel));
+  const resultados = !busqueda ? acidez : acidez.filter((datos)=> datos.Productor.toLowerCase().includes(busqueda.toLowerCase()) || datos.Localidad.toLowerCase().includes(busqueda.toLowerCase()) || datos.FechaInforme.includes(busqueda));
   
  
   
@@ -106,8 +107,11 @@ const AcidezPage = () => {
                   <div className="acidez-titulo">
                   
                     <h3>Acidez de Fruta</h3>
-                    
-                    <DatePicker className="form-control" showYearDropdown  selected={startDate} onChange={(date) => diaSeleccionado(date)} dateFormat="dd-MM-yyyy"/>
+                    <div className="contenedor-busqueda">
+                    <input type="text" className="form-control" placeholder="Ingrese su busqueda por Productor,Localidad o Fecha" value={busqueda} onChange={fnBusqueda} />
+                    <br></br>
+                    <DatePicker className="form-control" inline showYearDropdown  selected={startDate} onChange={(date) => diaSeleccionado(date)} dateFormat="dd-MM-yyyy"/>
+                    </div>
                     <br/>
                   </div>
                   <div className="table-responsive">
