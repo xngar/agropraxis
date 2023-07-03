@@ -8,3 +8,11 @@
     padding: 5px 14px;
     color: white;
 }
+
+.contenedor-busqueda{
+    display: flex;
+    height: 35px;
+    gap:10px;
+    margin-bottom: 200px;
+}
+
