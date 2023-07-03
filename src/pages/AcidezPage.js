@@ -14,6 +14,7 @@ import ModalAcidez from "../componentes/ModalAcidez";
 import { getAcidez, getCliente } from "../utilidades/Servicios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import {BsCalendarPlusFill} from "react-icons/bs"
 
 
 const AcidezPage = () => {
@@ -66,7 +67,8 @@ const AcidezPage = () => {
     
    }
 
-
+   
+   const [mostrarCalendario, setMostrarCalendario] = useState(false);
  
 
    const obtenerFechaFormateada = (date) => {
@@ -78,9 +80,12 @@ const AcidezPage = () => {
 
  
 
-  const resultados = !busqueda ? acidez : acidez.filter((datos)=> datos.Productor.toLowerCase().includes(busqueda.toLowerCase()) || datos.Localidad.toLowerCase().includes(busqueda.toLowerCase()) || datos.FechaInforme.includes(busqueda));
+  const resultados = !busqueda ? acidez : acidez.filter((datos)=> datos.Productor.toLowerCase().includes(busqueda.toLowerCase()) || datos.Localidad.toLowerCase().includes(busqueda.toLowerCase()) || datos.FechaIngreso.includes(busqueda));
   
- 
+ function fnMostrarCalendario()
+  {
+    setMostrarCalendario(!mostrarCalendario);
+  }
   
 
   useEffect(() => {
@@ -110,7 +115,14 @@ const AcidezPage = () => {
                     <div className="contenedor-busqueda">
                     <input type="text" className="form-control" placeholder="Ingrese su busqueda por Productor,Localidad o Fecha" value={busqueda} onChange={fnBusqueda} />
                     <br></br>
-                    <DatePicker className="form-control" inline showYearDropdown  selected={startDate} onChange={(date) => diaSeleccionado(date)} dateFormat="dd-MM-yyyy"/>
+                     <button onClick={fnMostrarCalendario} className="btn btn-primary" > Buscar por fecha de Informe Ingresado </button>
+                    {
+                      mostrarCalendario && (
+                        
+                        <DatePicker className="form-control" inline showYearDropdown  selected={startDate} onChange={(date) => diaSeleccionado(date)} dateFormat="dd-MM-yyyy"/>
+
+                      )
+                    }
                     </div>
                     <br/>
                   </div>
