@@ -8,7 +8,7 @@ import Monitoreos from "../componentes/Monitoreos";
 import Acidez from "../componentes/Acidez";
 import { format, parseISO,isSameDay,parse } from "date-fns";
 import { URL_API_AGP } from "../utilidades/constantes";
-import {AiOutlineEye} from "react-icons/ai"
+import {AiOutlineEye, AiOutlineSearch} from "react-icons/ai"
 
 import ModalAcidez from "../componentes/ModalAcidez";
 import { getAcidez, getCliente } from "../utilidades/Servicios";
@@ -106,7 +106,7 @@ const AcidezPage = () => {
                   <div className="acidez-titulo">
                   
                     <h3>Acidez de Fruta</h3>
-                    <input type="text" onChange={fnBusqueda} value={busqueda} placeholder="Ingresar Busqueda" className="form-control"/>
+                    
                     <DatePicker className="form-control" showYearDropdown  selected={startDate} onChange={(date) => diaSeleccionado(date)} dateFormat="dd-MM-yyyy"/>
                     <br/>
                   </div>
