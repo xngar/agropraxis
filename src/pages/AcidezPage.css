@@ -12,8 +12,25 @@
 .contenedor-busqueda{
     display: flex;
     height: 35px;
-    flex-direction: column;
+    flex-direction: row;
     margin-bottom: 50px;
+    gap: 20px;
    
 }
 
+.contenedor-input{
+    width: 70%;
+    
+}
+
+.contenedor-input input{
+    border:2px solid #333952;
+    border-radius: 20px;
+}
+
+input{
+    caret-color: red;
+    
+    
+     
+}

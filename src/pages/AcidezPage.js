@@ -64,6 +64,7 @@ const AcidezPage = () => {
     // nuevoFechaFormateado= fechaFormateado.split('-').reverse().join('-');
     // setFechaSel(fechaFormateado.split('-').reverse().join('-'));
      setBusqueda(fechaFormateado.split('-').reverse().join('-'));
+     setMostrarCalendario(false);
     
    }
 
@@ -113,13 +114,15 @@ const AcidezPage = () => {
                   
                     <h3>Acidez de Fruta</h3>
                     <div className="contenedor-busqueda">
+                    <div className="contenedor-input">
                     <input type="text" className="form-control" placeholder="Ingrese su busqueda por Productor,Localidad o Fecha" value={busqueda} onChange={fnBusqueda} />
+                    </div>
                     <br></br>
                      <button onClick={fnMostrarCalendario} className="btn btn-primary" > Buscar por fecha de Informe Ingresado </button>
                     {
                       mostrarCalendario && (
                         
-                        <DatePicker className="form-control" inline showYearDropdown  selected={startDate} onChange={(date) => diaSeleccionado(date)} dateFormat="dd-MM-yyyy"/>
+                        <DatePicker className="form-control"  inline showYearDropdown  selected={startDate} onChange={(date) => diaSeleccionado(date)} dateFormat="dd-MM-yyyy"/>
 
                       )
                     }
