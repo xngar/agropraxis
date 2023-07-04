@@ -11,14 +11,17 @@ import { ImDownload3 } from "react-icons/im";
 import { TbReport } from "react-icons/tb";
 import { URL_API_AGP } from "../utilidades/constantes";
 import { icons } from "react-icons";
-import {AiOutlineEye} from "react-icons/ai"
+import { AiOutlineEye } from "react-icons/ai"
 import Modal from "../componentes/Modal";
 import { getCliente, getRecepcion } from "../utilidades/Servicios";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const RecepcionesPage = () => {
   const [nuevo, setDatos] = useState([]);
   const [acidez, setAcidez] = useState([]);
   const estado = useLocation().state;
+  const [busqueda, setBusqueda] = useState("");
 
   const [auth, setAuth] = useState(false);
   const [cliente, setCliente] = useState([]);
@@ -39,6 +42,49 @@ const RecepcionesPage = () => {
     setCliente(respuesta);
   };
 
+
+  const fnBusqueda = (e) => {
+    setBusqueda(e.target.value);
+
+  }
+  const [startDate, setStartDate] = useState(new Date());
+  const [fechSel, setFechaSel] = useState("");
+
+  // startDate.split('-').reverse().join('-')
+
+  let fechaFormateado = "";
+  let nuevoFechaFormateado = "";
+  function diaSeleccionado(date) {
+    fechaFormateado = obtenerFechaFormateada(date)
+
+    setStartDate(date);
+    // nuevoFechaFormateado= fechaFormateado.split('-').reverse().join('-');
+    // setFechaSel(fechaFormateado.split('-').reverse().join('-'));
+    setBusqueda(fechaFormateado.split('-').reverse().join('-'));
+    setMostrarCalendario(false);
+
+  }
+
+
+  const [mostrarCalendario, setMostrarCalendario] = useState(false);
+
+
+  const obtenerFechaFormateada = (date) => {
+    const dia = format(date, "dd");
+    const mes = format(date, "MM");
+    const año = format(date, "yyyy");
+    return `${dia}-${mes}-${año}`;
+  };
+
+
+
+  const resultados = !busqueda ? nuevo : nuevo.filter((datos) => datos.Cliente.includes(busqueda) || datos.Productor.toLowerCase().includes(busqueda.toLowerCase()) || datos.Fecha.includes(busqueda));
+
+  function fnMostrarCalendario() {
+    setMostrarCalendario(!mostrarCalendario);
+  }
+
+
   useEffect(() => {
     if (statuto) {
       setAuth(true);
@@ -58,59 +104,73 @@ const RecepcionesPage = () => {
           </div>
           <div className="derecha">
             <div className="derecha-contenedor">
-             
+
               <div className="cont-datos">
                 <div>
                   <div className="monitoreo-titulo">
-                  
+
                     <h3>Recepciones</h3>
+                    <div className="contenedor-busqueda">
+                      <div className="contenedor-input">
+                        <input type="text" className="form-control" placeholder="Ingrese su busqueda por Productor,Localidad o Fecha" value={busqueda} onChange={fnBusqueda} />
+                      </div>
+                      <br></br>
+                      <button onClick={fnMostrarCalendario} className="btn btn-primary" > Buscar por fecha de Informe Ingresado </button>
+                      {
+                        mostrarCalendario && (
+
+                          <DatePicker className="form-control" inline showYearDropdown selected={startDate} onChange={(date) => diaSeleccionado(date)} dateFormat="dd-MM-yyyy" />
+
+                        )
+                      }
+                    </div>
                   </div>
                   <div className="table-responsive">
-                  <table className="table container">
+                    <table className="table container">
                       <thead>
                         <tr>
-                        <th scope="col">Fecha de Recepción</th>
-                        <th scope="col">Fecha de Muestreo</th>
-                        <th scope="col">Productor</th>
-                        <th scope="col">Cliente</th>
-                        <th scope="col">Predio</th>
-                        <th scope="col">Comuna</th>
-                        <th scope="col">Región</th>
-                        <th scope="col">Traido Por</th>
-                        <th scope="col">Tipo de Analisis</th>
+                          <th scope="col">Fecha de Recepción</th>
+                          <th scope="col">Fecha de Muestreo</th>
+                          <th scope="col">Productor</th>
+                          <th scope="col">Cliente</th>
+                          <th scope="col">Predio</th>
+                          <th scope="col">Comuna</th>
+                          <th scope="col">Región</th>
+                          <th scope="col">Traido Por</th>
+                          <th scope="col">Tipo de Analisis</th>
                         </tr>
                       </thead>
 
                       <tbody className="table-group-divider">
-                        {nuevo.map((servicio) => {
-                          
-                    return (<>
-                          <tr> 
-                           <td style={{ textTransform: 'uppercase' }}>{format(parseISO(servicio.FechaRecepcion), "dd/MM/yyyy")}</td>
-              <td style={{ textTransform: 'uppercase' }}>{format(parseISO(servicio.FechaMuestreo), "dd/MM/yyyy")}</td>
-              <td className="lcase" style={{ textTransform: 'uppercase' }}>
-                {servicio.Productor ? servicio.Productor : "Sin información"}
-              </td>
-              <td className="lcase" style={{ textTransform: 'uppercase' }}>
-                {servicio.Cliente ? servicio.Cliente : "Sin información"}
-              </td>
-              <td className="lcase" style={{ textTransform: 'uppercase' }}>
-                {servicio.Predio ? servicio.Predio : "Sin información"}
-              </td>
-              <td className="lcase" style={{ textTransform: 'uppercase' }}>
-                {servicio.Comuna ? servicio.Comuna : "Sin información"}
-              </td>
-              <td className="lcase" style={{ textTransform: 'uppercase' }}>
-                {servicio.Region ? servicio.Region : "Sin información"}
-              </td>
-              <td className="lcase" style={{ textTransform: 'uppercase' }}>
-                {servicio.TraidoPor ? servicio.TraidoPor : "Sin información"}
-              </td>
-              <td className="lcase" style={{ textTransform: 'uppercase' }}>
-                {servicio.TipoAnalisis ? servicio.TipoAnalisis : "Sin información"}
-              </td>
-                              </tr>
-                            </>
+                        {resultados.map((servicio) => {
+
+                          return (<>
+                            <tr>
+                              <td style={{ textTransform: 'uppercase' }}>{format(parseISO(servicio.FechaRecepcion), "dd/MM/yyyy")}</td>
+                              <td style={{ textTransform: 'uppercase' }}>{format(parseISO(servicio.FechaMuestreo), "dd/MM/yyyy")}</td>
+                              <td className="lcase" style={{ textTransform: 'uppercase' }}>
+                                {servicio.Productor ? servicio.Productor : "Sin información"}
+                              </td>
+                              <td className="lcase" style={{ textTransform: 'uppercase' }}>
+                                {servicio.Cliente ? servicio.Cliente : "Sin información"}
+                              </td>
+                              <td className="lcase" style={{ textTransform: 'uppercase' }}>
+                                {servicio.Predio ? servicio.Predio : "Sin información"}
+                              </td>
+                              <td className="lcase" style={{ textTransform: 'uppercase' }}>
+                                {servicio.Comuna ? servicio.Comuna : "Sin información"}
+                              </td>
+                              <td className="lcase" style={{ textTransform: 'uppercase' }}>
+                                {servicio.Region ? servicio.Region : "Sin información"}
+                              </td>
+                              <td className="lcase" style={{ textTransform: 'uppercase' }}>
+                                {servicio.TraidoPor ? servicio.TraidoPor : "Sin información"}
+                              </td>
+                              <td className="lcase" style={{ textTransform: 'uppercase' }}>
+                                {servicio.TipoAnalisis ? servicio.TipoAnalisis : "Sin información"}
+                              </td>
+                            </tr>
+                          </>
                           );
                         })}
                       </tbody>
