@@ -17,11 +17,12 @@ import { getCliente, getRecepcion } from "../utilidades/Servicios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
+
 const RecepcionesPage = () => {
   const [nuevo, setDatos] = useState([]);
   const [acidez, setAcidez] = useState([]);
   const estado = useLocation().state;
-  const [busqueda, setBusqueda] = useState("");
+  
 
   const [auth, setAuth] = useState(false);
   const [cliente, setCliente] = useState([]);
@@ -29,18 +30,9 @@ const RecepcionesPage = () => {
   const { state } = useLocation();
   const statuto = localStorage.status;
   const t = localStorage.getItem("token");
+  const [busqueda, setBusqueda] = useState("");
 
   let info = [{}];
-
-  const recepciones = async () => {
-    const respuesta = await getRecepcion(t);
-    setDatos(respuesta.Entities);
-  };
-
-  const getClientes = async () => {
-    const respuesta = await getCliente(t);
-    setCliente(respuesta);
-  };
 
 
   const fnBusqueda = (e) => {
@@ -78,11 +70,24 @@ const RecepcionesPage = () => {
 
 
 
-  const resultados = !busqueda ? nuevo : nuevo.filter((datos) => datos.Cliente.includes(busqueda) || datos.Productor.toLowerCase().includes(busqueda.toLowerCase()) || datos.Fecha.includes(busqueda));
+  const resultados = !busqueda ? nuevo : nuevo.filter((datos) => datos.Id.toString().includes(busqueda.toLowerCase()) || datos.Productor.toLowerCase().includes(busqueda.toLowerCase()) || datos.FechaRecepcion.includes(busqueda) );
 
   function fnMostrarCalendario() {
     setMostrarCalendario(!mostrarCalendario);
   }
+
+
+
+
+  const recepciones = async () => {
+    const respuesta = await getRecepcion(t);
+    setDatos(respuesta.Entities);
+  };
+
+  const getClientes = async () => {
+    const respuesta = await getCliente(t);
+    setCliente(respuesta);
+  };
 
 
   useEffect(() => {
@@ -124,11 +129,13 @@ const RecepcionesPage = () => {
                         )
                       }
                     </div>
+                   
                   </div>
                   <div className="table-responsive">
                     <table className="table container">
                       <thead>
                         <tr>
+                          <th scope="col">Número Recepción</th>
                           <th scope="col">Fecha de Recepción</th>
                           <th scope="col">Fecha de Muestreo</th>
                           <th scope="col">Productor</th>
@@ -142,10 +149,11 @@ const RecepcionesPage = () => {
                       </thead>
 
                       <tbody className="table-group-divider">
-                        {resultados.map((servicio) => {
+                        {resultados?.map((servicio) => {
 
                           return (<>
-                            <tr>
+                            <tr key={servicio.Id}>
+                            <td>{servicio.Id && servicio.Id}</td>
                               <td style={{ textTransform: 'uppercase' }}>{format(parseISO(servicio.FechaRecepcion), "dd/MM/yyyy")}</td>
                               <td style={{ textTransform: 'uppercase' }}>{format(parseISO(servicio.FechaMuestreo), "dd/MM/yyyy")}</td>
                               <td className="lcase" style={{ textTransform: 'uppercase' }}>
