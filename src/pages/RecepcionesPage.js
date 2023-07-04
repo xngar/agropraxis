@@ -69,6 +69,7 @@ const RecepcionesPage = () => {
                   <table className="table container">
                       <thead>
                         <tr>
+                          <th scope="col">Número Recepción</th>
                         <th scope="col">Fecha de Recepción</th>
                         <th scope="col">Fecha de Muestreo</th>
                         <th scope="col">Productor</th>
@@ -86,6 +87,7 @@ const RecepcionesPage = () => {
                           
                     return (<>
                           <tr> 
+                            <td>{servicio.Id}</td>
                            <td style={{ textTransform: 'uppercase' }}>{format(parseISO(servicio.FechaRecepcion), "dd/MM/yyyy")}</td>
               <td style={{ textTransform: 'uppercase' }}>{format(parseISO(servicio.FechaMuestreo), "dd/MM/yyyy")}</td>
               <td className="lcase" style={{ textTransform: 'uppercase' }}>
