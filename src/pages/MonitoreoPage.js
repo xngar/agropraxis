@@ -14,12 +14,14 @@ import { icons } from "react-icons";
 import {AiOutlineEye} from "react-icons/ai"
 import Modal from "../componentes/Modal";
 import { getCliente, getMonitoreo } from "../utilidades/Servicios";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const MonitoreoPage = () => {
   const [nuevo, setDatos] = useState([]);
   const [acidez, setAcidez] = useState([]);
   const estado = useLocation().state;
-
+  const [busqueda, setBusqueda] = useState("");
   const [auth, setAuth] = useState(false);
   const [cliente, setCliente] = useState([]);
 
@@ -38,6 +40,48 @@ const MonitoreoPage = () => {
     const respuesta = await getCliente(t);
     setCliente(respuesta);
   };
+
+  const fnBusqueda = (e) => {
+    setBusqueda(e.target.value);
+
+  }
+  const [startDate, setStartDate] = useState(new Date());
+  const [fechSel, setFechaSel] = useState("");
+
+  // startDate.split('-').reverse().join('-')
+
+  let fechaFormateado = "";
+  let nuevoFechaFormateado = "";
+  function diaSeleccionado(date) {
+    fechaFormateado = obtenerFechaFormateada(date)
+
+    setStartDate(date);
+    // nuevoFechaFormateado= fechaFormateado.split('-').reverse().join('-');
+    // setFechaSel(fechaFormateado.split('-').reverse().join('-'));
+    setBusqueda(fechaFormateado.split('-').reverse().join('-'));
+    setMostrarCalendario(false);
+
+  }
+
+
+  const [mostrarCalendario, setMostrarCalendario] = useState(false);
+
+
+  const obtenerFechaFormateada = (date) => {
+    const dia = format(date, "dd");
+    const mes = format(date, "MM");
+    const año = format(date, "yyyy");
+    return `${dia}-${mes}-${año}`;
+  };
+
+
+
+  const resultados = !busqueda ? nuevo : nuevo.filter((datos) => datos.NumAPG.toString().includes(busqueda) || datos.Productor.toLowerCase().includes(busqueda.toLowerCase()) || datos.Fecha.includes(busqueda));
+
+  function fnMostrarCalendario() {
+    setMostrarCalendario(!mostrarCalendario);
+  }
+
 
   useEffect(() => {
     if (statuto) {
@@ -64,6 +108,20 @@ const MonitoreoPage = () => {
                   <div className="monitoreo-titulo">
                   
                     <h3>Monitoreos</h3>
+                    <div className="contenedor-busqueda">
+                      <div className="contenedor-input">
+                        <input type="text" className="form-control" placeholder="Ingrese su busqueda por Productor,Localidad o Fecha" value={busqueda} onChange={fnBusqueda} />
+                      </div>
+                      <br></br>
+                      <button onClick={fnMostrarCalendario} className="btn btn-primary" > Buscar por fecha de Informe Ingresado </button>
+                      {
+                        mostrarCalendario && (
+
+                          <DatePicker className="form-control" inline showYearDropdown selected={startDate} onChange={(date) => diaSeleccionado(date)} dateFormat="dd-MM-yyyy" />
+
+                        )
+                      }
+                    </div>
                   </div>
                   <div className="table-responsive">
                     <table className="table container">
@@ -84,13 +142,14 @@ const MonitoreoPage = () => {
                       </thead>
 
                       <tbody className="table-group-divider">
-                        {nuevo.map((acceso) => {
+                        {resultados.map((acceso) => {
                           
                     return (<>
                             <Modal info={acceso} id={acceso.Id} />
                               <tr className="hover-tabla" key={acceso.Id}>
                                 <td scope="row">
                                   {acceso.NumAPG}
+                                  
                                 </td>
                                 <td className="lcase" style={{ textTransform: 'uppercase'}}>
                                   {acceso.Productor

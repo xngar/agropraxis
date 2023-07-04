@@ -6,15 +6,15 @@ import "./AcidezPage.css";
 import NavBar from "../componentes/NavBar";
 import Monitoreos from "../componentes/Monitoreos";
 import Acidez from "../componentes/Acidez";
-import { format, parseISO,isSameDay,parse } from "date-fns";
+import { format, parseISO, isSameDay, parse } from "date-fns";
 import { URL_API_AGP } from "../utilidades/constantes";
-import {AiOutlineEye, AiOutlineSearch} from "react-icons/ai"
+import { AiOutlineEye, AiOutlineSearch } from "react-icons/ai"
 
 import ModalAcidez from "../componentes/ModalAcidez";
 import { getAcidez, getCliente } from "../utilidades/Servicios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import {BsCalendarPlusFill} from "react-icons/bs"
+import { BsCalendarPlusFill } from "react-icons/bs"
 
 
 const AcidezPage = () => {
@@ -46,48 +46,47 @@ const AcidezPage = () => {
     setAcidez(respuesta.Entities);
   };
 
-  const fnBusqueda = (e)=>{
-     setBusqueda(e.target.value);
-     
+  const fnBusqueda = (e) => {
+    setBusqueda(e.target.value);
+
   }
   const [startDate, setStartDate] = useState(new Date());
-  const [fechSel , setFechaSel] = useState("");
-  
+  const [fechSel, setFechaSel] = useState("");
+
   // startDate.split('-').reverse().join('-')
-  
-  let fechaFormateado ="";
-  let nuevoFechaFormateado ="";
-   function diaSeleccionado(date){
+
+  let fechaFormateado = "";
+  let nuevoFechaFormateado = "";
+  function diaSeleccionado(date) {
     fechaFormateado = obtenerFechaFormateada(date)
-   
+
     setStartDate(date);
     // nuevoFechaFormateado= fechaFormateado.split('-').reverse().join('-');
     // setFechaSel(fechaFormateado.split('-').reverse().join('-'));
-     setBusqueda(fechaFormateado.split('-').reverse().join('-'));
-     setMostrarCalendario(false);
-    
-   }
+    setBusqueda(fechaFormateado.split('-').reverse().join('-'));
+    setMostrarCalendario(false);
 
-   
-   const [mostrarCalendario, setMostrarCalendario] = useState(false);
- 
+  }
 
-   const obtenerFechaFormateada = (date) => {
+
+  const [mostrarCalendario, setMostrarCalendario] = useState(false);
+
+
+  const obtenerFechaFormateada = (date) => {
     const dia = format(date, "dd");
     const mes = format(date, "MM");
     const año = format(date, "yyyy");
     return `${dia}-${mes}-${año}`;
   };
 
- 
 
-  const resultados = !busqueda ? acidez : acidez.filter((datos)=> datos.Productor.toLowerCase().includes(busqueda.toLowerCase()) || datos.Localidad.toLowerCase().includes(busqueda.toLowerCase()) || datos.FechaIngreso.includes(busqueda));
-  
- function fnMostrarCalendario()
-  {
+
+  const resultados = !busqueda ? acidez : acidez.filter((datos) => datos.Productor.toLowerCase().includes(busqueda.toLowerCase()) || datos.Localidad.toLowerCase().includes(busqueda.toLowerCase()) || datos.FechaIngreso.includes(busqueda));
+
+  function fnMostrarCalendario() {
     setMostrarCalendario(!mostrarCalendario);
   }
-  
+
 
   useEffect(() => {
     if (statuto) {
@@ -107,27 +106,27 @@ const AcidezPage = () => {
           </div>
           <div className="derecha">
             <div className="derecha-contenedor">
-            
+
               <div className="cont-datos">
                 <div>
                   <div className="acidez-titulo">
-                  
+
                     <h3>Acidez de Fruta</h3>
                     <div className="contenedor-busqueda">
-                    <div className="contenedor-input">
-                    <input type="text" className="form-control" placeholder="Ingrese su busqueda por Productor,Localidad o Fecha" value={busqueda} onChange={fnBusqueda} />
-                    </div>
-                    <br></br>
-                     <button onClick={fnMostrarCalendario} className="btn btn-primary" > Buscar por fecha de Informe Ingresado </button>
-                    {
-                      mostrarCalendario && (
-                        
-                        <DatePicker className="form-control"  inline showYearDropdown  selected={startDate} onChange={(date) => diaSeleccionado(date)} dateFormat="dd-MM-yyyy"/>
+                      <div className="contenedor-input">
+                        <input type="text" className="form-control" placeholder="Ingrese su busqueda por Productor,Localidad o Fecha" value={busqueda} onChange={fnBusqueda} />
+                      </div>
+                      <br></br>
+                      <button onClick={fnMostrarCalendario} className="btn btn-primary" > Buscar por fecha de Informe Ingresado </button>
+                      {
+                        mostrarCalendario && (
 
-                      )
-                    }
+                          <DatePicker className="form-control" inline showYearDropdown selected={startDate} onChange={(date) => diaSeleccionado(date)} dateFormat="dd-MM-yyyy" />
+
+                        )
+                      }
                     </div>
-                    <br/>
+                    <br />
                   </div>
                   <div className="table-responsive">
                     <table className="table container">
@@ -137,45 +136,45 @@ const AcidezPage = () => {
                           <th scope="col">Productor</th>
                           <th scope="col">Predio</th>
                           <th scope="col">Localidad</th>
-                        
+
                           <th scope="col">Fecha Ingreso</th>
-                        
+
                           <th scope="col">Fecha Informe</th>
                           <th scope="col">Especie</th>
                           <th scope="col">Muestreador</th>
-                         
+
                           <th scope="col">Informe</th>
                           <th scope="col">Resultados Acidez</th>
                         </tr>
                       </thead>
 
                       <tbody className="table-group-divider">
-                        {resultados?.sort((a,b)=> a.NumApg-b.NumApg).map((acceso) => {
-                         
+                        {resultados?.sort((a, b) => a.NumApg - b.NumApg).map((acceso) => {
+
 
                           return (
                             <>
-                            <ModalAcidez info={acceso} id={acceso.Id}/> 
+                              <ModalAcidez info={acceso} id={acceso.Id} />
                               <tr key={acceso.Id}>
                                 <td scope="row">
                                   {acceso.NumApg}
                                 </td>
-                                <td className="lcase" style={{ textTransform: 'uppercase'}}>
+                                <td className="lcase" style={{ textTransform: 'uppercase' }}>
                                   {acceso.Productor
                                     ? acceso.Productor
                                     : "Sin información"}
                                 </td>
-                                <td style={{ textTransform: 'uppercase'}}>{acceso.Predio}</td>
-                                <td style={{ textTransform: 'uppercase'}}>{acceso.Localidad}</td>
-                                
-                                <td style={{ textTransform: 'uppercase'}}>{acceso.FechaIngreso != null ? format(parseISO(acceso?.FechaIngreso), "dd/MM/yyyy") : ''}</td>
-                                
-                                <td style={{ textTransform: 'uppercase'}}>{format(parseISO(acceso?.FechaInforme), "dd/MM/yyyy")}</td>
-                                <td style={{ textTransform: 'uppercase'}}>{acceso.Especie}</td>
-                                <td style={{ textTransform: 'uppercase'}}>{acceso.Muestreador}</td>
-                              
-                               
-                                <td style={{ textTransform: 'uppercase'}}>
+                                <td style={{ textTransform: 'uppercase' }}>{acceso.Predio}</td>
+                                <td style={{ textTransform: 'uppercase' }}>{acceso.Localidad}</td>
+
+                                <td style={{ textTransform: 'uppercase' }}>{acceso.FechaIngreso != null ? format(parseISO(acceso?.FechaIngreso), "dd/MM/yyyy") : ''}</td>
+
+                                <td style={{ textTransform: 'uppercase' }}>{format(parseISO(acceso?.FechaInforme), "dd/MM/yyyy")}</td>
+                                <td style={{ textTransform: 'uppercase' }}>{acceso.Especie}</td>
+                                <td style={{ textTransform: 'uppercase' }}>{acceso.Muestreador}</td>
+
+
+                                <td style={{ textTransform: 'uppercase' }}>
                                   {acceso.InformeAdjunto ? (
                                     <a target="_blank" href={process.env.REACT_APP_API_PATH + acceso.InformeAdjunto}>
                                       {" "}
@@ -186,10 +185,10 @@ const AcidezPage = () => {
                                   )}
                                 </td>
                                 <td style={{ textTransform: 'uppercase' }}>
-                                <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target={"#exampleModalAcidez"+acceso.Id}>
-                                  <AiOutlineEye style={{ fontSize: 24 }} />
-                                </button>
-                              </td>
+                                  <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target={"#exampleModalAcidez" + acceso.Id}>
+                                    <AiOutlineEye style={{ fontSize: 24 }} />
+                                  </button>
+                                </td>
                               </tr>
                             </>
                           );
