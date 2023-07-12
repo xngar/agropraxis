@@ -15,6 +15,7 @@ import { getAcidez, getCliente } from "../utilidades/Servicios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { BsCalendarPlusFill } from "react-icons/bs"
+import ModalImagenes from "../componentes/ModalImagenes";
 
 
 const AcidezPage = () => {
@@ -145,6 +146,7 @@ const AcidezPage = () => {
 
                           <th scope="col">Informe</th>
                           <th scope="col">Resultados Acidez</th>
+                          <th scope="col">Evidencias</th>
                         </tr>
                       </thead>
 
@@ -155,6 +157,7 @@ const AcidezPage = () => {
                           return (
                             <>
                               <ModalAcidez info={acceso} id={acceso.Id} />
+                              <ModalImagenes info={acceso} id = {acceso.Id} />
                               <tr key={acceso.Id}>
                                 <td scope="row">
                                   {acceso.NumApg}
@@ -189,6 +192,14 @@ const AcidezPage = () => {
                                     <AiOutlineEye style={{ fontSize: 24 }} />
                                   </button>
                                 </td>
+                                <td style={{ textTransform: 'uppercase' }}>
+                                  <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target={"#exampleModalImagenes" + acceso.Id}>
+                                    <AiOutlineEye style={{ fontSize: 24 }} />
+                                  </button>
+                                </td>
+                                
+
+                            
                               </tr>
                             </>
                           );
