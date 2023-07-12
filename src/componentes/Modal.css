@@ -23,3 +23,23 @@
     outline: 0;
     /* justify-content: center; */
 }
+
+.contenedor-imagenes{
+    display: flex;
+    flex-direction: row;
+    gap:10px
+}
+
+.contenedor-imagen{
+    width: 280px;
+    height: 250px;
+
+    
+
+}
+
+.contenedor-imagen img{
+    width: 280px;
+    height: 250px;
+    object-fit: cover;
+}
