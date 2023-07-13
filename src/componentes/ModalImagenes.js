@@ -49,7 +49,14 @@ const ModalImagenes = ({ info, id }) => {
                      
                     )
 
+
                   })}
+
+                  {
+                    evidencia ==false? "No hay imágenes disponibles":"" 
+                  }
+
+
                </div>
             </div>
 
