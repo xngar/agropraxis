@@ -1,5 +1,6 @@
 import React from "react";
 import "./Modal.css"
+import {IoNewspaperOutline} from "react-icons/io5"
 
 const ModalAcidez = ({ info, id }) => {
    
@@ -16,7 +17,7 @@ const ModalAcidez = ({ info, id }) => {
         <div className="modal-content">
           <div className="modal-header">
             <h1 className="modal-title fs-5" id={"exampleModalLabel"+id}>
-              Resultados Acidez
+             <IoNewspaperOutline/> Resultados Acidez
             </h1>
             <button
               type="button"

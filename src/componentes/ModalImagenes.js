@@ -1,5 +1,6 @@
 import React from "react";
 import "./Modal.css"
+import {BsImages} from "react-icons/bs"
 
 const ModalImagenes = ({ info, id }) => {
 
@@ -20,7 +21,7 @@ const ModalImagenes = ({ info, id }) => {
         <div className="modal-content">
           <div className="modal-header">
             <h1 className="modal-title fs-5" id={"exampleModalLabel" + id}>
-              Resultados Imágenes
+             <BsImages/> Evidencias
             </h1>
             <button
               type="button"

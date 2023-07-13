@@ -15,7 +15,9 @@ import { getAcidez, getCliente } from "../utilidades/Servicios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { BsCalendarPlusFill } from "react-icons/bs"
+import { MdFileDownload,MdFileDownloadOff } from "react-icons/md"
 import ModalImagenes from "../componentes/ModalImagenes";
+import { TbLemon } from "react-icons/tb";
 
 
 const AcidezPage = () => {
@@ -112,7 +114,7 @@ const AcidezPage = () => {
                 <div>
                   <div className="acidez-titulo">
 
-                    <h3>Acidez de Fruta</h3>
+                  <h3> <TbLemon style={{ fontSize: 23 }} /> Acidez de Fruta</h3>
                     <div className="contenedor-busqueda">
                       <div className="contenedor-input">
                         <input type="text" className="form-control" placeholder="Ingrese su busqueda por Productor,Localidad o Fecha" value={busqueda} onChange={fnBusqueda} />
@@ -180,11 +182,13 @@ const AcidezPage = () => {
                                 <td style={{ textTransform: 'uppercase' }}>
                                   {acceso.InformeAdjunto ? (
                                     <a target="_blank" href={process.env.REACT_APP_API_PATH + acceso.InformeAdjunto}>
-                                      {" "}
-                                      Descargar Informe
+                                     
+                                    <MdFileDownload style={{ fontSize: 24}} />
+                                 
                                     </a>
                                   ) : (
-                                    <p style={{ color: "red" }}>En Proceso</p>
+                                    
+                                    <MdFileDownloadOff style={{ fontSize: 24, color:"#adadad" }} />
                                   )}
                                 </td>
                                 <td style={{ textTransform: 'uppercase' }}>

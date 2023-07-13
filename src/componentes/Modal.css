@@ -27,7 +27,9 @@
 .contenedor-imagenes{
     display: flex;
     flex-direction: row;
-    gap:10px
+    gap:10px;
+    width: 900px;
+    flex-wrap: wrap;
 }
 
 .contenedor-imagen{
