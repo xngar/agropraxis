@@ -183,7 +183,7 @@ const AcidezPage = () => {
                                   {acceso.InformeAdjunto ? (
                                     <a target="_blank" href={process.env.REACT_APP_API_PATH + acceso.InformeAdjunto}>
                                      
-                                    <MdFileDownload style={{ fontSize: 24}} />
+                                    <MdFileDownload style={{ fontSize: 24}} title="Descargar" />
                                  
                                     </a>
                                   ) : (
@@ -191,14 +191,17 @@ const AcidezPage = () => {
                                     <MdFileDownloadOff style={{ fontSize: 24, color:"#adadad" }} />
                                   )}
                                 </td>
+
+                                
                                 <td style={{ textTransform: 'uppercase' }}>
                                   <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target={"#exampleModalAcidez" + acceso.Id}>
                                     <AiOutlineEye style={{ fontSize: 24 }} />
                                   </button>
                                 </td>
+
                                 <td style={{ textTransform: 'uppercase' }}>
                                   <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target={"#exampleModalImagenes" + acceso.Id}>
-                                    <AiOutlineEye style={{ fontSize: 24 }} />
+                                    <AiOutlineEye style={{ fontSize: 24 }} title="Evidencias Encontradas" />
                                   </button>
                                 </td>
                                 
