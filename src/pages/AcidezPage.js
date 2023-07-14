@@ -15,7 +15,7 @@ import { getAcidez, getCliente } from "../utilidades/Servicios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { BsCalendarPlusFill } from "react-icons/bs"
-import { MdFileDownload,MdFileDownloadOff } from "react-icons/md"
+import { MdFileDownload, MdFileDownloadOff } from "react-icons/md"
 import ModalImagenes from "../componentes/ModalImagenes";
 import { TbLemon } from "react-icons/tb";
 
@@ -91,6 +91,37 @@ const AcidezPage = () => {
   }
 
 
+  const calcular = () => {
+
+  
+    // console.log(resultados.map(mapeo => mapeo.ListaResultados));
+    
+    let sumFut = resultados.map((mapeo) => mapeo.ListaResultados).filter((lista) => lista?.length > 0); // Filtrar las listas que tienen contenido
+    
+    console.log(sumFut);
+    let sumatoria = 0;
+    // console.log(sumFut.map(mapeo => mapeo.map(resultados => resultados.JugoPeso)));
+    // let resultadoSum = sumFut.map(mapeo => mapeo.map(resultados => resultados.PesosFrutos.map(pf => pf.Peso)))
+    let resultadoSum = sumFut.map(mapeo => mapeo.map(resultados => resultados.PesosFrutos.map(pf => {
+      return sumatoria += pf.Peso
+      console.log(sumatoria );
+    }
+      
+      )))
+
+    
+    // let sumatoriaTotal = resultadoSum.reduce(acc,el,0);
+    
+    console.log("estamos aca");
+    // console.log((sumatoria / JugoPeso) * 100);
+
+   
+
+  }
+
+
+
+
   useEffect(() => {
     if (statuto) {
       setAuth(true);
@@ -98,6 +129,8 @@ const AcidezPage = () => {
 
     getAcideces();
     getClientes();
+
+    calcular();
   }, []);
 
   return (
@@ -114,7 +147,7 @@ const AcidezPage = () => {
                 <div>
                   <div className="acidez-titulo">
 
-                  <h3> <TbLemon style={{ fontSize: 23 }} /> Acidez de Fruta</h3>
+                    <h3> <TbLemon style={{ fontSize: 23 }} /> Acidez de Fruta</h3>
                     <div className="contenedor-busqueda">
                       <div className="contenedor-input">
                         <input type="text" className="form-control" placeholder="Ingrese su busqueda por Productor,Localidad o Fecha" value={busqueda} onChange={fnBusqueda} />
@@ -159,7 +192,7 @@ const AcidezPage = () => {
                           return (
                             <>
                               <ModalAcidez info={acceso} id={acceso.Id} />
-                              <ModalImagenes info={acceso} id = {acceso.Id} />
+                              <ModalImagenes info={acceso} id={acceso.Id} />
                               <tr key={acceso.Id}>
                                 <td scope="row">
                                   {acceso.NumApg}
@@ -182,17 +215,17 @@ const AcidezPage = () => {
                                 <td style={{ textTransform: 'uppercase' }}>
                                   {acceso.InformeAdjunto ? (
                                     <a target="_blank" href={process.env.REACT_APP_API_PATH + acceso.InformeAdjunto}>
-                                     
-                                    <MdFileDownload style={{ fontSize: 24}} title="Descargar" />
-                                 
+
+                                      <MdFileDownload style={{ fontSize: 24 }} title="Descargar" />
+
                                     </a>
                                   ) : (
-                                    
-                                    <MdFileDownloadOff style={{ fontSize: 24, color:"#adadad" }} />
+
+                                    <MdFileDownloadOff style={{ fontSize: 24, color: "#adadad" }} />
                                   )}
                                 </td>
 
-                                
+
                                 <td style={{ textTransform: 'uppercase' }}>
                                   <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target={"#exampleModalAcidez" + acceso.Id}>
                                     <AiOutlineEye style={{ fontSize: 24 }} />
@@ -204,9 +237,9 @@ const AcidezPage = () => {
                                     <AiOutlineEye style={{ fontSize: 24 }} title="Evidencias Encontradas" />
                                   </button>
                                 </td>
-                                
 
-                            
+
+
                               </tr>
                             </>
                           );
