@@ -51,7 +51,7 @@ const ModalAcidez = ({ info, id }) => {
                          var sumaPesoFruto = 0.0;
                       mapeo.PesosFrutos.map(x => {
                         // sumo los pesos de los frutos
-                        return sumaPesoFruto += x.Peso;
+                         sumaPesoFruto += x.Peso;
                       });
                        // meto el peso del jugo que viene desde el servicio en una variable para realizar el cálculo
                        let pesoJugo = mapeo.JugoPeso;
