@@ -3,7 +3,7 @@ import "./Modal.css"
 import {IoNewspaperOutline} from "react-icons/io5"
 
 const ModalAcidez = ({ info, id }) => {
-   
+  
   return (
     <div
     className="modal fade"
@@ -47,8 +47,18 @@ const ModalAcidez = ({ info, id }) => {
                     <tbody>
                   
                    {info.ListaResultados.map(mapeo=>{
-                         
-                   
+                     // creo una variable para guardar la suma de los pesos de los frutos
+                         var sumaPesoFruto = 0.0;
+                      mapeo.PesosFrutos.map(x => {
+                        // sumo los pesos de los frutos
+                        return sumaPesoFruto += x.Peso;
+                      });
+                       // meto el peso del jugo que viene desde el servicio en una variable para realizar el cálculo
+                       let pesoJugo = mapeo.JugoPeso;
+                       // saco el calculo del porcentaje
+                      var porcentajeJugo = (pesoJugo / sumaPesoFruto) * 100;
+                      mapeo.JugoPeso = porcentajeJugo;
+
                         return(
                             <tr>
                             
@@ -56,7 +66,7 @@ const ModalAcidez = ({ info, id }) => {
                             <td>{mapeo.Cuartel}</td>
                             <td>{mapeo.NumFrutos}</td>
                             <td>{mapeo.PesoPromedio}</td>
-                            <td>{mapeo.JugoPeso}</td>
+                            <td>{mapeo.JugoPeso.toFixed(2)}</td>
                             <td>{mapeo.SolidosSolubles}</td>
                             <td>{mapeo.Acidez}</td>
                             <td>{mapeo.Relacion}</td>
