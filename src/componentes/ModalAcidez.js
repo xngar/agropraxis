@@ -49,14 +49,15 @@ const ModalAcidez = ({ info, id }) => {
                    {info.ListaResultados.map(mapeo=>{
                      // creo una variable para guardar la suma de los pesos de los frutos
                          var sumaPesoFruto = 0.0;
-                      mapeo.PesosFrutos.map(x => {
-                        // sumo los pesos de los frutos
-                         sumaPesoFruto += x.Peso;
+                      mapeo.PesosFrutos.forEach(element => {
+                       // sumo los pesos de los frutos
+                         sumaPesoFruto += element.Peso;
                       });
                        // meto el peso del jugo que viene desde el servicio en una variable para realizar el cálculo
                        let pesoJugo = mapeo.JugoPeso;
                        // saco el calculo del porcentaje
                       var porcentajeJugo = (pesoJugo / sumaPesoFruto) * 100;
+                      //seteamo el JugoPeso por el porcentaje
                       mapeo.JugoPeso = porcentajeJugo;
 
                         return(
