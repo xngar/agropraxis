@@ -92,28 +92,29 @@ const AcidezPage = () => {
 
 
   const calcular = () => {
-
-  
-    // console.log(resultados.map(mapeo => mapeo.ListaResultados));
-    
+ 
     let sumFut = resultados.map((mapeo) => mapeo.ListaResultados).filter((lista) => lista?.length > 0); // Filtrar las listas que tienen contenido
-    
-    console.log(sumFut);
     let sumatoria = 0;
     // console.log(sumFut.map(mapeo => mapeo.map(resultados => resultados.JugoPeso)));
     // let resultadoSum = sumFut.map(mapeo => mapeo.map(resultados => resultados.PesosFrutos.map(pf => pf.Peso)))
+    
+    
+    
     let resultadoSum = sumFut.map(mapeo => mapeo.map(resultados => resultados.PesosFrutos.map(pf => {
       return sumatoria += pf.Peso
-      console.log(sumatoria );
+     
+      
     }
       
       )))
 
-    
+      let ResJugoPeso = sumFut.map(mapeo => mapeo.map(resultados => resultados.JugoPeso));
     // let sumatoriaTotal = resultadoSum.reduce(acc,el,0);
-    
-    console.log("estamos aca");
-    // console.log((sumatoria / JugoPeso) * 100);
+   
+   
+    ResJugoPeso.map(cifra => cifra.map(res => {
+      console.log((res / sumatoria)*100)}));
+    // console.log(((sumatoria / ResJugoPeso[1][1]) * 100));
 
    
 
@@ -121,7 +122,7 @@ const AcidezPage = () => {
 
 
 
-
+   
   useEffect(() => {
     if (statuto) {
       setAuth(true);
