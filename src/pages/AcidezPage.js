@@ -236,7 +236,7 @@ const AcidezPage = () => {
 
 
                                 {!acceso.Evidencia ?
-                                  (<div><button disabled type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target={"#exampleModalImagenes" + acceso.Id}>
+                                  (<div><button disabled type="button" className="btn btn-secondary" data-bs-toggle="modal" data-bs-target={"#exampleModalImagenes" + acceso.Id}>
                                     <AiOutlineEyeInvisible style={{ fontSize: 24 }} title="Evidencias No Encontradas" />
                                   </button></div>)
                                   : (<div>
