@@ -8,7 +8,7 @@ import Monitoreos from "../componentes/Monitoreos";
 import Acidez from "../componentes/Acidez";
 import { format, parseISO, isSameDay, parse } from "date-fns";
 import { URL_API_AGP } from "../utilidades/constantes";
-import { AiOutlineEye, AiOutlineSearch } from "react-icons/ai"
+import { AiOutlineEye, AiOutlineSearch, AiOutlineEyeInvisible } from "react-icons/ai"
 
 import ModalAcidez from "../componentes/ModalAcidez";
 import { getAcidez, getCliente } from "../utilidades/Servicios";
@@ -92,37 +92,38 @@ const AcidezPage = () => {
 
 
   const calcular = () => {
- 
+
     let sumFut = resultados.map((mapeo) => mapeo.ListaResultados).filter((lista) => lista?.length > 0); // Filtrar las listas que tienen contenido
     let sumatoria = 0;
     // console.log(sumFut.map(mapeo => mapeo.map(resultados => resultados.JugoPeso)));
     // let resultadoSum = sumFut.map(mapeo => mapeo.map(resultados => resultados.PesosFrutos.map(pf => pf.Peso)))
-    
-    
-    
+
+
+
     let resultadoSum = sumFut.map(mapeo => mapeo.map(resultados => resultados.PesosFrutos.map(pf => {
       return sumatoria += pf.Peso
-     
-      
-    }
-      
-      )))
 
-      let ResJugoPeso = sumFut.map(mapeo => mapeo.map(resultados => resultados.JugoPeso));
+
+    }
+
+    )))
+
+    let ResJugoPeso = sumFut.map(mapeo => mapeo.map(resultados => resultados.JugoPeso));
     // let sumatoriaTotal = resultadoSum.reduce(acc,el,0);
-   
-   
+
+
     ResJugoPeso.map(cifra => cifra.map(res => {
-      console.log((res / sumatoria)*100)}));
+      console.log((res / sumatoria) * 100)
+    }));
     // console.log(((sumatoria / ResJugoPeso[1][1]) * 100));
 
-   
+
 
   }
 
 
 
-   
+
   useEffect(() => {
     if (statuto) {
       setAuth(true);
@@ -233,11 +234,19 @@ const AcidezPage = () => {
                                   </button>
                                 </td>
 
-                                <td style={{ textTransform: 'uppercase' }}>
-                                  <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target={"#exampleModalImagenes" + acceso.Id}>
-                                    <AiOutlineEye style={{ fontSize: 24 }} title="Evidencias Encontradas" />
-                                  </button>
-                                </td>
+
+                                {!acceso.Evidencia ?
+                                  (<div><button disabled type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target={"#exampleModalImagenes" + acceso.Id}>
+                                    <AiOutlineEyeInvisible style={{ fontSize: 24 }} title="Evidencias No Encontradas" />
+                                  </button></div>)
+                                  : (<div>
+                                    <td style={{ textTransform: 'uppercase' }}>
+                                      <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target={"#exampleModalImagenes" + acceso.Id}>
+                                        <AiOutlineEye style={{ fontSize: 24 }} title="Evidencias Encontradas" />
+                                      </button>
+                                    </td>
+                                  </div>)}
+
 
 
 
