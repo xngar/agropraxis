@@ -236,7 +236,7 @@ const AcidezPage = () => {
 
 
                                       {!acceso.Evidencia ?
-                                        (<div style={{width:55}}></div>)
+                                        (<div style={{width:45}}></div>)
                                         : (<div>
                                           <td style={{ textTransform: 'uppercase' }}>
                                             <button type="button" className="btn btn-outline-success btn-sm " data-bs-toggle="modal" data-bs-target={"#exampleModalImagenes" + acceso.Id}>
