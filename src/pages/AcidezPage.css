@@ -23,6 +23,13 @@
     
 }
 
+.cont-informe{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:5px;
+}
+
 .contenedor-input input{
     border:2px solid #333952;
     border-radius: 20px;

@@ -9,6 +9,7 @@ import Acidez from "../componentes/Acidez";
 import { format, parseISO, isSameDay, parse } from "date-fns";
 import { URL_API_AGP } from "../utilidades/constantes";
 import { AiOutlineEye, AiOutlineSearch, AiOutlineEyeInvisible } from "react-icons/ai"
+import { HiOutlineMagnifyingGlassPlus } from "react-icons/hi2"
 
 import ModalAcidez from "../componentes/ModalAcidez";
 import { getAcidez, getCliente } from "../utilidades/Servicios";
@@ -183,7 +184,7 @@ const AcidezPage = () => {
 
                           <th scope="col">Informe</th>
                           <th scope="col">Resultados Acidez</th>
-                          <th scope="col">Evidencias</th>
+                          {/* <th scope="col">Evidencias</th> */}
                         </tr>
                       </thead>
 
@@ -195,15 +196,21 @@ const AcidezPage = () => {
                             <>
                               <ModalAcidez info={acceso} id={acceso.Id} />
                               <ModalImagenes info={acceso} id={acceso.Id} />
+
                               <tr key={acceso.Id}>
                                 <td scope="row">
                                   {acceso.NumApg}
                                 </td>
+
                                 <td className="lcase" style={{ textTransform: 'uppercase' }}>
                                   {acceso.Productor
                                     ? acceso.Productor
                                     : "Sin información"}
                                 </td>
+
+
+
+
                                 <td style={{ textTransform: 'uppercase' }}>{acceso.Predio}</td>
                                 <td style={{ textTransform: 'uppercase' }}>{acceso.Localidad}</td>
 
@@ -216,11 +223,33 @@ const AcidezPage = () => {
 
                                 <td style={{ textTransform: 'uppercase' }}>
                                   {acceso.InformeAdjunto ? (
-                                    <a target="_blank" href={process.env.REACT_APP_API_PATH + acceso.InformeAdjunto}>
 
-                                      <MdFileDownload style={{ fontSize: 24 }} title="Descargar" />
+                                    <div className="cont-informe">
+                                      <a target="_blank" href={process.env.REACT_APP_API_PATH + acceso.InformeAdjunto}>
 
-                                    </a>
+                                        <MdFileDownload style={{ fontSize: 24 }} title="Descargar" />
+
+
+
+                                      </a>
+
+
+
+                                      {!acceso.Evidencia ?
+                                        (<div style={{width:55}}></div>)
+                                        : (<div>
+                                          <td style={{ textTransform: 'uppercase' }}>
+                                            <button type="button" className="btn btn-outline-success btn-sm " data-bs-toggle="modal" data-bs-target={"#exampleModalImagenes" + acceso.Id}>
+                                              <HiOutlineMagnifyingGlassPlus style={{ fontSize: 24, color:"#00A94F" }} title="Evidencias Encontradas" />
+                                            </button>
+                                          </td>
+                                        </div>)}
+
+                                    </div>
+
+
+
+
                                   ) : (
 
                                     <MdFileDownloadOff style={{ fontSize: 24, color: "#adadad" }} />
@@ -233,22 +262,6 @@ const AcidezPage = () => {
                                     <AiOutlineEye style={{ fontSize: 24 }} />
                                   </button>
                                 </td>
-
-
-                                {!acceso.Evidencia ?
-                                  (<div><button disabled type="button" className="btn btn-secondary" data-bs-toggle="modal" data-bs-target={"#exampleModalImagenes" + acceso.Id}>
-                                    <AiOutlineEyeInvisible style={{ fontSize: 24 }} title="Evidencias No Encontradas" />
-                                  </button></div>)
-                                  : (<div>
-                                    <td style={{ textTransform: 'uppercase' }}>
-                                      <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target={"#exampleModalImagenes" + acceso.Id}>
-                                        <AiOutlineEye style={{ fontSize: 24 }} title="Evidencias Encontradas" />
-                                      </button>
-                                    </td>
-                                  </div>)}
-
-
-
 
                               </tr>
                             </>
