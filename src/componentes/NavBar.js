@@ -84,6 +84,15 @@ const NavBar = ({ cliente }) => {
                 Acidez de Frutos
               </li>
             </Link>
+
+            <Link to="/Lotes">
+              <li>
+                <span>
+                  <TbLemon style={{ fontSize: 23 }} />
+                </span>
+                Lotes
+              </li>
+            </Link>
           </ul>
 
          

@@ -5,6 +5,7 @@ import Login from "../pages/Login";
 import MonitoreoPage from "../pages/MonitoreoPage";
 import AcidezPage from "../pages/AcidezPage";
 import RecepcionesPage from "../pages/RecepcionesPage";
+import LotesPage from "../pages/LotesPage";
 
 
 
@@ -28,6 +29,11 @@ export const router = createBrowserRouter([
     {
         path:"/Recepciones",
         element:<RecepcionesPage/>
+    },
+    
+    {
+        path:"/Lotes",
+        element:<LotesPage/>
     },
     {
         path:"*",

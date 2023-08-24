@@ -17,6 +17,26 @@ export const getMonitoreo = async (token) => {
     const data = await result;
    return data;
   };
+
+
+//Obteniendo Lotes
+  export const getLotes = async (token) => {
+  
+    var request = '/api/Servicios/CertificacionDeLotes';
+      const respuesta = await fetch(URL_API_AGP + request, {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + token,
+          "Content-Type": "application/json",
+        },
+      });
+  
+      const result = await respuesta.json();
+      const data = await result;
+     return data;
+    };
+
+
 // Servicio que retorna el cliente logueado
 export const getCliente = async (token) => {
    var request =  "/api/Auth/Cliente";
