@@ -131,55 +131,116 @@ const LotesPage = () => {
                   </div>
                   <div className="table-responsive">
                     <table className="table container">
-                      <thead>
+                      {
+                        filtradoPais ==="MEXICO"?
+                        <thead>
                         <tr>
-                          <th scope="col">Nº Informe</th>
-                          <th scope="col">Exportador</th>
-                          <th scope="col">Nombre Planta</th>
-
+                          <th scope="col">Productor</th>
+                          <th scope="col">Especie</th>
+                          <th scope="col">Variedad</th>
+                          <th scope="col">Num Solicitud Inspección</th>
+                          <th scope="col">Cant Envases</th>
+                          <th scope="col">Kilos Muestra Analizados</th>
+                          <th scope="col">Oficina Sectorial</th>
+                          <th scope="col">Programa</th>
+                          <th scope="col">Laboratorio</th>
+                          <th scope="col">Num Lotes</th>
+                          <th scope="col">País Destino</th>
+                          <th scope="col">Observaciones</th>
+                          <th scope="col">Lista Análisis</th>
                         </tr>
-                      </thead>
+                      </thead>:
+                       filtradoPais ==="PERU" ?
+                       <thead>
+                        <tr>
+                          <th scope="col">Productor</th>
+                          <th scope="col">Especie</th>
+                          <th scope="col">Variedad</th>
+                          <th scope="col">Num Solicitud Inspección</th>
+                          <th scope="col">Cant Envases</th>
+                          <th scope="col">Kilos Muestra Analizados</th>
+                          <th scope="col">Oficina Sectorial</th>
+                          <th scope="col">Programa</th>
+                          <th scope="col">Laboratorio</th>
+                          <th scope="col">Num Lotes</th>
+                          <th scope="col">País Destino</th>
+                          <th scope="col">Observaciones</th>
+                          <th scope="col">Lista Análisis</th>
+                        </tr>
+                      </thead>:""
+                      }
+                      
 
                       <tbody className="table-group-divider">
                         {nuevo.filter(filtrado => filtrado.PaisDestino === filtradoPais).map((acceso) => {
 
                           return (<>
                             {/* <Modal info={acceso} id={acceso.Id} /> */}
-                            <tr className="hover-tabla" key={acceso.Id}>
-                              <td scope="row">
-                                {acceso.NumAPG}
-
-                              </td>
-                              <td className="lcase" style={{ textTransform: 'uppercase' }}>
-                                {acceso.Exportador
-                                  ? acceso.Exportador
-                                  : "Sin información"}
-                              </td>
-                              <td className="lcase" style={{ textTransform: 'uppercase' }}>{acceso.Exportador}</td>
-                              <td style={{ textTransform: 'uppercase' }}>{acceso.NombrePlanta}</td>
-
+                            {
+                              filtradoPais === "MEXICO"?
+                              <tr className="hover-tabla" key={acceso.Id}>
+                              <td scope="row">{acceso.Cliente}</td>
+                              <td className="lcase" style={{ textTransform: 'uppercase' }}>{acceso.Especie}</td>
+                              <td style={{ textTransform: 'uppercase' }}>{acceso.Variedad}</td>
+                              <td style={{ textTransform: 'uppercase' }}>{acceso.NumSolicitudInspeccion}</td>
+                              <td style={{ textTransform: 'uppercase' }}>{acceso.CantEnvases}</td>
+                              <td style={{ textTransform: 'uppercase' }}>{acceso.KilosMuestraAnalizado}</td>
+                              <td style={{ textTransform: 'uppercase' }}>{acceso.OficinaSectorial}</td>
+                              <td style={{ textTransform: 'uppercase' }}>{acceso.Programa}</td>
+                              <td style={{ textTransform: 'uppercase' }}>{acceso.Laboratorio}</td>
+                              <td style={{ textTransform: 'uppercase' }}>{acceso.NumLote}</td>
+                              <td style={{ textTransform: 'uppercase' }}>{acceso.PaisDestino}</td>
+                              <td style={{ textTransform: 'uppercase' }}>{acceso.Observaciones}</td>
                               <td style={{ textTransform: 'uppercase' }}>
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target={"#exampleModal" + acceso.Id}>
                                   <AiOutlineEye style={{ fontSize: 24 }} />
                                 </button>
                               </td>
+                              
+                            </tr>: filtradoPais ==="PERU"?
+                            <tr className="hover-tabla" key={acceso.Id}>
+                            <td scope="row">{acceso.Cliente}</td>
+                            <td className="lcase" style={{ textTransform: 'uppercase' }}>{acceso.Especie}</td>
+                            <td style={{ textTransform: 'uppercase' }}>{acceso.Variedad}</td>
+                            <td style={{ textTransform: 'uppercase' }}>{acceso.NumSolicitudInspeccion}</td>
+                            <td style={{ textTransform: 'uppercase' }}>{acceso.CantEnvases}</td>
+                            <td style={{ textTransform: 'uppercase' }}>{acceso.KilosMuestraAnalizado}</td>
+                            <td style={{ textTransform: 'uppercase' }}>{acceso.OficinaSectorial}</td>
+                            <td style={{ textTransform: 'uppercase' }}>{acceso.Programa}</td>
+                            <td style={{ textTransform: 'uppercase' }}>{acceso.Laboratorio}</td>
+                            <td style={{ textTransform: 'uppercase' }}>{acceso.NumLote}</td>
+                            <td style={{ textTransform: 'uppercase' }}>{acceso.PaisDestino}</td>
+                            <td style={{ textTransform: 'uppercase' }}>{acceso.Observaciones}</td>
+                            <td style={{ textTransform: 'uppercase' }}>
+                              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target={"#exampleModal" + acceso.Id}>
+                                <AiOutlineEye style={{ fontSize: 24 }} />
+                              </button>
+                            </td>
+                            
+                          </tr>
+                            :filtradoPais ==="BRASIL"?
+                            <tr className="hover-tabla" key={acceso.Id}>
+                              <td scope="row">{acceso.Cliente}</td>
+                              <td className="lcase" style={{ textTransform: 'uppercase' }}>{acceso.Especie}</td>
+                              <td style={{ textTransform: 'uppercase' }}>{acceso.Variedad}</td>
+                              <td style={{ textTransform: 'uppercase' }}>{acceso.NumSolicitudInspeccion}</td>
+                              <td style={{ textTransform: 'uppercase' }}>{acceso.CantEnvases}</td>
+                              <td style={{ textTransform: 'uppercase' }}>{acceso.KilosMuestraAnalizado}</td>
+                              <td style={{ textTransform: 'uppercase' }}>{acceso.OficinaSectorial}</td>
+                              <td style={{ textTransform: 'uppercase' }}>{acceso.Programa}</td>
+                              <td style={{ textTransform: 'uppercase' }}>{acceso.Laboratorio}</td>
+                              <td style={{ textTransform: 'uppercase' }}>{acceso.NumLote}</td>
+                              <td style={{ textTransform: 'uppercase' }}>{acceso.PaisDestino}</td>
+                              <td style={{ textTransform: 'uppercase' }}>{acceso.Observaciones}</td>
                               <td style={{ textTransform: 'uppercase' }}>
-                                {acceso.InformeAdjunto ? (
-                                  <a
-                                    target="_blank"
-                                    href={
-                                      process.env.REACT_APP_API_PATH +
-                                      acceso.InformeAdjunto
-                                    }
-                                  >
-                                    {" "}
-                                    <p style={{ color: "white", background: "green", borderRadius: "20px", padding: "8px", fontSize: "14px", textAlign: "center", textTransform: "capitalize", letterSpacing: 1 }}>Descargar</p>
-                                  </a>
-                                ) : (
-                                  <p style={{ color: "white", background: "red", borderRadius: "20px", padding: "3px", fontSize: "12px", textAlign: "center" }}>En Proceso</p>
-                                )}
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target={"#exampleModal" + acceso.Id}>
+                                  <AiOutlineEye style={{ fontSize: 24 }} />
+                                </button>
                               </td>
-                            </tr>
+                              
+                            </tr> :""
+                            }
+                            
                           </>
                           );
                         })}
