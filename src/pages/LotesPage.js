@@ -4,18 +4,10 @@ import { Navigate, Redirect } from "react-router-dom";
 import "./Home.css";
 import "./MonitoreoPage.css"
 import NavBar from "../componentes/NavBar";
-import Monitoreos from "../componentes/Monitoreos";
-import Acidez from "../componentes/Acidez";
-import { isValid, parseISO, format } from "date-fns";
-import { ImDownload3 } from "react-icons/im";
-import { TbReport } from "react-icons/tb";
-import { URL_API_AGP } from "../utilidades/constantes";
-import { icons } from "react-icons";
 import { AiOutlineEye } from "react-icons/ai"
-import Modal from "../componentes/Modal";
+import ModalLotes from "../componentes/ModalLotes";
 import { getCliente, getMonitoreo, getLotes } from "../utilidades/Servicios";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+
 
 const LotesPage = () => {
   const [nuevo, setDatos] = useState([]);
@@ -112,7 +104,7 @@ const LotesPage = () => {
                 <div>
                   <div className="monitoreo-titulo">
 
-                    <h3>Monitoreos</h3>
+                    <h3>Lotes</h3>
                     <div>
             <select class="form-select" aria-label="Default select example" onChange={e=>Elegido(e)}>
               <option selected>Seleccione el país</option>
@@ -121,13 +113,13 @@ const LotesPage = () => {
               <option value="MEXICO">Mexico</option>
             </select>
           </div>
-                    <div className="contenedor-busqueda">
+                    {/* <div className="contenedor-busqueda">
                       <div className="contenedor-input">
                         <input type="text" className="form-control" placeholder="Ingrese su busqueda por Productor,Localidad o Fecha" value={busqueda} onChange={fnBusqueda} />
                       </div>
                       <br></br>
 
-                    </div>
+                    </div> */}
                   </div>
                   <div className="table-responsive">
                     <table className="table container">
@@ -147,7 +139,9 @@ const LotesPage = () => {
                           <th scope="col">Num Lotes</th>
                           <th scope="col">País Destino</th>
                           <th scope="col">Observaciones</th>
+                          
                           <th scope="col">Lista Análisis</th>
+                          <th scope="col">Informe</th>
                         </tr>
                       </thead>:
                        filtradoPais ==="PERU" ?
@@ -164,10 +158,31 @@ const LotesPage = () => {
                           <th scope="col">Laboratorio</th>
                           <th scope="col">Num Lotes</th>
                           <th scope="col">País Destino</th>
+                          
                           <th scope="col">Observaciones</th>
-                          <th scope="col">Lista Análisis</th>
+                          <th scope="col">Informe</th>
+                          
                         </tr>
-                      </thead>:""
+                      </thead>: 
+                      filtradoPais ==="BRASIL" ?
+                      <thead>
+                       <tr>
+                         <th scope="col">Productor</th>
+                         <th scope="col">Especie</th>
+                         <th scope="col">Variedad</th>
+                         <th scope="col">Num Solicitud Inspección</th>
+                         <th scope="col">Cant Envases</th>
+                         <th scope="col">Kilos Muestra Analizados</th>
+                         <th scope="col">Oficina Sectorial</th>
+                         <th scope="col">Programa</th>
+                         <th scope="col">Laboratorio</th>
+                         <th scope="col">Num Lotes</th>
+                         <th scope="col">País Destino</th>
+                         <th scope="col">Observaciones</th>
+                         <th scope="col">Informe</th>
+                         
+                       </tr>
+                     </thead>:""
                       }
                       
 
@@ -175,7 +190,7 @@ const LotesPage = () => {
                         {nuevo.filter(filtrado => filtrado.PaisDestino === filtradoPais).map((acceso) => {
 
                           return (<>
-                            {/* <Modal info={acceso} id={acceso.Id} /> */}
+                            <ModalLotes info={acceso} id={acceso.Id} />
                             {
                               filtradoPais === "MEXICO"?
                               <tr className="hover-tabla" key={acceso.Id}>
@@ -196,6 +211,22 @@ const LotesPage = () => {
                                   <AiOutlineEye style={{ fontSize: 24 }} />
                                 </button>
                               </td>
+                              <td style={{ textTransform: 'uppercase'}}>
+                                  {acceso.InformePDF ? (
+                                    <a
+                                      target="_blank"
+                                      href={
+                                        process.env.REACT_APP_API_PATH +
+                                        acceso.InformeAdjunto
+                                      }
+                                    >
+                                      {" "}
+                                      <p style={{ color: "white", background:"green",borderRadius:"20px", padding:"8px", fontSize:"14px", textAlign:"center", textTransform:"capitalize", letterSpacing:1 }}>Descargar</p>
+                                    </a>
+                                  ) : (
+                                    <p style={{ color: "white", background:"red",borderRadius:"20px", padding:"3px", fontSize:"12px", textAlign:"center" }}>En Proceso</p>
+                                  )}
+                                </td>
                               
                             </tr>: filtradoPais ==="PERU"?
                             <tr className="hover-tabla" key={acceso.Id}>
@@ -211,11 +242,27 @@ const LotesPage = () => {
                             <td style={{ textTransform: 'uppercase' }}>{acceso.NumLote}</td>
                             <td style={{ textTransform: 'uppercase' }}>{acceso.PaisDestino}</td>
                             <td style={{ textTransform: 'uppercase' }}>{acceso.Observaciones}</td>
-                            <td style={{ textTransform: 'uppercase' }}>
+                            <td style={{ textTransform: 'uppercase'}}>
+                                  {acceso.InformePDF ? (
+                                    <a
+                                      target="_blank"
+                                      href={
+                                        process.env.REACT_APP_API_PATH +
+                                        acceso.InformeAdjunto
+                                      }
+                                    >
+                                      {" "}
+                                      <p style={{ color: "white", background:"green",borderRadius:"20px", padding:"8px", fontSize:"14px", textAlign:"center", textTransform:"capitalize", letterSpacing:1 }}>Descargar</p>
+                                    </a>
+                                  ) : (
+                                    <p style={{ color: "white", background:"red",borderRadius:"20px", padding:"3px", fontSize:"12px", textAlign:"center" }}>En Proceso</p>
+                                  )}
+                                </td>
+                            {/* <td style={{ textTransform: 'uppercase' }}>
                               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target={"#exampleModal" + acceso.Id}>
                                 <AiOutlineEye style={{ fontSize: 24 }} />
                               </button>
-                            </td>
+                            </td> */}
                             
                           </tr>
                             :filtradoPais ==="BRASIL"?
@@ -232,11 +279,27 @@ const LotesPage = () => {
                               <td style={{ textTransform: 'uppercase' }}>{acceso.NumLote}</td>
                               <td style={{ textTransform: 'uppercase' }}>{acceso.PaisDestino}</td>
                               <td style={{ textTransform: 'uppercase' }}>{acceso.Observaciones}</td>
-                              <td style={{ textTransform: 'uppercase' }}>
+                              <td style={{ textTransform: 'uppercase'}}>
+                                  {acceso.InformePDF ? (
+                                    <a
+                                      target="_blank"
+                                      href={
+                                        process.env.REACT_APP_API_PATH +
+                                        acceso.InformeAdjunto
+                                      }
+                                    >
+                                      {" "}
+                                      <p style={{ color: "white", background:"green",borderRadius:"20px", padding:"8px", fontSize:"14px", textAlign:"center", textTransform:"capitalize", letterSpacing:1 }}>Descargar</p>
+                                    </a>
+                                  ) : (
+                                    <p style={{ color: "white", background:"red",borderRadius:"20px", padding:"3px", fontSize:"12px", textAlign:"center" }}>En Proceso</p>
+                                  )}
+                                </td>
+                              {/* <td style={{ textTransform: 'uppercase' }}>
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target={"#exampleModal" + acceso.Id}>
                                   <AiOutlineEye style={{ fontSize: 24 }} />
                                 </button>
-                              </td>
+                              </td> */}
                               
                             </tr> :""
                             }
