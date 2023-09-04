@@ -135,7 +135,7 @@ const LotesPage = () => {
                         filtradoPais ==="MEXICO"?
                         <thead>
                         <tr>
-                          <th scope="col">Productor</th>
+                         
                           <th scope="col">Especie</th>
                           <th scope="col">Variedad</th>
                           <th scope="col">Num Solicitud Inspección</th>
@@ -146,7 +146,6 @@ const LotesPage = () => {
                           <th scope="col">Laboratorio</th>
                           <th scope="col">Num Lotes</th>
                           <th scope="col">País Destino</th>
-                          <th scope="col">Observaciones</th>
                           
                           <th scope="col">Lista Análisis</th>
                           <th scope="col">Informe</th>
@@ -155,7 +154,7 @@ const LotesPage = () => {
                        filtradoPais ==="PERU" ?
                        <thead>
                         <tr>
-                          <th scope="col">Productor</th>
+                          
                           <th scope="col">Especie</th>
                           <th scope="col">Variedad</th>
                           <th scope="col">Num Solicitud Inspección</th>
@@ -167,7 +166,6 @@ const LotesPage = () => {
                           <th scope="col">Num Lotes</th>
                           <th scope="col">País Destino</th>
                           
-                          <th scope="col">Observaciones</th>
                           <th scope="col">Informe</th>
                           
                         </tr>
@@ -175,7 +173,6 @@ const LotesPage = () => {
                       filtradoPais ==="BRASIL" ?
                       <thead>
                        <tr>
-                         <th scope="col">Productor</th>
                          <th scope="col">Especie</th>
                          <th scope="col">Variedad</th>
                          <th scope="col">Num Solicitud Inspección</th>
@@ -186,7 +183,6 @@ const LotesPage = () => {
                          <th scope="col">Laboratorio</th>
                          <th scope="col">Num Lotes</th>
                          <th scope="col">País Destino</th>
-                         <th scope="col">Observaciones</th>
                          <th scope="col">Informe</th>
                          
                        </tr>
@@ -202,7 +198,7 @@ const LotesPage = () => {
                             {
                               filtradoPais === "MEXICO"?
                               <tr className="hover-tabla" key={i}>
-                              <td scope="row">{acceso.Cliente}</td>
+                              
                               <td className="lcase" style={{ textTransform: 'uppercase' }}>{acceso.Especie}</td>
                               <td style={{ textTransform: 'uppercase' }}>{acceso.Variedad}</td>
                               <td style={{ textTransform: 'uppercase' }}>{acceso.NumSolicitudInspeccion}</td>
@@ -213,7 +209,17 @@ const LotesPage = () => {
                               <td style={{ textTransform: 'uppercase' }}>{acceso.Laboratorio}</td>
                               <td style={{ textTransform: 'uppercase' }}>{acceso.NumLote}</td>
                               <td style={{ textTransform: 'uppercase' }}>{acceso.PaisDestino}</td>
-                              <td style={{ textTransform: 'uppercase' }}> {acceso.Observaciones}</td>
+                              <td>
+                                <div data-tooltip-id={"my-tooltip-"+ acceso.Id}>
+                               <SiCodereview/>
+                               </div>
+                               <ReactTooltip
+                                  id={"my-tooltip-"+ acceso.Id}
+                                  place="bottom"
+                                  variant="info"
+                                  content={acceso.Observaciones}/>
+                               
+                              </td>
                               <td style={{ textTransform: 'uppercase' }}>
                                 <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target={"#exampleModal" + acceso.Id}>
                                   <AiOutlineEye style={{ fontSize: 24 }} />
@@ -238,7 +244,6 @@ const LotesPage = () => {
                               
                             </tr>: filtradoPais ==="PERU"?
                             <tr className="hover-tabla" key={i}>
-                            <td scope="row">{acceso.Cliente}</td>
                             <td className="lcase" style={{ textTransform: 'uppercase' }}>{acceso.Especie}</td>
                             <td style={{ textTransform: 'uppercase' }}>{acceso.Variedad}</td>
                             <td style={{ textTransform: 'uppercase' }}>{acceso.NumSolicitudInspeccion}</td>
@@ -249,14 +254,25 @@ const LotesPage = () => {
                             <td style={{ textTransform: 'uppercase' }}>{acceso.Laboratorio}</td>
                             <td style={{ textTransform: 'uppercase' }}>{acceso.NumLote}</td>
                             <td style={{ textTransform: 'uppercase' }}>{acceso.PaisDestino}</td>
-                            <td style={{ textTransform: 'uppercase' }}>{acceso.Observaciones}</td>
+                            <td>
+                                <div data-tooltip-id={"my-tooltip-"+ acceso.Id}>
+                               <SiCodereview /> 
+                               </div>
+                               Ver Observación
+                               <ReactTooltip
+                                  id={"my-tooltip-"+ acceso.Id}
+                                  place="bottom"
+                                  variant="info"
+                                  content={acceso.Observaciones}/>
+                               
+                              </td>
                             <td style={{ textTransform: 'uppercase'}}>
                                   {acceso.InformePDF ? (
                                     <a
                                       target="_blank"
                                       href={
                                         process.env.REACT_APP_API_PATH +
-                                        acceso.InformeAdjunto
+                                        acceso.InformePDF
                                       }
                                     >
                                       {" "}
@@ -274,8 +290,7 @@ const LotesPage = () => {
                             
                           </tr>
                             :filtradoPais ==="BRASIL"?
-                            <tr className="hover-tabla" key={acceso.Id}>
-                              <td scope="row">{acceso.Cliente}</td>
+                            <tr className="hover-tabla" key={i}>
                               <td className="lcase" style={{ textTransform: 'uppercase' }}>{acceso.Especie}</td>
                               <td style={{ textTransform: 'uppercase' }}>{acceso.Variedad}</td>
                               <td style={{ textTransform: 'uppercase' }}>{acceso.NumSolicitudInspeccion}</td>
@@ -286,24 +301,13 @@ const LotesPage = () => {
                               <td style={{ textTransform: 'uppercase' }}>{acceso.Laboratorio}</td>
                               <td style={{ textTransform: 'uppercase' }}>{acceso.NumLote}</td>
                               <td style={{ textTransform: 'uppercase' }}>{acceso.PaisDestino}</td>
-                               <td>
-                                <div data-tooltip-id="my-tooltip-1">
-                               <SiCodereview/>
-                               </div>
-                               <ReactTooltip
-                                  id="my-tooltip-1"
-                                  place="bottom"
-                                  variant="info"
-                                  content={acceso.Observaciones}/>
-                               
-                              </td>
                               <td style={{ textTransform: 'uppercase'}}>
                                   {acceso.InformePDF ? (
                                     <a
                                       target="_blank"
                                       href={
                                         process.env.REACT_APP_API_PATH +
-                                        acceso.InformeAdjunto
+                                        acceso.InformePDF
                                       }
                                     >
                                       {" "}
