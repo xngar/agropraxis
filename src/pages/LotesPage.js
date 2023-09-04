@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Navigate, Redirect } from "react-router-dom";
 import "./Home.css";
-import "./MonitoreoPage.css"
+import "./MonitoreoPage.css";
+import "./LotesPage.css";
 import NavBar from "../componentes/NavBar";
 import { AiOutlineEye } from "react-icons/ai"
 import ModalLotes from "../componentes/ModalLotes";
 import { getCliente, getMonitoreo, getLotes } from "../utilidades/Servicios";
+import {SiCodereview} from 'react-icons/si';
+import {format} from 'date-fns';
 
 
 const LotesPage = () => {
@@ -205,7 +208,7 @@ const LotesPage = () => {
                               <td style={{ textTransform: 'uppercase' }}>{acceso.Laboratorio}</td>
                               <td style={{ textTransform: 'uppercase' }}>{acceso.NumLote}</td>
                               <td style={{ textTransform: 'uppercase' }}>{acceso.PaisDestino}</td>
-                              <td style={{ textTransform: 'uppercase' }}>{acceso.Observaciones}</td>
+                              <td style={{ textTransform: 'uppercase' }}> {acceso.Observaciones}</td>
                               <td style={{ textTransform: 'uppercase' }}>
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target={"#exampleModal" + acceso.Id}>
                                   <AiOutlineEye style={{ fontSize: 24 }} />
@@ -278,7 +281,10 @@ const LotesPage = () => {
                               <td style={{ textTransform: 'uppercase' }}>{acceso.Laboratorio}</td>
                               <td style={{ textTransform: 'uppercase' }}>{acceso.NumLote}</td>
                               <td style={{ textTransform: 'uppercase' }}>{acceso.PaisDestino}</td>
-                              <td style={{ textTransform: 'uppercase' }}>{acceso.Observaciones}</td>
+                               
+                               <div className="tooltip">Ver Obser.
+                              <span className="tooltiptext">{acceso.Observaciones}</span>
+                              </div>
                               <td style={{ textTransform: 'uppercase'}}>
                                   {acceso.InformePDF ? (
                                     <a
