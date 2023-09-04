@@ -4,6 +4,7 @@ import './index.css';
 import Login from './pages/Login';
 import { router } from "./rutas/rutas.js";
 import { RouterProvider } from "react-router-dom";
+import 'react-tooltip/dist/react-tooltip.css';
 
 
 

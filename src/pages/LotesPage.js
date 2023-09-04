@@ -10,6 +10,8 @@ import ModalLotes from "../componentes/ModalLotes";
 import { getCliente, getMonitoreo, getLotes } from "../utilidades/Servicios";
 import {SiCodereview} from 'react-icons/si';
 import {format} from 'date-fns';
+import { Tooltip as ReactTooltip } from "react-tooltip";
+
 
 
 const LotesPage = () => {
@@ -94,13 +96,15 @@ const LotesPage = () => {
 
   return (
     <>
+    
       {statuto ? (
         <div className="contenedor">
-          
+         
           <div className="izquierda">
             <NavBar cliente={cliente} />
           </div>
           <div className="derecha">
+         
             <div className="derecha-contenedor">
 
               <div className="cont-datos">
@@ -109,12 +113,13 @@ const LotesPage = () => {
 
                     <h3>Lotes</h3>
                     <div>
-            <select class="form-select" aria-label="Default select example" onChange={e=>Elegido(e)}>
-              <option selected>Seleccione el país</option>
+            <select className="form-select" aria-label="Default select example" onChange={e=>Elegido(e)}>
+              <option value="Seleccione">Seleccione el país</option>
               <option value="BRASIL">Brasil</option>
               <option value="PERU">Perú</option>
               <option value="MEXICO">Mexico</option>
             </select>
+            
           </div>
                     {/* <div className="contenedor-busqueda">
                       <div className="contenedor-input">
@@ -190,13 +195,13 @@ const LotesPage = () => {
                       
 
                       <tbody className="table-group-divider">
-                        {nuevo.filter(filtrado => filtrado.PaisDestino === filtradoPais).map((acceso) => {
+                        {nuevo.filter(filtrado => filtrado.PaisDestino === filtradoPais).map((acceso, i) => {
 
                           return (<>
                             <ModalLotes info={acceso} id={acceso.Id} />
                             {
                               filtradoPais === "MEXICO"?
-                              <tr className="hover-tabla" key={acceso.Id}>
+                              <tr className="hover-tabla" key={i}>
                               <td scope="row">{acceso.Cliente}</td>
                               <td className="lcase" style={{ textTransform: 'uppercase' }}>{acceso.Especie}</td>
                               <td style={{ textTransform: 'uppercase' }}>{acceso.Variedad}</td>
@@ -210,7 +215,7 @@ const LotesPage = () => {
                               <td style={{ textTransform: 'uppercase' }}>{acceso.PaisDestino}</td>
                               <td style={{ textTransform: 'uppercase' }}> {acceso.Observaciones}</td>
                               <td style={{ textTransform: 'uppercase' }}>
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target={"#exampleModal" + acceso.Id}>
+                                <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target={"#exampleModal" + acceso.Id}>
                                   <AiOutlineEye style={{ fontSize: 24 }} />
                                 </button>
                               </td>
@@ -232,7 +237,7 @@ const LotesPage = () => {
                                 </td>
                               
                             </tr>: filtradoPais ==="PERU"?
-                            <tr className="hover-tabla" key={acceso.Id}>
+                            <tr className="hover-tabla" key={i}>
                             <td scope="row">{acceso.Cliente}</td>
                             <td className="lcase" style={{ textTransform: 'uppercase' }}>{acceso.Especie}</td>
                             <td style={{ textTransform: 'uppercase' }}>{acceso.Variedad}</td>
@@ -281,10 +286,17 @@ const LotesPage = () => {
                               <td style={{ textTransform: 'uppercase' }}>{acceso.Laboratorio}</td>
                               <td style={{ textTransform: 'uppercase' }}>{acceso.NumLote}</td>
                               <td style={{ textTransform: 'uppercase' }}>{acceso.PaisDestino}</td>
+                               <td>
+                                <div data-tooltip-id="my-tooltip-1">
+                               <SiCodereview/>
+                               </div>
+                               <ReactTooltip
+                                  id="my-tooltip-1"
+                                  place="bottom"
+                                  variant="info"
+                                  content={acceso.Observaciones}/>
                                
-                               <div className="tooltip">Ver Obser.
-                              <span className="tooltiptext">{acceso.Observaciones}</span>
-                              </div>
+                              </td>
                               <td style={{ textTransform: 'uppercase'}}>
                                   {acceso.InformePDF ? (
                                     <a
@@ -315,6 +327,7 @@ const LotesPage = () => {
                         })}
                       </tbody>
                     </table>
+                   
                   </div>
                 </div>
               </div>
