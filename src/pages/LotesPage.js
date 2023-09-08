@@ -11,6 +11,9 @@ import { getCliente, getMonitoreo, getLotes } from "../utilidades/Servicios";
 import {SiCodereview} from 'react-icons/si';
 import {format} from 'date-fns';
 import { Tooltip as ReactTooltip } from "react-tooltip";
+import Button from 'react-bootstrap/Button';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Popover from 'react-bootstrap/Popover';
 
 
 
@@ -22,6 +25,17 @@ const LotesPage = () => {
   const [auth, setAuth] = useState(false);
   const [cliente, setCliente] = useState([]);
   const [filtradoPais, setFiltradoPais] = useState("");
+
+
+  const popover = (
+    <Popover id="popover-basic">
+      <Popover.Header as="h3">Popover right</Popover.Header>
+      <Popover.Body>
+        And here's some <strong>amazing</strong> content. It's very engaging.
+        right?
+      </Popover.Body>
+    </Popover>
+  );
 
   const { state } = useLocation();
   const statuto = localStorage.status;
@@ -286,7 +300,13 @@ const LotesPage = () => {
                               <td style={{ textTransform: 'uppercase' }}>{acceso.Laboratorio}</td>
                               <td style={{ textTransform: 'uppercase' }}>{acceso.NumLote}</td>
                               <td style={{ textTransform: 'uppercase' }}>{acceso.PaisDestino}</td>
-                               <td>
+                              <td style={{ textTransform: 'uppercase' }}>{acceso.Observaciones}</td>
+                              <td>
+                              <OverlayTrigger trigger="click" placement="right" overlay={popover}>
+    <Button variant="success">Click me to see</Button>
+  </OverlayTrigger>
+                              </td>
+                               {/* <td>
                                 <div data-tooltip-id="my-tooltip-1">
                                <SiCodereview/>
                                </div>
@@ -296,7 +316,7 @@ const LotesPage = () => {
                                   variant="info"
                                   content={acceso.Observaciones}/>
                                
-                              </td>
+                              </td> */}
                               <td style={{ textTransform: 'uppercase'}}>
                                   {acceso.InformePDF ? (
                                     <a
@@ -342,3 +362,4 @@ const LotesPage = () => {
 };
 
 export default LotesPage;
+
