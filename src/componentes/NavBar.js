@@ -7,6 +7,7 @@ import "./NavBar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { ImList } from "react-icons/im";
 import { TbLemon } from "react-icons/tb";
+import {AiOutlineAppstoreAdd} from 'react-icons/ai';
 
 const NavBar = ({ cliente }) => {
   const clientes = localStorage.getItem("cliente");
@@ -88,7 +89,7 @@ const NavBar = ({ cliente }) => {
             <Link to="/Lotes">
               <li>
                 <span>
-                  <TbLemon style={{ fontSize: 23 }} />
+                  <AiOutlineAppstoreAdd style={{ fontSize: 23 }} />
                 </span>
                 Lotes
               </li>
