@@ -187,6 +187,17 @@ h1{
     
 }
 
+.contenedor-lotes{
+    background-color: #008A36;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.contenedor-lotes h1{
+    color:white;
+}
+
 .cardDash{
     width: 50%;
     border-radius: 10px;
@@ -204,6 +215,10 @@ h1{
     font-size: 22px;
     font-weight:bold;
     align-items: center;
+}
+
+.cardDash h3 > img{
+    padding-right: 10px;
 }
 
 @media(max-width:992px){

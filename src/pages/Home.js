@@ -15,6 +15,7 @@ import {
   getCliente,
   getAcidez,
   getRecepcion,
+  getLotes
 } from "../utilidades/Servicios";
 
 import { URL_API_AGP } from "../utilidades/constantes";
@@ -25,6 +26,16 @@ const Home = () => {
   const [nuevo, setDatos] = useState(0);
   const [acidez, setAcidez] = useState(0);
   const [recep, setRecep] = useState(0);
+  let totalLotesMexico = [];
+  let totalLotesBrasil = [];
+  let totalLotesPeru = [];
+
+
+
+  const [pMexico, setMexico] = useState([]);
+  const [pBrasil, setBrasil] = useState([]);
+  const [pPeru, setPeru] = useState([]);
+  const [lotes,setLotes] = useState();
 
   const estado = useLocation().state;
   const tokesito = useLocation().state;
@@ -53,6 +64,14 @@ const Home = () => {
     //Clientes
     var client = await getCliente(TOKEN);
 
+    var lotes = await getLotes(TOKEN);
+    // lot.map(loteado => loteado.)
+    console.log(lotes.Entities[0].PaisDestino);
+    setLotes(lotes);
+    setBrasil(lotes.Entities.filter(filtrar=> filtrar.PaisDestino ==="BRASIL"));
+    setPeru(lotes.Entities.filter(filtrar=> filtrar.PaisDestino ==="PERU"));
+    setMexico(lotes.Entities.filter(filtrar=> filtrar.PaisDestino ==="MEXICO"));
+  //  console.log(totalLotes.length);
     toast.success("Conectado correctamente!", {
       position: "top-right",
       autoClose: 5000,
@@ -147,6 +166,51 @@ const Home = () => {
                       ( Pendientes )
                     </span>
                   </div>
+                </div>
+
+                {/* LOTES */}
+                <div className="contenedor-lotes">
+                <h1>Información de Lotes</h1>
+                <div className="contenedorCardDash">
+                  
+                  {/* mexico */}
+                  <div className="cardDash">
+                    
+                    <h3>
+                    <img src="mexico.png" width={50} />
+                     
+                     Mexico
+                    </h3>
+                    <span>
+                      
+                      <FiArrowRight /> {pMexico.length} ( Activos )
+                    </span>
+                  </div>
+
+
+                  {/* brasil */}
+                  <div className="cardDash">
+                    <h3>
+                    <img src="brasil.png" width={50} />
+                      Brasil
+                    </h3>
+                    <span>
+                      <FiArrowRight /> {pBrasil.length} ( Activos )
+                    </span>
+                  </div>
+
+                  {/* peru */}
+                  <div className="cardDash">
+                    <h3>
+                    <img src="peru.png" width={50} />
+                     <span>Perú</span>
+                    </h3>
+                    <span>
+                      <FiArrowRight /> {pPeru.length} ( Activos )
+                    </span>
+                    
+                  </div>
+                </div>
                 </div>
               </div>
             </div>
