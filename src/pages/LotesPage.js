@@ -244,7 +244,7 @@ const LotesPage = () => {
                             <td style={{ textTransform: 'uppercase' }}>{acceso.Variedad}</td>
                             <td style={{ textTransform: 'uppercase' }}>{acceso.NumSolicitudInspeccion}</td>
                             <td style={{ textTransform: 'uppercase' }}>{format(parseISO(acceso?.FechaResultado), "dd/MM/yyyy")}</td>
-                              <td style={{ textTransform: 'uppercase' }}>{format(parseISO(acceso?.FechaRecepcion), "dd/MM/yyyy")}</td>
+                            <td style={{ textTransform: 'uppercase' }}>{format(parseISO(acceso?.FechaRecepcion), "dd/MM/yyyy")}</td>
                             <td style={{ textTransform: 'uppercase' }}>{acceso.CantEnvases}</td>
                             <td style={{ textTransform: 'uppercase' }}>{acceso.KilosMuestraAnalizado} KG</td>
                             <td style={{ textTransform: 'uppercase' }}>{acceso.OficinaSectorial}</td>
