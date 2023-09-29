@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { Navigate, Redirect } from "react-router-dom";
+import { Navigate, Redirect, useParams } from "react-router-dom";
 import "./Home.css";
 import "./MonitoreoPage.css";
 import "./LotesPage.css";
@@ -17,7 +17,7 @@ import Popover from 'react-bootstrap/Popover';
 
 
 
-const LotesPage = () => {
+const LotesPage = (props) => {
   const [nuevo, setDatos] = useState([]);
   const [acidez, setAcidez] = useState([]);
   const estado = useLocation().state;
@@ -25,6 +25,10 @@ const LotesPage = () => {
   const [auth, setAuth] = useState(false);
   const [cliente, setCliente] = useState([]);
   const [filtradoPais, setFiltradoPais] = useState("");
+  
+const valor = useParams();
+console.log(valor.nombre);
+  
 
 
   const popover = (
@@ -96,7 +100,7 @@ const LotesPage = () => {
     setFiltradoPais(e.target.value);
   }
 
-
+  
 
   useEffect(() => {
     if (statuto) {
@@ -104,7 +108,7 @@ const LotesPage = () => {
     }
 
     getMonitoreos();
-
+    setFiltradoPais(valor.nombre);
     getClientes();
   }, []);
 

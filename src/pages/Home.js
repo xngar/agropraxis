@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Navigate, Redirect } from "react-router-dom";
 import "./Home.css";
 import NavBar from "../componentes/NavBar";
@@ -95,6 +95,11 @@ const Home = () => {
     cargarDatos();
   }, []);
   const date = new Date()
+
+  const propsObj = {
+    prop1: 'Valor 1',
+    prop2: 'Valor 2',
+  };
   return (
     <>
       {statuto ? (
@@ -179,7 +184,7 @@ const Home = () => {
                     <h3>
                     <img src="mexico.png" width={50} />
                      
-                     Mexico
+                    <Link to={{pathname:"/Lotes/MEXICO", state:{stateParam:true}}}>Mexico</Link>
                     </h3>
                     <span>
                       
@@ -192,7 +197,7 @@ const Home = () => {
                   <div className="cardDash">
                     <h3>
                     <img src="brasil.png" width={50} />
-                      Brasil
+                    <Link to={{pathname:"/Lotes/BRASIL", state:{stateParam:true}}}>Brasil</Link>
                     </h3>
                     <span>
                       <FiArrowRight /> {pBrasil.length} ( Activos )
@@ -203,7 +208,7 @@ const Home = () => {
                   <div className="cardDash">
                     <h3>
                     <img src="peru.png" width={50} />
-                     <span>Perú</span>
+                     <span><Link to={{pathname:"/Lotes/PERU", state:{stateParam:true}}}>Perú</Link></span>
                     </h3>
                     <span>
                       <FiArrowRight /> {pPeru.length} ( Activos )
