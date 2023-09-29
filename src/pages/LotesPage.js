@@ -27,7 +27,6 @@ const LotesPage = (props) => {
   const [filtradoPais, setFiltradoPais] = useState("");
   
 const valor = useParams();
-console.log(valor.nombre);
   
 
 
