@@ -184,7 +184,7 @@ const Home = () => {
                     <h3>
                     <img src="mexico.png" width={50} />
                      
-                    <Link to={{pathname:"/Lotes/MEXICO", state:{stateParam:true}}}>Mexico</Link>
+                    <Link style={{color:"#fff"}} to={{pathname:"/Lotes/MEXICO", state:{stateParam:true}}}>Mexico</Link>
                     </h3>
                     <span>
                       
@@ -197,7 +197,7 @@ const Home = () => {
                   <div className="cardDash">
                     <h3>
                     <img src="brasil.png" width={50} />
-                    <Link to={{pathname:"/Lotes/BRASIL", state:{stateParam:true}}}>Brasil</Link>
+                    <Link style={{color:"#fff"}} to={{pathname:"/Lotes/BRASIL", state:{stateParam:true}}}>Brasil</Link>
                     </h3>
                     <span>
                       <FiArrowRight /> {pBrasil.length} ( Activos )
@@ -208,7 +208,7 @@ const Home = () => {
                   <div className="cardDash">
                     <h3>
                     <img src="peru.png" width={50} />
-                     <span><Link to={{pathname:"/Lotes/PERU", state:{stateParam:true}}}>Perú</Link></span>
+                     <span><Link style={{color:"#fff"}} to={{pathname:"/Lotes/PERU", state:{stateParam:true}}}>Perú</Link></span>
                     </h3>
                     <span>
                       <FiArrowRight /> {pPeru.length} ( Activos )
