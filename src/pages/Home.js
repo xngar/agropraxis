@@ -66,7 +66,7 @@ const Home = () => {
 
     var lotes = await getLotes(TOKEN);
     // lot.map(loteado => loteado.)
-    console.log(lotes.Entities[0].PaisDestino);
+    // console.log(lotes.Entities[0].PaisDestino);
     setLotes(lotes);
     setBrasil(lotes.Entities.filter(filtrar=> filtrar.PaisDestino ==="BRASIL"));
     setPeru(lotes.Entities.filter(filtrar=> filtrar.PaisDestino ==="PERU"));
@@ -222,7 +222,7 @@ const Home = () => {
             <div className="footer">
               <div>
                 <p>Copyright (c) {date.getFullYear()} </p>
-                <p>UP Code E.I.R.L v2023.06.26</p>
+                <p>UP Code E.I.R.L v2023.09.20</p>
               </div>
             </div>
           </div>

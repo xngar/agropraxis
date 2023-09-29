@@ -91,7 +91,7 @@ const NavBar = ({ cliente }) => {
                 <span>
                   <AiOutlineAppstoreAdd style={{ fontSize: 23 }} />
                 </span>
-                Lotes
+                Certificación de Lotes
               </li>
             </Link>
           </ul>

@@ -9,7 +9,7 @@ import { AiOutlineEye } from "react-icons/ai"
 import ModalLotes from "../componentes/ModalLotes";
 import { getCliente, getMonitoreo, getLotes } from "../utilidades/Servicios";
 import {SiCodereview} from 'react-icons/si';
-import {format} from 'date-fns';
+import { format, parseISO, isSameDay, parse } from "date-fns";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
@@ -129,7 +129,7 @@ console.log(valor.nombre);
                 <div>
                   <div className="monitoreo-titulo">
 
-                    <h3>Lotes</h3>
+                    <h3>Identificación de Lotes</h3>
                     <div>
             <select className="form-select" aria-label="Default select example" onChange={e=>Elegido(e)}>
               <option value="Seleccione">Seleccione el país</option>
@@ -156,16 +156,14 @@ console.log(valor.nombre);
                          
                           <th scope="col">Especie</th>
                           <th scope="col">Variedad</th>
-                          <th scope="col">Num Solicitud Inspección</th>
+                          <th scope="col">Nº Solicitud Inspección</th>
+                          <th scope="col">Fecha de Informe</th>
+                          <th scope="col">Fecha de Recepción</th>
                           <th scope="col">Cant Envases</th>
-                          <th scope="col">Kilos Muestra Analizados</th>
                           <th scope="col">Oficina Sectorial</th>
-                          <th scope="col">Programa</th>
-                          <th scope="col">Laboratorio</th>
-                          <th scope="col">Num Lotes</th>
-                          <th scope="col">País Destino</th>
+                          <th scope="col">Nº Lotes</th>
                           
-                          <th scope="col">Lista Análisis</th>
+                          <th scope="col">Lista Analisis</th>
                           <th scope="col">Informe</th>
                         </tr>
                       </thead>:
@@ -175,15 +173,13 @@ console.log(valor.nombre);
                           
                           <th scope="col">Especie</th>
                           <th scope="col">Variedad</th>
-                          <th scope="col">Num Solicitud Inspección</th>
+                          <th scope="col">Nº Solicitud Inspección</th>
+                          <th scope="col">Fecha de Informe</th>
+                          <th scope="col">Fecha de Recepción</th>
                           <th scope="col">Cant Envases</th>
                           <th scope="col">Kilos Muestra Analizados</th>
                           <th scope="col">Oficina Sectorial</th>
-                          <th scope="col">Programa</th>
-                          <th scope="col">Laboratorio</th>
-                          <th scope="col">Num Lotes</th>
-                          <th scope="col">País Destino</th>
-                          
+                          <th scope="col">Nº Lotes</th>
                           <th scope="col">Informe</th>
                           
                         </tr>
@@ -193,14 +189,13 @@ console.log(valor.nombre);
                        <tr>
                          <th scope="col">Especie</th>
                          <th scope="col">Variedad</th>
-                         <th scope="col">Num Solicitud Inspección</th>
+                         <th scope="col">Nº Solicitud Inspección</th>
+                         <th scope="col">Fecha de Informe</th>
+                          <th scope="col">Fecha de Recepción</th>
                          <th scope="col">Cant Envases</th>
                          <th scope="col">Kilos Muestra Analizados</th>
                          <th scope="col">Oficina Sectorial</th>
-                         <th scope="col">Programa</th>
-                         <th scope="col">Laboratorio</th>
-                         <th scope="col">Num Lotes</th>
-                         <th scope="col">País Destino</th>
+                         <th scope="col">Nº Lotes</th>
                          <th scope="col">Informe</th>
                          
                        </tr>
@@ -220,24 +215,11 @@ console.log(valor.nombre);
                               <td className="lcase" style={{ textTransform: 'uppercase' }}>{acceso.Especie}</td>
                               <td style={{ textTransform: 'uppercase' }}>{acceso.Variedad}</td>
                               <td style={{ textTransform: 'uppercase' }}>{acceso.NumSolicitudInspeccion}</td>
+                              <td style={{ textTransform: 'uppercase' }}>{format(parseISO(acceso?.FechaResultado), "dd/MM/yyyy")}</td>
+                              <td style={{ textTransform: 'uppercase' }}>{format(parseISO(acceso?.FechaRecepcion), "dd/MM/yyyy")}</td>
                               <td style={{ textTransform: 'uppercase' }}>{acceso.CantEnvases}</td>
-                              <td style={{ textTransform: 'uppercase' }}>{acceso.KilosMuestraAnalizado}</td>
                               <td style={{ textTransform: 'uppercase' }}>{acceso.OficinaSectorial}</td>
-                              <td style={{ textTransform: 'uppercase' }}>{acceso.Programa}</td>
-                              <td style={{ textTransform: 'uppercase' }}>{acceso.Laboratorio}</td>
                               <td style={{ textTransform: 'uppercase' }}>{acceso.NumLote}</td>
-                              <td style={{ textTransform: 'uppercase' }}>{acceso.PaisDestino}</td>
-                              <td>
-                                <div data-tooltip-id={"my-tooltip-"+ acceso.Id}>
-                               <SiCodereview/>
-                               </div>
-                               <ReactTooltip
-                                  id={"my-tooltip-"+ acceso.Id}
-                                  place="bottom"
-                                  variant="info"
-                                  content={acceso.Observaciones}/>
-                               
-                              </td>
                               <td style={{ textTransform: 'uppercase' }}>
                                 <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target={"#exampleModal" + acceso.Id}>
                                   <AiOutlineEye style={{ fontSize: 24 }} />
@@ -249,7 +231,7 @@ console.log(valor.nombre);
                                       target="_blank"
                                       href={
                                         process.env.REACT_APP_API_PATH +
-                                        acceso.InformeAdjunto
+                                        acceso.InformePDF
                                       }
                                     >
                                       {" "}
@@ -265,25 +247,13 @@ console.log(valor.nombre);
                             <td className="lcase" style={{ textTransform: 'uppercase' }}>{acceso.Especie}</td>
                             <td style={{ textTransform: 'uppercase' }}>{acceso.Variedad}</td>
                             <td style={{ textTransform: 'uppercase' }}>{acceso.NumSolicitudInspeccion}</td>
+                            <td style={{ textTransform: 'uppercase' }}>{format(parseISO(acceso?.FechaResultado), "dd/MM/yyyy")}</td>
+                            <td style={{ textTransform: 'uppercase' }}>{format(parseISO(acceso?.FechaRecepcion), "dd/MM/yyyy")}</td>
                             <td style={{ textTransform: 'uppercase' }}>{acceso.CantEnvases}</td>
-                            <td style={{ textTransform: 'uppercase' }}>{acceso.KilosMuestraAnalizado}</td>
+                            <td style={{ textTransform: 'uppercase' }}>{acceso.KilosMuestraAnalizado} KG</td>
                             <td style={{ textTransform: 'uppercase' }}>{acceso.OficinaSectorial}</td>
-                            <td style={{ textTransform: 'uppercase' }}>{acceso.Programa}</td>
-                            <td style={{ textTransform: 'uppercase' }}>{acceso.Laboratorio}</td>
                             <td style={{ textTransform: 'uppercase' }}>{acceso.NumLote}</td>
-                            <td style={{ textTransform: 'uppercase' }}>{acceso.PaisDestino}</td>
-                            <td>
-                                <div data-tooltip-id={"my-tooltip-"+ acceso.Id}>
-                               <SiCodereview /> 
-                               </div>
-                               Ver Observación
-                               <ReactTooltip
-                                  id={"my-tooltip-"+ acceso.Id}
-                                  place="bottom"
-                                  variant="info"
-                                  content={acceso.Observaciones}/>
-                               
-                              </td>
+                            
                             <td style={{ textTransform: 'uppercase'}}>
                                   {acceso.InformePDF ? (
                                     <a
@@ -312,13 +282,12 @@ console.log(valor.nombre);
                               <td className="lcase" style={{ textTransform: 'uppercase' }}>{acceso.Especie}</td>
                               <td style={{ textTransform: 'uppercase' }}>{acceso.Variedad}</td>
                               <td style={{ textTransform: 'uppercase' }}>{acceso.NumSolicitudInspeccion}</td>
+                              <td style={{ textTransform: 'uppercase' }}>{format(parseISO(acceso?.FechaResultado), "dd/MM/yyyy")}</td>
+                              <td style={{ textTransform: 'uppercase' }}>{format(parseISO(acceso?.FechaRecepcion), "dd/MM/yyyy")}</td>
                               <td style={{ textTransform: 'uppercase' }}>{acceso.CantEnvases}</td>
-                              <td style={{ textTransform: 'uppercase' }}>{acceso.KilosMuestraAnalizado}</td>
+                              <td style={{ textTransform: 'uppercase' }}>{acceso.KilosMuestraAnalizado} KG</td>
                               <td style={{ textTransform: 'uppercase' }}>{acceso.OficinaSectorial}</td>
-                              <td style={{ textTransform: 'uppercase' }}>{acceso.Programa}</td>
-                              <td style={{ textTransform: 'uppercase' }}>{acceso.Laboratorio}</td>
                               <td style={{ textTransform: 'uppercase' }}>{acceso.NumLote}</td>
-                              <td style={{ textTransform: 'uppercase' }}>{acceso.PaisDestino}</td>
                               <td style={{ textTransform: 'uppercase'}}>
                                   {acceso.InformePDF ? (
                                     <a
