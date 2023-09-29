@@ -32,7 +32,7 @@ export const router = createBrowserRouter([
     },
     
     {
-        path:"/Lotes/:nombre",
+        path:"/Lotes/:nombre?",
         element:<LotesPage/>
     },
     {
